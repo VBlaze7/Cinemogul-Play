@@ -18,13 +18,13 @@
 html{background:#0d0e14}
 html,body{margin:0;min-height:100%;background:#0d0e14;overscroll-behavior:none;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");z-index:99}
-.wrap{max-width:760px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 14px calc(98px + env(safe-area-inset-bottom))}
-.wrap.production-footer-clearance{padding-bottom:calc(18px + var(--sticky-footer-height))}
+.wrap{max-width:760px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 14px 90px}
+.wrap.production-footer-clearance{padding-bottom:calc(12px + var(--sticky-footer-height))}
 header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}.kicker{font-size:10px;text-transform:uppercase;letter-spacing:2.5px;color:var(--cyan);font-weight:600}.brandblock{min-width:0}.filmstrip{background:#0a0a0d;border-radius:8px;padding:15px 18px;position:relative;overflow:hidden;border:1px solid #26272f}
 .filmstrip::before,.filmstrip::after{content:"";position:absolute;left:0;right:0;height:7px;background:repeating-linear-gradient(90deg,#0a0a0d 0 5px,#2a2b33 5px 11px);opacity:.9}
 .filmstrip::before{top:3px}.filmstrip::after{bottom:3px}
 h1{margin:7px 0;font-size:34px;font-family:"Archivo Black",system-ui,sans-serif;letter-spacing:1px;text-align:center;color:#f3efe4;text-transform:uppercase;line-height:1}
-h1 span{color:var(--yellow)}.studio-brand{max-width:270px;margin:6px 3px 0;color:var(--cyan);font-family:"Oswald",sans-serif;font-size:11px;font-weight:600;letter-spacing:1.2px;line-height:1.2;text-transform:uppercase;overflow-wrap:anywhere}.status{display:grid;gap:6px;text-align:right;justify-items:end}
+h1 span{color:var(--yellow)}.studio-brand{max-width:320px;margin:8px 3px 0;color:#e2d6a3;font-family:"Oswald",sans-serif;font-size:15px;font-weight:500;letter-spacing:.3px;line-height:1.25;overflow-wrap:anywhere}.status{display:grid;gap:6px;text-align:right;justify-items:end}
 .cashpill{background:#0a0a0d;border:1px solid #2f6b47;border-radius:3px;padding:7px 13px;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
 .cashpill b{font-family:"Archivo Black",system-ui,sans-serif;font-size:21px;letter-spacing:0;color:var(--green);margin-left:6px;font-variant-numeric:tabular-nums;letter-spacing:.5px}
 @keyframes cashUp{0%{color:#9dffc4;transform:scale(1.14)}100%{color:var(--green);transform:scale(1)}}
@@ -37,10 +37,10 @@ h1 span{color:var(--yellow)}.studio-brand{max-width:270px;margin:6px 3px 0;color
 .pips i.on{background:var(--yellow)}.pill{background:#0a0a0d;border:1px solid #2b2d3c;padding:7px 10px;border-radius:3px;font-size:11px;letter-spacing:.5px;text-transform:uppercase;font-variant-numeric:tabular-nums}
 .hero{background:#15161f;border:1px solid #2b2d3c;border-top:3px solid #4a422a;border-radius:4px;padding:20px;margin-bottom:14px}.year{font-family:"Archivo Black",system-ui,sans-serif;font-size:58px;line-height:.92;letter-spacing:-1px;letter-spacing:0;margin:5px 0 8px}.quip{color:var(--yellow);font-size:17px;font-weight:600;line-height:1.3;margin-bottom:8px}.era{color:#d1d6ef;font-size:14px;line-height:1.45}
 .progress{height:6px;background:#23242f;border-radius:0;overflow:hidden;margin-top:14px}
-.yearcount{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:5px;text-align:right}.progressfill{height:100%;background:var(--yellow);width:0}
+.yearcount{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:5px;text-align:right}.time-jump{color:#d6c987;font-family:"Oswald",sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 7px}.progressfill{height:100%;background:var(--yellow);width:0}.mobile-status{display:none}
 .section{background:#15161f;border:1px solid #2b2d3c;border-radius:4px;padding:0 13px 14px;margin-bottom:11px;overflow:hidden}.sectionhead{display:flex;align-items:center;justify-content:space-between;background:#0a0a0d;border-bottom:1px solid #4a422a;padding:9px 13px;margin:0 -13px 13px}
 .sectionhead h3{margin:0;font-family:"Oswald",sans-serif;font-weight:600;font-size:18px;letter-spacing:1.2px;text-transform:uppercase;color:#f3efe4}.section h3{margin:0;font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted)}
-.sectionhead h2{margin:0;font-family:"Oswald",sans-serif;font-size:18px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#f3efe4}.studio-setup{border-top:3px solid var(--yellow)}.studio-setup[hidden]{display:none}.identity-help{margin:0 0 10px;color:var(--muted);font-size:12px;line-height:1.4}.identity-input-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.identity-input{min-width:0;width:100%;height:48px;padding:10px 12px;border:1px solid #4a4d5d;border-radius:3px;background:#0f1017;color:#fff;font:600 16px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.identity-input:focus{outline:2px solid var(--cyan);outline-offset:2px}.identity-action{min-height:48px;padding:0 14px;color:#fff}.compact-action{min-height:42px;padding:7px 13px;color:#fff}.title-section .pagebtn{min-height:44px;height:auto;padding:6px 10px}.title-custom-actions{display:flex;justify-content:flex-start;margin-top:10px}.custom-title-panel{margin-top:10px;padding:11px;background:#111219;border:1px solid #343747;border-radius:3px}.custom-title-panel[hidden]{display:none}.custom-title-panel label{display:block;margin-bottom:6px;color:#f3efe4;font-size:12px;font-weight:600}.custom-title-panel p{margin:6px 0 0;color:var(--muted);font-size:10px;line-height:1.35}.title-grid .choice{overflow-wrap:anywhere}
+.sectionhead h2{margin:0;font-family:"Oswald",sans-serif;font-size:18px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#f3efe4}.identity-input-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.identity-input{min-width:0;width:100%;height:48px;padding:10px 12px;border:1px solid #4a4d5d;border-radius:3px;background:#0f1017;color:#fff;font:600 16px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.identity-input:focus{outline:2px solid var(--cyan);outline-offset:2px}.identity-action{min-height:48px;padding:0 14px;color:#fff}.compact-action{min-height:42px;padding:7px 13px;color:#fff}.title-section .pagebtn{min-height:44px;height:auto;padding:6px 10px}.title-custom-actions{display:flex;justify-content:flex-start;margin-top:10px}.custom-title-panel{margin-top:10px;padding:11px;background:#111219;border:1px solid #343747;border-radius:3px}.custom-title-panel[hidden]{display:none}.custom-title-panel label{display:block;margin-bottom:6px;color:#f3efe4;font-size:12px;font-weight:600}.custom-title-panel p{margin:6px 0 0;color:var(--muted);font-size:10px;line-height:1.35}.title-grid .choice{overflow-wrap:anywhere}
 .pager{display:flex;align-items:center;gap:7px}.pagebtn{border:1px solid #333648;background:#1b1c27;color:white;border-radius:6px;min-width:34px;height:32px;font-weight:600}.pagebtn:disabled{opacity:.35}.pagecount{font-size:11px;color:var(--muted);min-width:38px;text-align:center}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.grid3,.genre-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .choice{min-height:44px;padding:10px 8px;border-radius:3px;border:1px solid #3a3d4d;background:#1b1c27;color:#fff;font-weight:600;font-size:14px;line-height:1.14;letter-spacing:.2px}.choice.selected{background:#241f10;border-color:var(--yellow);border-left:4px solid var(--yellow);color:#fff;font-weight:600}
@@ -56,7 +56,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .costbox{display:grid;gap:7px;margin-top:10px;padding-top:10px;border-top:1px solid #343a64}.sumline{font-size:13px;color:var(--muted)}.sumline b{color:white}.sumline.total{font-size:15px}.sumline.total b{color:var(--yellow);font-size:17px}
 .affordability-status{color:var(--red);font-size:12px;font-weight:600;text-align:right}
 .affordability-status[hidden]{display:none}
-.sticky{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#0a0a0d;border-top:1px solid #2b2d3c;z-index:10}.stickyinner{max-width:760px;margin:auto;display:grid;grid-template-columns:110px 1fr;gap:10px}.action{min-height:56px;border-radius:3px;border:0;font-weight:600;font-size:15px}.secondary{background:transparent;color:var(--muted);border:1px solid #333648}.primary{background:var(--green);color:#06210f;font-family:"Oswald",sans-serif;font-weight:600;font-size:18px;letter-spacing:1px;text-transform:uppercase;box-shadow:0 3px 0 #2f8f57}.primary:active{transform:translateY(2px);box-shadow:0 1px 0 #2f8f57}.primary:disabled{opacity:.6}
+.sticky{position:fixed;left:0;right:0;bottom:0;padding:8px max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:#0a0a0d;border-top:1px solid #2b2d3c;z-index:10}.sticky[hidden]{display:none}.stickyinner{max-width:760px;margin:auto;display:grid;grid-template-columns:110px 1fr;gap:10px}.action{min-height:56px;border-radius:3px;border:0;font-weight:600;font-size:15px}.secondary{background:transparent;color:var(--muted);border:1px solid #333648}.primary{background:var(--green);color:#06210f;font-family:"Oswald",sans-serif;font-weight:600;font-size:18px;letter-spacing:1px;text-transform:uppercase;box-shadow:0 3px 0 #2f8f57}.primary:active{transform:translateY(2px);box-shadow:0 1px 0 #2f8f57}.primary:disabled{opacity:.6}
 .result{display:none;overflow-anchor:none}.result.show{display:block}html.result-positioning,html.result-positioning body,html.result-positioning .wrap{overflow-anchor:none}
 .verdict{font-size:26px;font-weight:600;margin:8px 0;color:var(--muted);letter-spacing:1px}
 .verdict.stamp{display:inline-block;font-family:"BODisplay","Arial Narrow",sans-serif-condensed,sans-serif;font-size:34px;letter-spacing:2px;border:3px solid currentColor;border-radius:6px;padding:3px 14px 2px;transform:rotate(-3deg);margin:8px 0 10px}
@@ -82,7 +82,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .result.show:not(.revealed) .revealtarget{opacity:0}
 .result .revealtarget{transition:opacity .5s ease}
 @media(prefers-reduced-motion:reduce){.verdict.stampin,.choice.dealt,.theatre-stage,.rollbtn.rolling{animation:none!important}.slate-card-inner,.slate-card-front,.slate-card-back{transition:none!important}.card-group-turning .slate-card-inner{transform:none!important}.card-group-turning .slate-card-front{transform:none!important;opacity:1}.card-group-turning .slate-card-back{display:none}}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.metric{background:#1b1c27;border:1px solid #2b2d3c;border-radius:3px;padding:10px 7px;color:var(--muted);font-size:11px}.metric b{display:block;color:white;font-size:18px;margin-top:4px;font-variant-numeric:tabular-nums}.why{padding-left:18px;line-height:1.45;color:#dde1f5;font-size:14px}
-#bottomLine{color:#dde1f5;font-size:14px;line-height:1.5;margin:0}.bottom{padding:13px;border-radius:8px;background:#1b1c27;border:1px solid #2b2d3c;margin-top:14px}.benchmark{background:#15161f;border:1px solid #2b2d3c;border-left:3px solid var(--cyan);border-radius:12px;padding:16px;margin-top:12px}
+#bottomLine{color:#dde1f5;font-size:14px;line-height:1.5;margin:0}.verdict-archetype{margin:0 0 6px;color:var(--yellow);font-family:"Oswald",sans-serif;font-size:18px;font-weight:600;letter-spacing:1px;text-transform:uppercase}.bottom{padding:13px;border-radius:8px;background:#1b1c27;border:1px solid #2b2d3c;margin-top:14px}.benchmark{background:#15161f;border:1px solid #2b2d3c;border-left:3px solid var(--cyan);border-radius:12px;padding:16px;margin-top:12px}
 .accountinggrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.accountinggroup{background:#171821;border:1px solid #2b2d3c;border-radius:4px;padding:12px}.accountinggroup .kicker{margin-bottom:7px}.accountrow{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:5px 0;border-bottom:1px solid #292b39;color:var(--muted);font-size:12px;line-height:1.3}.accountrow:last-child{border-bottom:0}.accountrow b{color:#fff;text-align:right;font-variant-numeric:tabular-nums}.accountrow.total{margin-top:4px;padding-top:8px;border-top:1px solid #44485b;border-bottom:0;color:#fff;font-weight:600}.accountrow.total b{color:var(--yellow);font-size:15px}.accountdetail{display:block;margin:-1px 0 5px;color:#9499af;font-size:10px;line-height:1.35}.talentdetails{margin-top:8px;border-top:1px solid #343747;padding-top:7px}.talentdetails summary{cursor:pointer;color:var(--cyan);font-size:11px;font-weight:600}.talentdetails[open] summary{margin-bottom:5px}.talentdetails .accountrow{padding-left:7px;font-size:11px}.accountingequation{margin-top:12px;background:#111219;border:1px solid #343747;border-left:3px solid var(--green);border-radius:4px;padding:10px 12px}.equationrow{display:grid;grid-template-columns:18px 1fr auto;gap:6px;padding:3px 0;color:var(--muted);font-size:12px}.equationrow b{color:#fff;font-variant-numeric:tabular-nums}.equationrow.final{margin-top:5px;padding-top:7px;border-top:1px solid #44485b;color:#fff;font-weight:600}.equationrow.final b{color:var(--yellow)}.metric b.profitvalue.positive,.accountrow.total b.profitvalue.positive,.equationrow.final b.profitvalue.positive{color:var(--green)}.metric b.profitvalue.negative,.accountrow.total b.profitvalue.negative,.equationrow.final b.profitvalue.negative{color:var(--red)}.metric b.profitvalue.neutral,.accountrow.total b.profitvalue.neutral,.equationrow.final b.profitvalue.neutral{color:var(--text)}.accountingnote{margin:9px 0 0;color:var(--muted);font-size:10px;line-height:1.4}
 @media(max-width:520px){.metrics{grid-template-columns:repeat(2,1fr)}.accountinggrid{grid-template-columns:1fr}.accountinggroup{padding:10px}.equationrow{grid-template-columns:16px 1fr auto}}
 .newsprint-bench{background:#efe9d9 !important;border-color:#cabfa6 !important;border-left-color:#9c2b2b !important;color:#141210 !important}
@@ -353,9 +353,80 @@ b,strong{font-weight:600}
         and in full ink above the double rule. ---- */
 .clipping .masthead-mini,.newsprint .masthead-mini,.masthead-mini{
   font-size:17px;letter-spacing:3.4px;color:#141210;padding-bottom:10px;margin-bottom:13px}
+
+/* New campaigns open on one compact studio card. The game underneath is inert;
+   resumed campaigns never render this layer. Dynamic viewport units keep the
+   primary action reachable above iPhone Safari's changing browser chrome. */
+.opening-overlay{position:fixed;inset:0;z-index:70;display:grid;place-items:center;
+  min-height:100vh;min-height:100dvh;padding:max(12px,env(safe-area-inset-top))
+  max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom))
+  max(12px,env(safe-area-inset-left));overflow:auto;background:rgba(6,7,10,.96)}
+.opening-overlay[hidden]{display:none}.opening-card{width:min(100%,430px);padding:20px;
+  background:#15161f;border:1px solid #36394a;border-top:3px solid var(--yellow)}
+.opening-card:focus{outline:none}.opening-wordmark{font-family:"Archivo Black",system-ui,sans-serif;
+  font-size:28px;line-height:1;color:#f3efe4;letter-spacing:.7px;text-align:center}.opening-wordmark span{color:var(--yellow)}
+.opening-card h2{margin:13px 0 6px;font-size:25px;line-height:1.08;text-align:center;text-transform:uppercase}
+.opening-card>p{margin:0 auto 13px;max-width:34ch;color:#d5daee;font-size:14px;line-height:1.42;text-align:center}
+.opening-pitch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:0 0 15px;padding:0;list-style:none}
+.opening-pitch li{padding:7px 8px;background:#101118;border-left:2px solid #4a422a;color:#d9ddef;font-size:12px}
+.opening-name label{display:block;margin-bottom:6px;color:var(--yellow);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.opening-start{width:100%;margin-top:12px}.opening-overlay .identity-input{font-size:16px}
+
+@media(max-width:519px){
+  .studio-brand{max-width:min(100%,340px);margin:8px auto 0;font-size:16px;text-align:center}
+  .mobile-status{position:fixed;top:0;top:env(safe-area-inset-top);left:0;right:0;z-index:9;display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:6px max(8px,env(safe-area-inset-right)) 6px max(8px,env(safe-area-inset-left));
+    background:rgba(10,10,13,.97);border-top:1px solid #2b2d3c;border-bottom:1px solid #3e402f;
+    box-shadow:0 2px 0 rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(-6px);
+    pointer-events:none;transition:opacity .14s ease,transform .14s ease,visibility 0s linear .14s}
+  .mobile-status.is-visible{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  .mobile-status span{min-width:0;text-align:center;border-right:1px solid #2b2d3c}
+  .mobile-status span:last-child{border-right:0}.mobile-status small{display:block;color:var(--muted);
+    font-size:8px;line-height:1;text-transform:uppercase;letter-spacing:1px}
+  .mobile-status b{display:block;margin-top:3px;color:#f3efe4;font-size:13px;line-height:1;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}
+  .stickyinner{grid-template-columns:88px minmax(0,1fr);gap:8px}.sticky .action{min-height:50px}
+  .stickyline{padding:0 2px 5px}.stickyline .cell b{font-size:18px}
+}
+@media(max-width:380px){
+  .opening-card{padding:16px}.opening-card h2{font-size:22px}.opening-pitch li{padding:6px;font-size:11px}
+  .opening-overlay .identity-input-row{grid-template-columns:1fr}.opening-overlay .identity-action{min-height:42px;height:42px}
+}
+@media(max-height:520px) and (orientation:landscape){
+  .opening-overlay{place-items:start center}.opening-card{padding:13px 16px}.opening-wordmark{font-size:22px}
+  .opening-card h2{display:inline;margin:0 8px;font-size:19px}.opening-card>p{display:inline;font-size:12px}
+  .opening-pitch{grid-template-columns:repeat(4,minmax(0,1fr));margin:10px 0}.opening-pitch li{padding:5px;font-size:10px}
+  .opening-start{margin-top:8px}.opening-overlay .identity-input,.opening-overlay .identity-action{height:42px;min-height:42px}
+  .sticky{display:grid;grid-template-columns:minmax(190px,.75fr) minmax(300px,1fr);align-items:center;gap:10px;padding-top:5px;padding-bottom:max(5px,env(safe-area-inset-bottom))}
+  .stickyline{width:100%;padding:0}.stickyline .cell b{font-size:17px}.stickyinner{width:100%;grid-template-columns:88px minmax(0,1fr);gap:7px}
+  .sticky .action{min-height:46px}
+}
+@media(prefers-reduced-motion:reduce){.stickyline.danger .cell.right{animation:none}.mobile-status{transition:none}}
 </style>
 </head>
 <body>
+<section class="opening-overlay" id="openingOverlay" role="dialog" aria-modal="true" aria-labelledby="openingTitle" aria-describedby="openingIntro" hidden>
+  <div class="opening-card" tabindex="-1" id="openingCard">
+    <div class="opening-wordmark" aria-hidden="true">CINE<span>MOGUL</span></div>
+    <h2 id="openingTitle">Build a movie studio</h2>
+    <p id="openingIntro">Make 12 films across key moments in movie history, from 1975 to 2023.</p>
+    <ul class="opening-pitch" aria-label="How to play">
+      <li>Choose the projects.</li>
+      <li>Hire the Talent.</li>
+      <li>Plan the release.</li>
+      <li>Keep the studio alive.</li>
+    </ul>
+    <div class="opening-name">
+      <label for="openingStudioName">Name your studio</label>
+      <div class="identity-input-row">
+        <input class="identity-input" id="openingStudioName" maxlength="36" autocomplete="organization" spellcheck="true">
+        <button class="action secondary identity-action" id="openingStudioReroll" type="button">Surprise me</button>
+      </div>
+    </div>
+    <button class="action primary opening-start" id="openingStart" type="button">Start your studio</button>
+  </div>
+</section>
+
 <div class="wrap">
 <header>
   <div class="brandblock"><div class="filmstrip"><h1>CINE<span>MOGUL</span></h1></div><div class="studio-brand" id="studioBrand"></div></div>
@@ -369,24 +440,22 @@ b,strong{font-weight:600}
 </header>
 
 <section class="hero">
-  <div class="kicker">Campaign year</div>
+  <div class="kicker">Movie history milestone</div>
   <div class="year" id="year"></div>
+  <div class="time-jump" id="timeJump"></div>
   <div class="quip" id="quip"></div>
   <div class="era" id="era"></div>
   <div class="era" id="overheadLine" style="margin-top:6px;opacity:.85"></div>
   <div class="progress"><div class="progressfill" id="progress"></div></div><div class="yearcount" id="yearCount"></div>
 </section>
 
+<div class="mobile-status" id="mobileStatus" aria-label="Campaign status">
+  <span><small>Year</small><b id="mobileYear"></b></span>
+  <span><small>Cash</small><b id="mobileCash">$60M</b></span>
+  <span><small>Campaign</small><b id="mobileFilm">Film 1/12</b></span>
+</div>
+
 <div id="builder">
-  <section class="section studio-setup" id="studioSetup" aria-labelledby="studioSetupHeading">
-    <div class="sectionhead"><h2 id="studioSetupHeading">Name your studio</h2></div>
-    <p class="identity-help">Use the suggested name or make it yours before rolling the slate.</p>
-    <div class="identity-input-row">
-      <label class="sr-only" for="studioNameInput">Studio name</label>
-      <input class="identity-input" id="studioNameInput" maxlength="36" autocomplete="organization" spellcheck="true">
-      <button class="action secondary identity-action" id="studioNameReroll" type="button">Surprise me</button>
-    </div>
-  </section>
   <section class="section" id="rollSection"><button class="action primary rollbtn" id="rollBtn">Roll this year's slate</button></section>
   <section class="slate-theatre" id="slateTheatre" hidden aria-hidden="true" aria-busy="false" aria-labelledby="slateTheatreHeading">
     <div class="theatre-progress" id="slateTheatreProgress"></div>
@@ -471,6 +540,7 @@ b,strong{font-weight:600}
   </div>
   <div class="section revealtarget verdict-summary">
     <div class="sectionhead"><h3>The verdict</h3></div>
+    <div class="verdict-archetype" id="bottomLineLabel"></div>
     <p id="bottomLine"></p>
   </div>
   <div class="section revealtarget accounting" id="accountingSection">
@@ -3232,6 +3302,102 @@ function campaignGrade({ filmography, franchises, cash, survived }) {
 
 /* ---- src/result-narrative.js ---- */
 // Deterministic, presentation-only explanation of settled simulation values.
+
+const VERDICT_LINES=Object.freeze({
+  "BREAKOUT HIT":Object.freeze([
+    "The release caught fire beyond the usual curve. This is the kind of hit that changes what the studio can make next.",
+    "Word of mouth turned a good opening into a genuine event. The studio has a new calling card.",
+    "The film escaped its expected lane and kept running. Everyone on the lot will claim they saw it coming."
+  ]),
+  "BLOCKBUSTER BUSINESS":Object.freeze([
+    "The big bet paid like a big bet should. The studio has a crowd-pleaser and the balance sheet to prove it.",
+    "Scale, audience and execution all showed up together. This one keeps the gates open and the phones ringing.",
+    "A major release delivered major business. The studio can enjoy the victory before the sequel meetings begin."
+  ]),
+  "THE ONE THAT GOT AWAY":Object.freeze([
+    "The choices were better than the receipts. This is the film the studio will insist deserved a larger audience.",
+    "There was a real movie here, but the release landed cold. The loss hurts because the underlying package was sound.",
+    "Good work met a bad result. The post-mortem will have fewer villains than the numbers suggest."
+  ]),
+  "HARD-WON HIT":Object.freeze([
+    "The release left money on the table, but the package was sturdy enough to finish in profit. A win, with an asterisk.",
+    "The box office came in light and the fundamentals carried it home. The studio escapes with a respectable result.",
+    "It underperformed without coming apart. Strong choices kept an awkward release in the black."
+  ]),
+  "LUCKY ESCAPE":Object.freeze([
+    "The release found more money than the package promised. Bank the result before anyone asks too many questions.",
+    "The fundamentals wobbled, but the box office held. The studio gets away with one.",
+    "This result is kinder than the underlying package. Take the profit and improve the next picture."
+  ]),
+  "BORROWED TIME":Object.freeze([
+    "The release ran ahead of its fundamentals and still could not reach safety. A better bounce was not enough.",
+    "Luck softened the landing, but it could not turn this package into a winner.",
+    "The box office offered a lifeline. The cost and creative package were too heavy to use it."
+  ]),
+  "AUDIENCE FAVOURITE":Object.freeze([
+    "The crowd found the movie. The business plan did not find enough of the crowd's money.",
+    "People liked what they saw, but affection did not cover the cheque. A creative win and a financial bruise.",
+    "The film earned goodwill rather than profit. That is heartening, but the studio cannot spend applause."
+  ]),
+  "EXPENSIVE MISTAKE":Object.freeze([
+    "The spend needed an exceptional release and got an ordinary one. That is how a film becomes a cautionary tale.",
+    "Too much money chased too little ceiling. The lesson is sitting plainly in the ledger.",
+    "The package could not support the price tag. The studio paid blockbuster money for a smaller result."
+  ]),
+  "BOX-OFFICE DISASTER":Object.freeze([
+    "The opening never found a pulse, and the costs made every empty seat hurt. An expensive lesson.",
+    "The audience stayed away and the numbers collapsed behind them. This one goes straight into the warning file.",
+    "Nothing in the release could carry the investment. The studio takes the full hit."
+  ]),
+  "SOLID HIT":Object.freeze([
+    "The numbers finish comfortably in the black. Whatever the creative debate, the studio has a real commercial win.",
+    "A strong return makes this an easy result to bank. The next slate starts from firmer ground.",
+    "The release made meaningful money and left the studio stronger. That is a hit where it counts."
+  ]),
+  "MODEST SUCCESS":Object.freeze([
+    "It will not rewrite movie history, but it did its job and made money. The slate moves forward.",
+    "A measured package produced a measured win. The lights stay on and the next film gets made.",
+    "No parade, no panic. The film earned a useful place in the studio ledger."
+  ]),
+  "EARNED ITS KEEP":Object.freeze([
+    "The margin was slim, but the film paid its way. In this business, that still counts.",
+    "It crossed the line without much room to spare. A small win is better than a large speech.",
+    "The result is not glamorous, but it is black ink. The studio will take it."
+  ]),
+  "CLOSE CALL":Object.freeze([
+    "The release finished close enough to safety to make every decision feel expensive. Almost is doing a lot of work here.",
+    "The numbers hovered around the line and never found daylight. A narrow miss still leaves a mark.",
+    "This one came down to the final dollars. The studio leaves with a lesson, not a victory."
+  ]),
+  "DISAPPOINTMENT":Object.freeze([
+    "The film never generated enough return to justify the package. Not a catastrophe, but not one to repeat.",
+    "The result came in soft and the investment had nowhere to hide. The studio absorbs the loss.",
+    "There were pieces to like, but they did not add up to a viable release. Back to the slate."
+  ])
+});
+
+function resultArchetype(snapshot,{strong,weak,ratio}){
+  const roi=Number.isFinite(snapshot.roi)?snapshot.roi:snapshot.profit/Math.max(1,snapshot.totalInvested);
+  if(snapshot.commercial.brokeOut&&snapshot.profit>=0)return"BREAKOUT HIT";
+  if(snapshot.profit>=0&&(["BLOCKBUSTER","CULTURAL EVENT"].includes(snapshot.verdict)||roi>=1))return"BLOCKBUSTER BUSINESS";
+  if(strong&&ratio<=.85)return snapshot.profit>=0?"HARD-WON HIT":"THE ONE THAT GOT AWAY";
+  if(weak&&ratio>=1.15)return snapshot.profit>=0?"LUCKY ESCAPE":"BORROWED TIME";
+  if(snapshot.audience>=72&&snapshot.profit<0)return"AUDIENCE FAVOURITE";
+  if(snapshot.profit<0&&snapshot.totalInvested>snapshot.commercial.ceilingReturn)return"EXPENSIVE MISTAKE";
+  if(snapshot.verdict==="BOMB"||roi<=-.5)return"BOX-OFFICE DISASTER";
+  if(snapshot.profit>=0&&roi>=.4)return"SOLID HIT";
+  if(snapshot.profit>=0&&roi>=.12)return"MODEST SUCCESS";
+  if(snapshot.profit>=0)return"EARNED ITS KEEP";
+  if(snapshot.verdict==="BREAK-EVEN"||Math.abs(roi)<.12)return"CLOSE CALL";
+  return"DISAPPOINTMENT";
+}
+
+function resultVerdict(snapshot,archetype){
+  const id=snapshot.identity||{},lines=VERDICT_LINES[archetype];
+  const key=[id.title,id.year,id.genre,snapshot.verdict,Math.round(snapshot.gross),
+    Math.round(snapshot.profit*10),snapshot.audience,archetype].join("|");
+  return lines[identityHash(key)%lines.length];
+}
 function buildResultNarrative(snapshot){
   const s=snapshot,c=s.commercial,e=s.event||{},id=s.identity||{},positive=[],negative=[];
   const add=(list,key,priority,text)=>list.push({key,priority,text});
@@ -3253,18 +3419,11 @@ function buildResultNarrative(snapshot){
   if(s.bondPayout>0)add(positive,"bond",74,`A ${formatNarrativeMoney(s.bondPayout)} completion-bond payout softened the theatrical loss.`);
   const order=list=>list.sort((a,b)=>b.priority-a.priority||a.key.localeCompare(b.key));order(positive);order(negative);
   if(positive.length<2){if(ratio>.9)add(positive,"expected",35,"The release performed close to or above its modelled expectation.");if(s.audience>55&&positive.length<2)add(positive,"steady-audience",34,`Audience response was steady at ${s.audience}/100.`)}
-  if(!negative.length){if(s.audience<72)add(negative,"audience-headroom",30,`Audience response was solid rather than exceptional at ${s.audience}/100.`);else if(c.market<1.1)add(negative,"market-headroom",29,`${id.genre} demand was steady rather than especially favourable in ${id.year}.`);else add(negative,"no-major-drag",10,"No measured production or market factor materially held the film back.")}
+  if(!negative.length)add(negative,"no-major-drag",10,"No measured production or market factor materially held the film back.");
   order(positive);order(negative);
   const fundamentals=(s.audience>=68?1:0)+(c.market>=1?1:0)+(!marketingLow&&!marketingHigh?1:0)+(s.totalInvested<=c.ceilingReturn?1:0)+(c.castPower>=1.08?1:0),strong=fundamentals>=4,weak=fundamentals<=2;
-  let verdict;
-  if(strong&&ratio<=.85)verdict=`The fundamentals were sound, but the release underperformed its expected range. ${s.profit>=0?"The package still remained profitable.":"Variance turned a credible film into a studio loss."}`;
-  else if(weak&&ratio>=1.15)verdict=`Favourable release variance lifted a weak underlying package. ${s.profit>=0?"Luck converted it into a profitable result.":"Even that lift could not overcome the fundamentals."}`;
-  else if(s.audience>=72&&s.profit<0&&s.totalInvested>c.ceilingReturn)verdict="Audiences liked the film, but the investment was too high for its realistic commercial ceiling. This was an economics miss, not a creative rejection.";
-  else if(s.audience<=55)verdict=`Poor audience response overwhelmed the rest of the package. The ${s.profit>=0?"profit owed more to commercial conditions than audience enthusiasm":"loss broadly matched the film's weak fundamentals"}.`;
-  else if(s.profit>=0&&ratio>=.85&&ratio<=1.15)verdict="A commercially sound package performed close to expectation and earned its keep without relying on unusual release luck.";
-  else if(s.profit>=0)verdict="The package converted its strongest choices into a profitable release, with market variance helping determine the scale of the win.";
-  else verdict="The result followed the package's measured weaknesses more than bad luck; the release did not generate enough return to recover its investment.";
-  return Object.freeze({positiveHeading:s.profit>=0?"Why it worked":"What worked",negativeHeading:s.profit>=0?"What could have been better":"Why it missed",positive:Object.freeze(positive.slice(0,4).map(x=>x.text)),negative:Object.freeze(negative.slice(0,3).map(x=>x.text)),verdict});
+  const archetype=resultArchetype(s,{strong,weak,ratio}),verdict=resultVerdict(s,archetype);
+  return Object.freeze({positiveHeading:s.profit>=0?"Why it worked":"What worked",negativeHeading:s.profit>=0?"What could have been better":"Why it missed",positive:Object.freeze(positive.slice(0,4).map(x=>x.text)),negative:Object.freeze(negative.slice(0,3).map(x=>x.text)),archetype,verdict});
 }
 
 function formatNarrativeMoney(value){const amount=Math.abs(value),shown=amount<10?Math.round(amount*10)/10:Math.round(amount);return`${value<0?"-":""}$${shown}M`}
@@ -3349,6 +3508,8 @@ function applyFooterClearance(){const active=state.mode==="build"&&$("builder").
 function syncFooterClearance(){if(footerSyncFrame!==null)return;const schedule=window.requestAnimationFrame||function(fn){return setTimeout(fn,16)};footerSyncFrame=schedule(()=>{footerSyncFrame=null;try{applyFooterClearance()}catch(error){console.error("Sticky footer measurement failed",error)}})}
 function cancelFooterClearanceSync(){if(footerSyncFrame===null)return;const handle=footerSyncFrame;footerSyncFrame=null;try{if(typeof window.cancelAnimationFrame==="function")window.cancelAnimationFrame(handle)}catch(error){}clearTimeout(handle)}
 function initFooterClearance(){if(typeof window.ResizeObserver==="function"){try{footerResizeObserver=new ResizeObserver(syncFooterClearance);footerResizeObserver.observe(stickyFooter)}catch(error){footerResizeObserver=null;console.error("Sticky footer observation unavailable",error)}}window.addEventListener("resize",syncFooterClearance,{passive:true});window.addEventListener("orientationchange",syncFooterClearance,{passive:true})}
+function setMobileStatusVisible(visible){const status=$("mobileStatus");status.classList.toggle("is-visible",visible);status.setAttribute("aria-hidden",visible?"false":"true")}
+function initMobileStatus(){const hero=document.querySelector(".hero"),update=()=>setMobileStatusVisible(hero.getBoundingClientRect().bottom<=1);if(typeof window.IntersectionObserver==="function"){const observer=new window.IntersectionObserver(entries=>setMobileStatusVisible(!entries[0].isIntersecting),{threshold:0});observer.observe(hero)}else window.addEventListener("scroll",update,{passive:true});setMobileStatusVisible(false)}
 function franchiseStatus(fr){if(!fr||fr.health<30)return{label:"Shelved",cls:"frshelved"};if(fr.health>=80)return{label:"Hot",cls:"frhot"};if(fr.health>=60)return{label:"Healthy",cls:"frhealthy"};return{label:"Fading",cls:"frfading"}}
 function signedMoney(n){return(n>0?"+":"")+money(n)}
 function current(){return DATA[CAMPAIGN[state.index]]}
@@ -3365,7 +3526,7 @@ function renderChoices(hostId,items,key,formatter,animate){const host=$(hostId);
 function renderGenres(animate){renderChoices("genreGrid",state.genreOffer,"genre",gn=>{const fr=state.franchises[gn];if(!fr)return gn;const st=franchiseStatus(fr),dots=fr.health>=60?3:fr.health>=30?2:1,dotcol=dots===3?"var(--cyan)":dots===2?"var(--yellow)":"var(--red)",safeTitle=escapeHtml(fr.title);return gn+`<small>${safeTitle} · Hype <span class="frdots" style="color:${dotcol}">${"●".repeat(dots)}${"○".repeat(3-dots)}</span></small>`},animate);updateGenreRerollBtn()}
 function renderTypes(){const host=$("typeGrid");host.innerHTML="";Object.keys(TYPES).forEach(tp=>{const fr=state.franchises[state.selected.genre],active=franchiseActive(fr),locked=tp==="Sequel"&&!active;const b=document.createElement("button");b.type="button";b.disabled=locked;b.className="choice"+(state.selected.type===tp?" selected":"");b.textContent=tp;if(tp==="Sequel"){const note=document.createElement("small");note.textContent=locked?(fr?`franchise shelved at ${Math.round(fr.health)} health`:"needs a hit in this genre"):`${fr.title} · ${Math.round(fr.health)} health`;b.appendChild(note)}b.onclick=()=>{const before=eventDependencySignature(state.event?.id);state.selected.type=tp;state.titleBatch=0;generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts()};host.appendChild(b)});if(state.selected.type==="Sequel"&&!franchiseActive(state.franchises[state.selected.genre])){const before=eventDependencySignature(state.event?.id);state.selected.type="Original";state.titleBatch=0;generateTitles();refreshEventAfterPackageChange(before)}}
 function renderWindows(){renderChoices("windowGrid",Object.keys(WINDOWS),"window",w=>w+"<small>"+WINDOWS[w].blurb+"</small>")}
-function renderMarketing(){const host=$("marketingGrid");host.innerHTML="";MKT_TIERS.forEach(t=>{const b=document.createElement("button");b.type="button";b.className="choice"+(state.selected.marketing===t.key?" selected":"");b.innerHTML=t.key+"<small>"+t.blurb+"</small>";b.onclick=()=>{state.selected.marketing=t.key;renderMarketing();updateCosts()};host.appendChild(b)});const spend=state.rolled?(talentSelectionsComplete()?money(mktSpend()):"Pending"):"—";$("marketingLabel").textContent=spend;const t=MKT_TIERS.find(x=>x.key===state.selected.marketing)||MKT_TIERS[1];$("marketingDesc").textContent=Math.round(t.pct*100)+"% of production"}
+function renderMarketing(){const host=$("marketingGrid");host.innerHTML="";MKT_TIERS.forEach(t=>{const b=document.createElement("button");b.type="button";b.className="choice"+(state.selected.marketing===t.key?" selected":"");b.innerHTML=t.key+"<small>"+t.blurb+"</small>";b.onclick=()=>{state.selected.marketing=t.key;renderMarketing();updateCosts()};host.appendChild(b)});const tally=state.rolled?livePackageTally():null;$("marketingLabel").textContent=tally?money(tally.marketing):"—";const t=MKT_TIERS.find(x=>x.key===state.selected.marketing)||MKT_TIERS[1];$("marketingDesc").textContent=Math.round(t.pct*100)+"% of production"}
 function packageCostsNow(){return simPackageCosts({year:year(),genre:state.selected.genre,tier:state.selected.tier,type:state.selected.type,talent:state.selected,marketingTier:state.selected.marketing,rolled:state.rolled})}
 function eventEligible(id){if(!productionSelectionsComplete())return false;const g=state.selected.genre,tp=state.selected.type,p=packageCostsNow();if(id==="festival"||id==="awards")return["Drama","Musical","Romance","Animation","Thriller"].includes(g)||state.selected.director.power>=1.18||state.selected.writer.power>=1.18;if(id==="toys")return["Animation","Superhero","Action","Sci-Fi"].includes(g)||["Existing IP","Reboot","Sequel"].includes(tp);if(id==="bond")return state.selected.tier==="High"||p.production>=55;if(id==="rival")return state.selected.tier!=="Low"||["Action","Sci-Fi","Superhero","Animation"].includes(g);if(id==="international")return Number(year())>=1997&&(state.selected.tier!=="Low"||["Action","Animation","Sci-Fi","Superhero"].includes(g));if(id==="threed")return(year()==="2009"||year()==="2012")&&state.selected.tier!=="Low"&&["Action","Animation","Sci-Fi","Superhero"].includes(g);return true}
 function chooseContextEvent(){if(!productionSelectionsComplete()||!state.hasEvent)return;if(state.event&&state.eventYear===year()&&eventEligible(state.event.id))return;state.event=null;state.eventChoice=null;state.eventOffer=null;const eligible=EVENTS.filter(e=>eventEligible(e.id));if(!eligible.length){state.hasEvent=false;state.eventYear=null;return}const key=eventPackageContextKey(),cached=state.eventContexts[key];state.event=eligible.find(e=>e.id===cached)||eligible[eventHash(state.eventSeed+"|"+key)%eligible.length];state.eventContexts[key]=state.event.id;state.eventYear=year()}
@@ -3480,9 +3641,13 @@ function rerollTitles(){const before=eventDependencySignature(state.event?.id);s
 function useCustomTitle(){const panel=$("customTitlePanel"),input=$("customTitleInput"),before=eventDependencySignature(state.event?.id);if(state.titleMode==="custom"){state.titleMode="generated";state.selected.title=state.titleOptions[0]}else{state.titleMode="custom";state.customTitle=sanitizeIdentityText(state.customTitle||state.selected.title,FILM_TITLE_MAX,state.titleOptions[0]);state.selected.title=state.customTitle}refreshEventAfterPackageChange(before);renderTitles();renderEvent();updateCosts();if(state.titleMode==="custom"){try{input.focus()}catch(error){}}panel.hidden=state.titleMode!=="custom"}
 function updateCustomTitle(value,finalise=false){const before=eventDependencySignature(state.event?.id),clean=sanitizeIdentityText(value,FILM_TITLE_MAX);state.customTitle=clean;if(clean){state.titleMode="custom";state.selected.title=clean}else if(finalise){state.titleMode="generated";state.selected.title=state.titleOptions[0]}else state.selected.title=state.titleOptions[0];refreshEventAfterPackageChange(before);renderTitles();renderEvent();updateCosts()}
 function renderTitles(){renderChoices("titleGrid",state.titleOptions,"title");const custom=state.titleMode==="custom",panel=$("customTitlePanel"),toggle=$("customTitleToggle"),input=$("customTitleInput");toggle.textContent=custom?"Use generated titles":"Write my own";toggle.setAttribute("aria-expanded",custom?"true":"false");panel.hidden=!custom;if(input&&document.activeElement!==input)input.value=state.customTitle||""}
-function renderStudioIdentity(){state.studioName=sanitizeIdentityText(state.studioName,STUDIO_NAME_MAX,generateStudioName(state.cosmeticSeed,state.studioNameCounter));$("studioBrand").textContent=state.studioName;const setup=$("studioSetup"),input=$("studioNameInput");setup.hidden=!!state.studioConfirmed;if(input&&document.activeElement!==input)input.value=state.studioName}
-function regenerateStudioName(){state.studioNameCounter++;state.studioName=generateStudioName(state.cosmeticSeed,state.studioNameCounter);renderStudioIdentity();$("studioNameInput").focus()}
-function confirmStudioName(){state.studioName=sanitizeIdentityText($("studioNameInput").value,STUDIO_NAME_MAX,generateStudioName(state.cosmeticSeed,state.studioNameCounter));state.studioConfirmed=true;renderStudioIdentity()}
+function renderStudioIdentity(){state.studioName=sanitizeIdentityText(state.studioName,STUDIO_NAME_MAX,generateStudioName(state.cosmeticSeed,state.studioNameCounter));$("studioBrand").textContent=state.studioName;const input=document.getElementById("openingStudioName");if(input&&document.activeElement!==input)input.value=state.studioName}
+function regenerateStudioName(){state.studioNameCounter++;state.studioName=generateStudioName(state.cosmeticSeed,state.studioNameCounter);renderStudioIdentity()}
+function confirmStudioName(){const input=document.getElementById("openingStudioName");state.studioName=sanitizeIdentityText(input?input.value:state.studioName,STUDIO_NAME_MAX,generateStudioName(state.cosmeticSeed,state.studioNameCounter));state.studioConfirmed=true;renderStudioIdentity()}
+function setOpeningBackgroundHidden(hidden){const wrap=document.querySelector(".wrap"),sticky=document.querySelector(".sticky");for(const el of [wrap,sticky]){if(!el)continue;el.setAttribute("aria-hidden",hidden?"true":"false");if("inert" in el)el.inert=hidden}if(sticky)sticky.hidden=hidden}
+function showOpening(){cancelPendingAsync();state.mode="opening";state.studioConfirmed=false;renderStudioIdentity();$("builder").style.display="none";$("result").classList.remove("show","revealed");$("ending").classList.remove("show");const overlay=$("openingOverlay");overlay.hidden=false;setOpeningBackgroundHidden(true);syncFooterClearance();nextFrame(()=>{try{$("openingCard").focus({preventScroll:true})}catch(error){$("openingCard").focus()}})}
+function startOpeningCampaign(){confirmStudioName();$("openingOverlay").hidden=true;setOpeningBackgroundHidden(false);startRound()}
+function openingKeydown(event){if(event.key==="Escape"){event.preventDefault();return}if(event.key!=="Tab")return;const focusable=[$("openingStudioName"),$("openingStudioReroll"),$("openingStart")].filter(el=>!el.disabled&&!el.hidden),first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
 function renderAll(animate){renderGenres(animate);renderMarketing();renderTypes();renderBudgets();renderWindows();renderTitles();renderEvent();$("rightsCost").textContent=money(TYPES[state.selected.type].cost)}
 function costs(){return computeCosts({year:year(),genre:state.selected.genre,tier:state.selected.tier,type:state.selected.type,talent:state.selected,marketingTier:state.selected.marketing,rolled:state.rolled,fx:chosenEventFx(),cash:state.cash})}
 function buildResultSnapshot(input){
@@ -3513,12 +3678,13 @@ function renderStudioAccounting(s){
   const adjustmentRow=adjustment?'<div class="equationrow"><span>'+(adjustment<0?'−':'+')+'</span><span>Display rounding</span><b>'+m(Math.abs(adjustment))+'</b></div>':"";
   $("accountingEquation").innerHTML='<div class="kicker">Reconciliation</div><div class="equationrow"><span></span><span>Theatrical return</span><b>'+m(s.theatricalReturn)+'</b></div><div class="equationrow"><span>+</span><span>Event / ancillary revenue</span><b>'+m(s.eventRevenue)+'</b></div><div class="equationrow"><span>+</span><span>Bond payout</span><b>'+m(s.bondPayout)+'</b></div>'+adjustmentRow+'<div class="equationrow"><span>−</span><span>Total invested</span><b>'+m(s.totalInvested)+'</b></div><div class="equationrow final"><span>=</span><span>Net profit / loss</span><b class="'+profitValueClass(s.profit)+'">'+m(s.profit)+'</b></div>';
 }
-function updateStickyLine(c){const el=$("stickyLine");if(state.mode!=="build"){el.textContent="";return}if(state.hasEvent&&!state.eventChoice){el.className="stickyline warn";el.innerHTML='<span class="cell">Before dilemma<b>'+money(c.subtotal)+'</b></span><span class="cell right">Action required<b>Choose a response</b></span>';return}const left=c.worstCaseCash;el.className="stickyline"+(left<0?" danger":left<minimumNextCostNow()?" warn":"");el.innerHTML='<span class="cell">Committed<b>'+money(c.total)+'</b></span><span class="cell right">'+(left<0?"Betting the studio":state.hasEvent?"Left if it bombs":"No dilemma · Left if it bombs")+'<b>'+money(left)+'</b></span>'}
+function livePackageTally(){if(!state.rolled)return null;const y=year(),base=BASE_TIERS[y][state.selected.genre][{Low:0,Medium:1,High:2}[state.selected.tier]],rights=TYPES[state.selected.type].cost,talent=roles.reduce((sum,[role])=>sum+(state.selected[role]?.salary||0),0),production=base+talent+rights,marketing=marketingSpend(production,state.selected.marketing),eventExpense=state.eventChoice?Math.max(0,-(chosenEventFx().cash||0)):0,total=production+marketing+eventExpense,pendingRoles=roles.filter(([role])=>!state.selected[role]).map(([,label])=>label),pendingDilemma=state.hasEvent&&!state.eventChoice;return{base,rights,talent,marketing,eventExpense,total,cashAfter:state.cash-total,pendingRoles,pendingDilemma,complete:pendingRoles.length===0&&!pendingDilemma}}
+function updateStickyLine(c){const el=$("stickyLine"),tally=livePackageTally();if(state.mode!=="build"){el.textContent="";return}if(!tally){el.className="stickyline";el.textContent="Roll this year's slate to see costs";return}const over=Math.max(0,-tally.cashAfter),label=tally.complete?"Committed":tally.pendingDilemma?"Before dilemma":"Known so far",rightLabel=over?"Over budget by":"Cash after";el.className="stickyline"+(over?" danger":tally.pendingDilemma?" warn":"");el.innerHTML='<span class="cell">'+label+'<b>'+money(tally.total)+'</b></span><span class="cell right">'+rightLabel+'<b>'+money(over||tally.cashAfter)+'</b></span>';if(c&&tally.complete&&Math.abs(c.total-tally.total)>.0001)throw new Error("Live package tally disagrees with authoritative cost")}
 function renderAffordabilityStatus(result){const el=$("affordabilityStatus"),btn=$("mainBtn");if(!result||result.affordable){el.hidden=true;el.textContent="";btn.removeAttribute("aria-label");return}const amount=detailMoney(result.shortfall,2);el.hidden=false;el.textContent="Shortfall: "+amount+" over current studio cash";btn.setAttribute("aria-label","Greenlight and release unavailable. Package is "+amount+" over current studio cash.")}
 function updateCosts(){
-  if(!state.rolled){$("mainBtn").disabled=true;renderAffordabilityStatus(null);const el=$("stickyLine");el.className="stickyline";el.textContent="Roll this year's slate to see costs";["totalCost","breakEvenPreview"].forEach(id=>$(id).textContent="—");renderMarketing();syncFooterClearance();return}
+  if(!state.rolled){$("mainBtn").disabled=true;renderAffordabilityStatus(null);updateStickyLine();["totalCost","breakEvenPreview"].forEach(id=>$(id).textContent="—");renderMarketing();syncFooterClearance();return}
   if(revealInProgress){showSlateRevealFooter();return}
-  if(!productionSelectionsComplete()){$("mainBtn").disabled=true;renderAffordabilityStatus(null);const el=$("stickyLine");el.className="stickyline";el.textContent="Choose Actor, Actress, Director and Writer";["totalCost","breakEvenPreview"].forEach(id=>$(id).textContent="Pending");$("marketingLabel").textContent="Pending";syncFooterClearance();return}
+  if(!productionSelectionsComplete()){$("mainBtn").disabled=true;renderAffordabilityStatus(null);updateStickyLine();["totalCost","breakEvenPreview"].forEach(id=>$(id).textContent="Pending");renderMarketing();syncFooterClearance();return}
   const c=costs(),pending=state.hasEvent&&!state.eventChoice,affordability=pending?null:greenlightAffordability(c,state.cash);$("mainBtn").disabled=rerollInProgress||pending||!affordability.affordable;renderAffordabilityStatus(affordability);updateStickyLine(c);renderMarketing();$("totalCost").textContent=pending?money(c.subtotal)+" before dilemma":money(c.total);$("breakEvenPreview").textContent=!pending?money(c.breakEven):"Pending";$("rightsCost").textContent=money(c.rights);syncFooterClearance()}
 const ROLL_LABEL="Roll this year's slate",THEATRE_STEPS=["project","actor","actress","director","writer","release","dilemma"],THEATRE_CARD_STAGGER_MS=25,THEATRE_HANDOFF_MS=160;
 function announceSlate(message){$("slateStatus").textContent=message}
@@ -3551,13 +3717,13 @@ function finishSlateHandoff(){emptySlateTheatre();const slate=$("slate");slate.c
 function recoverSlateReveal(error){console.error("Slate reveal recovered after an error",error);clearSlateRevealCallbacks();slateRevealSnapshot=null;try{emptySlateTheatre()}catch(cleanupError){console.error("Slate theatre cleanup failed",cleanupError)}try{setProductionFormVisible(true)}catch(exposeError){const slate=document.getElementById("slate");if(slate){slate.hidden=false;slate.setAttribute("aria-hidden","false")}console.error("Slate form exposure fallback used",exposeError)}document.documentElement.classList.remove("slate-handoff-active");revealInProgress=false;revealSettled=true;const btn=document.getElementById("rollBtn"),roll=document.getElementById("rollSection");if(btn){btn.classList.remove("rolling");btn.textContent=ROLL_LABEL;btn.removeAttribute("aria-label");btn.disabled=true;btn.setAttribute("tabindex","-1")}if(roll){roll.classList.add("roll-section-settled");roll.setAttribute("aria-hidden","true");roll.style.display="none"}try{updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));updateCosts()}catch(costError){const main=document.getElementById("mainBtn");if(main)main.disabled=true;console.error("Slate cost refresh failed",costError)}announceSlate("Slate ready. A presentation fallback was used.")}
 function settleSlateReveal(animate=true){if(revealSettled)return;let completed=false;try{prepareSlate();clearSlateRevealCallbacks();const btn=$("rollBtn"),moveFocus=document.activeElement===btn,theatre=$("slateTheatre"),theatreVisible=!theatre.hidden,rect=theatreVisible?theatre.getBoundingClientRect():$("rollSection").getBoundingClientRect(),anchorTop=theatreVisible?rect.top:rect.bottom,reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches,useFade=!!animate&&!reduce&&theatreVisible,roll=$("rollSection"),slate=$("slate");document.documentElement.classList.add("slate-handoff-active");fixTheatreForHandoff(theatre,rect,useFade);roll.classList.add("roll-section-settled");roll.setAttribute("aria-hidden","true");roll.style.display="none";setProductionFormVisible(true);updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));const residual=preserveSlateAnchor(anchorTop),quickOffset=!useFade&&!reduce&&theatreVisible&&residual>.5;if(useFade||quickOffset){if(residual>.5){slate.style.setProperty("--slate-handoff-offset",residual+"px");if(quickOffset)slate.style.setProperty("--slate-handoff-duration",".08s");slate.classList.add("slate-handoff-offset")}if(useFade)slate.classList.add("slate-handoff-in");else theatre.style.visibility="hidden"}slateRevealSnapshot=null;revealInProgress=false;revealSettled=true;btn.classList.remove("rolling");btn.textContent=ROLL_LABEL;btn.removeAttribute("aria-label");btn.disabled=true;btn.setAttribute("tabindex","-1");updateCosts();if(moveFocus){const project=$("projectHeading");focusProjectWithoutScroll(project);nextFrame(()=>{if(document.activeElement===btn)focusProjectWithoutScroll(project)})}announceSlate("Slate ready");if(useFade)revealLater(finishSlateHandoff,THEATRE_HANDOFF_MS+20);else if(quickOffset)revealLater(finishSlateHandoff,90);else finishSlateHandoff();completed=true}catch(error){recoverSlateReveal(error)}finally{if(!completed&&!revealSettled)recoverSlateReveal(new Error("Slate settlement did not complete"));if(revealSettled)revealInProgress=false}}
 function revealSlate(){prepareSlate();$("rollBtn").classList.remove("rolling");openSlateTheatre();revealLater(()=>renderTheatreStep("actor"),500);revealLater(()=>renderTheatreStep("actress"),1000);revealLater(()=>renderTheatreStep("director"),1500);revealLater(()=>renderTheatreStep("writer"),2000);revealLater(()=>renderTheatreStep("release"),2500);revealLater(()=>renderTheatreStep("dilemma"),3000);revealLater(()=>settleSlateReveal(true),3240)}
-function startRound(){cancelPendingAsync();state.mode="build";state.rolled=false;state.genreOffer=[];state.titleBatch=0;state.titleMode="generated";state.customTitle="";updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));const ov=state.index===0?0:OVERHEAD[year()];state.cash=Math.max(0,state.cash-ov);setCash(state.cash);$("overheadLine").textContent=state.index===0?"Year-one overhead covered by your backers.":"Annual studio overhead: -"+money(ov)+" (deducted)";resetSlateRevealUi();state.selected={genre:"Action",type:"Original",tier:"Medium",window:"Summer",marketing:"Standard",title:""};state.event=null;state.eventYear=null;state.eventChoice=null;state.eventOffer=null;state.hasEvent=(state.index===0)?false:(rnd()<0.55);generateTitles();renderStudioIdentity();$("year").textContent=year();$("quip").textContent=current().quip;$("era").textContent=current().era;$("progress").style.width=((state.index)/(CAMPAIGN.length-1)*100)+"%";$("yearCount").textContent="Year "+(state.index+1)+" of "+CAMPAIGN.length;$("builder").style.display="block";$("result").classList.remove("show","revealed");$("verdict").classList.remove("stamp","stampin");$("ending").classList.remove("show");$("mainBtn").textContent="Greenlight & release";$("rollBtn").textContent=ROLL_LABEL;$("rollBtn").removeAttribute("aria-label");$("rollBtn").disabled=false;$("rollBtn").classList.remove("rolling");$("genreReroll").classList.remove("spin");$("rollSection").classList.remove("roll-section-settled");$("rollSection").style.display="block";$("talentSections").innerHTML="";resetEventPresentation();updateCosts();window.scrollTo({top:0,behavior:"smooth"})}
+function startRound(){cancelPendingAsync();state.mode="build";state.rolled=false;state.genreOffer=[];state.titleBatch=0;state.titleMode="generated";state.customTitle="";updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));const ov=state.index===0?0:OVERHEAD[year()];state.cash=Math.max(0,state.cash-ov);setCash(state.cash);$("overheadLine").textContent=state.index===0?"First-film overhead covered by your backers.":"Studio overhead: -"+money(ov)+" (deducted)";resetSlateRevealUi();state.selected={genre:"Action",type:"Original",tier:"Medium",window:"Summer",marketing:"Standard",title:""};state.event=null;state.eventYear=null;state.eventChoice=null;state.eventOffer=null;state.hasEvent=(state.index===0)?false:(rnd()<0.55);generateTitles();renderStudioIdentity();const campaignPosition="Film "+(state.index+1)+" of "+CAMPAIGN.length,priorYear=state.index?Number(CAMPAIGN[state.index-1]):null,gap=priorYear?Number(year())-priorYear:0;$("year").textContent=year();$("timeJump").textContent=state.index===0?"The first picture":gap===1?"One year later":gap+" years later";$("quip").textContent=current().quip;$("era").textContent=current().era;$("progress").style.width=((state.index)/(CAMPAIGN.length-1)*100)+"%";$("yearCount").textContent=campaignPosition;$("mobileYear").textContent=year();$("mobileFilm").textContent=campaignPosition.replace(" of ","/");$("builder").style.display="block";$("result").classList.remove("show","revealed");$("verdict").classList.remove("stamp","stampin");$("ending").classList.remove("show");$("mainBtn").textContent="Greenlight & release";$("rollBtn").textContent=ROLL_LABEL;$("rollBtn").removeAttribute("aria-label");$("rollBtn").disabled=false;$("rollBtn").classList.remove("rolling");$("genreReroll").classList.remove("spin");$("rollSection").classList.remove("roll-section-settled");$("rollSection").style.display="block";$("talentSections").innerHTML="";resetEventPresentation();updateCosts();window.scrollTo({top:0,behavior:"smooth"})}
 function documentScrollY(){const y=window.pageYOffset;if(Number.isFinite(y))return y;const root=document.documentElement.scrollTop;if(Number.isFinite(root))return root;return document.body&&Number.isFinite(document.body.scrollTop)?document.body.scrollTop:0}
 function resultViewTop(result){let top=0,node=result;while(node){if(Number.isFinite(node.offsetTop))top+=node.offsetTop;node=node.offsetParent}const max=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);return clamp(top,0,max)}
 function positionResultView(top){let scrollError=null;try{window.scrollTo({top,left:0,behavior:"auto"})}catch(error){scrollError=error;try{window.scrollTo(0,top);scrollError=null}catch(fallbackError){scrollError=fallbackError}}try{document.documentElement.scrollTop=top}catch(error){if(!scrollError)scrollError=error}try{if(document.body)document.body.scrollTop=top}catch(error){if(!scrollError)scrollError=error}if(scrollError&&Math.abs(documentScrollY()-top)>1)console.error("Result scroll positioning unavailable",scrollError)}
 function enterResultView(){cancelPendingAsync();const life=lifecycleId,result=$("result");document.documentElement.classList.add("result-positioning");$("builder").style.display="none";state.mode="result";$("stickyLine").textContent="";result.classList.add("show");cancelFooterClearanceSync();try{applyFooterClearance()}catch(error){console.error("Result footer clearance failed",error);try{syncFooterClearance()}catch(syncError){console.error("Result footer synchronization unavailable",syncError)}}try{const target=resultViewTop(result);positionResultView(target)}catch(error){console.error("Initial result positioning failed",error)}const operation={frame:null,removeListeners:null},passive={capture:true,passive:true},scrollKeys=new Set(["ArrowUp","ArrowDown","PageUp","PageDown","Home","End"," ","Space","Spacebar"]),cancelForIntent=event=>{if(event.type==="keydown"&&!scrollKeys.has(event.key))return;if(resultPositioningOperation===operation)clearResultPositioning()};operation.removeListeners=()=>{window.removeEventListener("wheel",cancelForIntent,true);window.removeEventListener("touchstart",cancelForIntent,true);window.removeEventListener("pointerdown",cancelForIntent,true);window.removeEventListener("keydown",cancelForIntent,true)};resultPositioningOperation=operation;window.addEventListener("wheel",cancelForIntent,passive);window.addEventListener("touchstart",cancelForIntent,passive);window.addEventListener("pointerdown",cancelForIntent,passive);window.addEventListener("keydown",cancelForIntent,true);try{operation.frame=nextFrame(()=>{if(resultPositioningOperation!==operation)return;if(life!==lifecycleId||state.mode!=="result"||!result.classList.contains("show")){clearResultPositioning();return}try{operation.frame=nextFrame(()=>{if(resultPositioningOperation!==operation)return;if(life!==lifecycleId||state.mode!=="result"||!result.classList.contains("show")){clearResultPositioning();return}try{const verifiedTarget=resultViewTop(result);if(Math.abs(documentScrollY()-verifiedTarget)>1)positionResultView(verifiedTarget)}catch(error){console.error("Result position verification failed",error)}finally{if(resultPositioningOperation===operation)clearResultPositioning()}})}catch(error){clearResultPositioning();console.error("Result position verification unavailable",error)}})}catch(error){clearResultPositioning();console.error("Result position verification unavailable",error)}return result}
 function buzz(ms){try{if(navigator.vibrate)navigator.vibrate(ms)}catch(e){}}
-function rollSlate(){if(revealInProgress){settleSlateReveal(false);return}if(state.rolled)return;confirmStudioName();buzz(18);state.rolled=true;revealInProgress=true;revealSettled=false;const btn=$("rollBtn"),reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;btn.textContent="Show full slate";btn.setAttribute("aria-label","Show full slate");btn.classList.add("rolling");showSlateRevealFooter();if(reduce)revealLater(()=>settleSlateReveal(false),0);else revealLater(revealSlate,280)}
+function rollSlate(){if(revealInProgress){settleSlateReveal(false);return}if(state.rolled)return;buzz(18);state.rolled=true;revealInProgress=true;revealSettled=false;const btn=$("rollBtn"),reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;btn.textContent="Show full slate";btn.setAttribute("aria-label","Show full slate");btn.classList.add("rolling");showSlateRevealFooter();if(reduce)revealLater(()=>settleSlateReveal(false),0);else revealLater(revealSlate,280)}
 function release(){
   if(!productionSelectionsComplete()||revealInProgress||rerollInProgress||(state.hasEvent&&!state.eventChoice))return;
   const c=costs();if(!greenlightAffordability(c,state.cash).affordable){updateCosts();return}
@@ -3628,7 +3794,7 @@ function release(){
   $("grossMetric").textContent=money(gross);$("breakEven").textContent=money(be);$("audienceMetric").textContent=audience+"/100";
   $("profit").textContent=money(profit);$("profit").className=profitValueClass(profit);
   renderStudioAccounting(resultSnapshot);
-  $("resultPositiveHeading").textContent=narrative.positiveHeading;$("resultNegativeHeading").textContent=narrative.negativeHeading;renderNarrativeList($("worked"),narrative.positive);renderNarrativeList($("hurt"),narrative.negative);$("bottomLine").textContent=narrative.verdict;
+  $("resultPositiveHeading").textContent=narrative.positiveHeading;$("resultNegativeHeading").textContent=narrative.negativeHeading;renderNarrativeList($("worked"),narrative.positive);renderNarrativeList($("hurt"),narrative.negative);$("bottomLineLabel").textContent=narrative.archetype;$("bottomLine").textContent=narrative.verdict;
   $("topTitle").textContent=d.top[0];$("topGross").textContent="Worldwide gross: "+money(d.top[1]);
   $("bar").style.width=Math.min(100,gross/d.top[1]*100)+"%";
   const res=$("result"),vEl=$("verdict"),gEl=$("gross"),reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -3644,16 +3810,16 @@ function release(){
     later(()=>{vEl.style.color=color;vEl.textContent=verdict;vEl.classList.add("stamp","stampin");buzz(24);},dur+220);
     later(()=>{res.classList.add("revealed");$("mainBtn").disabled=false},dur+620);}
   if(state.index<CAMPAIGN.length-1&&state.cash<minimumNextCostNow()){state.bankrupt=true;$("mainBtn").textContent="See the damage";}
-  else $("mainBtn").textContent=state.index===CAMPAIGN.length-1?"Finish campaign":"Next year";
+  else $("mainBtn").textContent=state.index===CAMPAIGN.length-1?"Finish campaign":"Next film";
   persistProgress()}
 function minimumNextCostNow(){return simMinimumNextCost(state.index)}
 function finishOrContinue(){if(state.bankrupt){showEnding(false);return}if(state.index===CAMPAIGN.length-1){showEnding(true);return}const need=minimumNextCostNow();if(state.cash<need){showEnding(false);return}state.index++;startRound()}
-function showEnding(win){cancelPendingAsync();$("builder").style.display="none";$("result").classList.remove("show");$("ending").classList.add("show");state.mode="ending";$("stickyLine").textContent="";syncFooterClearance();$("endingKicker").textContent=win?"Campaign complete":"Studio bankrupt";$("endingTitle").textContent=win?`${state.studioName} survives`:`${state.studioName} closes`;const G=campaignGrade({filmography:state.filmography,franchises:state.franchises,cash:state.cash,survived:win});$("endingText").textContent=win?`${state.studioName} survived from 1975 to 2023 with ${G.profitable} profitable films from ${state.films}, ${G.hitPlus} hits or better, ${G.activeFr} active franchise${G.activeFr===1?"":"s"}, and ${money(state.cash)} in cash.`:`${state.studioName} finished with ${money(state.cash)}, below the minimum needed to cover next year’s overhead and another viable production. The studio is bankrupt. The lot goes dark.`;(function(){const el=$("scoreNum"),target=win?G.score:0,reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function showEnding(win){cancelPendingAsync();$("builder").style.display="none";$("result").classList.remove("show");$("ending").classList.add("show");state.mode="ending";$("stickyLine").textContent="";syncFooterClearance();$("endingKicker").textContent=win?"Campaign complete":"Studio bankrupt";$("endingTitle").textContent=win?`${state.studioName} survives`:`${state.studioName} closes`;const G=campaignGrade({filmography:state.filmography,franchises:state.franchises,cash:state.cash,survived:win});$("endingText").textContent=win?`${state.studioName} survived from 1975 to 2023 with ${G.profitable} profitable films from ${state.films}, ${G.hitPlus} hits or better, ${G.activeFr} active franchise${G.activeFr===1?"":"s"}, and ${money(state.cash)} in cash.`:`${state.studioName} finished with ${money(state.cash)}, below the minimum needed to cover the next milestone’s overhead and another viable production. The studio is bankrupt. The lot goes dark.`;(function(){const el=$("scoreNum"),target=win?G.score:0,reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
    if(reduce||!el.animate){el.textContent=target;return}
    const t0=performance.now(),dur=900;nextFrame(function tk(now){const p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e);if(p<1)nextFrame(tk)})})();$("grade").textContent=G.grade;$("grade").className="gradetag g"+G.grade;$("campaignHighlights").innerHTML=`<div class="highlight">Profitable films<b>${G.profitable}/${state.films}</b></div><div class="highlight">Hits or better<b>${G.hitPlus}</b></div><div class="highlight">Active franchises<b>${G.activeFr}</b></div><div class="highlight">Successful originals<b>${G.originalHits}</b></div>`;$("gradeBreakdown").innerHTML=`<div class="kicker" style="margin-bottom:6px">Studio score</div><div class="graderow"><span>Cash and solvency</span><b>${Math.round(G.cashScore)}/25</b></div><div class="graderow"><span>Profitability and ROI</span><b>${Math.round(G.profitScore)}/25</b></div><div class="graderow"><span>Hits and blockbusters</span><b>${Math.round(G.hitScore)}/20</b></div><div class="graderow"><span>Cultural impact</span><b>${Math.round(G.culturalScore)}/12</b></div><div class="graderow"><span>Franchise sequels</span><b>${Math.round(G.franchiseScore)}/8</b></div><div class="graderow"><span>Successful originals</span><b>${Math.round(G.originalScore)}/10</b></div><div class="graderow penalty"><span>Bomb penalty</span><b>-${Math.round(G.bombPenalty)}</b></div><div class="gradetotal"><span>Total studio score</span><b>${G.score}/100</b></div>`;renderFilmography();$("mainBtn").textContent="Play again";$("ending").scrollIntoView({behavior:"smooth"})}
 function renderFilmography(){const host=$("filmography");host.textContent="";const kicker=document.createElement("div");kicker.className="kicker";kicker.style.cssText="margin:18px 0 8px;text-align:left";kicker.textContent=state.studioName+" filmography";host.appendChild(kicker);for(const film of state.filmography){const row=document.createElement("div");row.className="filmrow";for(const [cls,text] of [["fy",film.y],["ft",film.title],["fv",film.verdict],["fg",money(film.gross)]]){const span=document.createElement("span");span.className=cls;span.textContent=text;row.appendChild(span)}host.appendChild(row)}}
-function doReset(){cancelPendingAsync();clearRun();state=freshCampaignState();state._cashShown=null;setCash(START_CASH);$("films").textContent="0";$("streak").textContent="0";setStreakPips();startRound()}
-function setCash(v){const el=$("cash");const prev=state._cashShown!=null?state._cashShown:v;el.textContent=money(v);el.classList.remove("up","down");if(v!==prev){void el.offsetWidth;el.classList.add(v>prev?"up":"down")}state._cashShown=v}
+function doReset(showIntro=false){cancelPendingAsync();clearRun();state=freshCampaignState();state._cashShown=null;setCash(START_CASH);$("films").textContent="0";$("streak").textContent="0";setStreakPips();if(showIntro)showOpening();else{$("openingOverlay").hidden=true;setOpeningBackgroundHidden(false);state.studioConfirmed=true;startRound()}}
+function setCash(v){const el=$("cash");const prev=state._cashShown!=null?state._cashShown:v;el.textContent=money(v);$("mobileCash").textContent=money(v);el.classList.remove("up","down");if(v!==prev){void el.offsetWidth;el.classList.add(v>prev?"up":"down")}state._cashShown=v}
 function setStreakPips(){const host=$("streakPips");if(!host.children)return;const on=state.streak===0?0:((state.streak-1)%3)+1;for(let i=0;i<3;i++){const dot=host.children[i];if(dot)dot.className=i<on?"on":""}}
 // ---------------------------------------------------------------------------
 // Save & resume. The campaign is written to localStorage after every greenlight,
@@ -3679,31 +3845,33 @@ function showResumePrompt(d){
   const card=document.createElement("div");card.style.cssText="width:100%;max-width:420px;background:#15161f;border:1px solid #2b2d3c;border-top:3px solid var(--yellow);border-radius:6px;padding:22px 20px;box-shadow:0 18px 50px rgba(0,0,0,.6)";
   const kicker=document.createElement("div");kicker.className="kicker";kicker.textContent="Saved campaign";
   const h=document.createElement("h2");h.id="resumeTitle";h.style.cssText='font-family:"Archivo Black",system-ui,sans-serif;font-size:25px;line-height:1.05;margin:8px 0 6px;color:#f3efe4';h.textContent="Pick up where you left off?";
-  const p=document.createElement("p");p.style.cssText="color:#d1d6ef;font-size:14px;line-height:1.45;margin:0 0 14px";p.textContent=(sanitizeIdentityText(d.studioName,STUDIO_NAME_MAX,"Your studio"))+" is heading into "+CAMPAIGN[d.index]+", Year "+(d.index+1)+" of "+CAMPAIGN.length+".";
+  const p=document.createElement("p");p.style.cssText="color:#d1d6ef;font-size:14px;line-height:1.45;margin:0 0 14px";p.textContent=(sanitizeIdentityText(d.studioName,STUDIO_NAME_MAX,"Your studio"))+" is heading into "+CAMPAIGN[d.index]+", Film "+(d.index+1)+" of "+CAMPAIGN.length+".";
   const stats=document.createElement("div");stats.style.cssText="display:flex;gap:8px;margin-bottom:18px";stats.append(resumeStatPill("Cash",money(d.cash)),resumeStatPill("Films",String(d.films)),resumeStatPill("Streak",String(d.streak)));
   const actions=document.createElement("div");actions.style.cssText="display:grid;gap:10px";
   const cont=document.createElement("button");cont.type="button";cont.className="action primary";cont.textContent="Continue campaign";cont.onclick=()=>{removeResumePrompt();resumeRun(d)};
   const fresh=document.createElement("button");fresh.type="button";fresh.className="action secondary";fresh.textContent="Start a new studio";
-  fresh.onclick=()=>{if(!resumeConfirmArm){fresh.textContent="Tap again to discard run";fresh.style.color="var(--red)";resumeConfirmArm=setTimeout(()=>{resumeConfirmArm=null;fresh.textContent="Start a new studio";fresh.style.color=""},2600);return}clearTimeout(resumeConfirmArm);resumeConfirmArm=null;removeResumePrompt();clearRun();startRound()};
+  fresh.onclick=()=>{if(!resumeConfirmArm){fresh.textContent="Tap again to discard run";fresh.style.color="var(--red)";resumeConfirmArm=setTimeout(()=>{resumeConfirmArm=null;fresh.textContent="Start a new studio";fresh.style.color=""},2600);return}clearTimeout(resumeConfirmArm);resumeConfirmArm=null;removeResumePrompt();doReset(true)};
   actions.append(cont,fresh);card.append(kicker,h,p,stats,actions);overlay.appendChild(card);(document.body||document.documentElement).appendChild(overlay);
   try{cont.focus({preventScroll:true})}catch(e){try{cont.focus()}catch(e2){}}
 }
-// On load, offer to resume a saved run; otherwise begin a fresh campaign as before.
-function boot(){const d=readSave();if(d)showResumePrompt(d);else startRound()}
+// On load, offer to resume a saved run; otherwise introduce a new studio.
+function boot(){const d=readSave();if(d)showResumePrompt(d);else showOpening()}
 let resetArm=null;
 function clearResetConfirmation(){if(resetArm){clearTimeout(resetArm);pendingTimeouts.delete(resetArm);resetArm=null}const b=$("resetBtn");if(b){b.textContent="Reset";b.style.color=""}}
 $("resetBtn").onclick=()=>{const b=$("resetBtn");
-  if(state.mode==="ending"){doReset();return}
+  if(state.mode==="ending"){doReset(true);return}
   if(!resetArm){b.textContent="Tap again to reset";b.style.color="var(--red)";resetArm=later(()=>{resetArm=null;b.textContent="Reset";b.style.color=""},2500);return}
-  clearResetConfirmation();doReset()};
-$("studioNameReroll").onclick=regenerateStudioName;
-$("studioNameInput").oninput=event=>{state.studioName=sanitizeIdentityText(event.target.value,STUDIO_NAME_MAX,generateStudioName(state.cosmeticSeed,state.studioNameCounter));$("studioBrand").textContent=state.studioName};
-$("studioNameInput").onblur=()=>renderStudioIdentity();
+  clearResetConfirmation();doReset(true)};
+$("openingStudioReroll").onclick=regenerateStudioName;
+$("openingStudioName").oninput=event=>{state.studioName=sanitizeIdentityText(event.target.value,STUDIO_NAME_MAX,generateStudioName(state.cosmeticSeed,state.studioNameCounter));$("studioBrand").textContent=state.studioName};
+$("openingStudioName").onblur=()=>renderStudioIdentity();
+$("openingStart").onclick=startOpeningCampaign;
+$("openingOverlay").addEventListener("keydown",openingKeydown);
 $("titleReroll").onclick=rerollTitles;
 $("customTitleToggle").onclick=useCustomTitle;
 $("customTitleInput").oninput=event=>updateCustomTitle(event.target.value,false);
 $("customTitleInput").onblur=event=>updateCustomTitle(event.target.value,true);
-$("slate").addEventListener("click",()=>{if(!rerollInProgress)clearRerollStatuses()});$("rollBtn").onclick=rollSlate;$("mainBtn").onclick=()=>state.mode==="build"?release():state.mode==="result"?finishOrContinue():doReset();initFooterClearance();boot();
+$("slate").addEventListener("click",()=>{if(!rerollInProgress)clearRerollStatuses()});$("rollBtn").onclick=rollSlate;$("mainBtn").onclick=()=>state.mode==="build"?release():state.mode==="result"?finishOrContinue():doReset(true);initFooterClearance();initMobileStatus();boot();
 
 </script>
 </body>
