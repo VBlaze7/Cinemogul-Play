@@ -2956,6 +2956,9 @@ const HISTORICAL_V1=Object.freeze({
 const OUTCOME_V1=Object.freeze({
   enabled:true,
   packageQualityCap:.055,
+  genreHistory:Object.freeze({secondSuccess:0,secondWeak:-.02,
+    thirdBase:-.02,additionalFatigue:-.01,successOffset:.01,weakPenalty:-.01,
+    maximumFatigue:-.04}),
   reception:Object.freeze({
     audienceBands:Object.freeze({terrible:55,weak:62,average:68,good:76}),
     criticBands:Object.freeze({terrible:55,weak:62,average:69,strong:77}),
@@ -3520,13 +3523,17 @@ function evaluateReleaseEnvironment({year,window,genre}){
   const leader=relevant[0],runnerUp=relevant[1];
   const named=leader&&-effect>=OUTCOME_V1.environment.namedThreshold&&leader.strength>=.7&&
     (!runnerUp||leader.strength>=runnerUp.strength*1.2)?leader.item:null;
+  const directCompetitorCount=direct.filter(item=>item.weight>=.55).length;
+  const overlapCompetitorCount=overlap.filter(entry=>entry.item.weight*entry.overlap>=.45).length;
   return Object.freeze({year:String(year),window,genre,count:competitors.length,
     directPressure:outcomeRound(directPressure),overlapPressure:outcomeRound(overlapPressure),
     congestionPressure:outcomeRound(congestionPressure),directEffect:outcomeRound(directEffect),
     overlapEffect:outcomeRound(overlapEffect),congestionEffect:outcomeRound(congestionEffect),
     openEffect:outcomeRound(openEffect),rawEffect:outcomeRound(rawEffect),
     baselineEffect:outcomeRound(baselineEffect),effect:outcomeRound(effect),multiplier:outcomeRound(1+effect),
-    namedCompetitor:named?named.title:null,namedKind:named?leader.kind:null,open});
+    namedCompetitor:named?named.title:null,namedKind:named?leader.kind:null,
+    directCompetitorCount,overlapCompetitorCount,
+    exceptionalCongestion:congestionEffect<=-.01&&congestionPressure>=.30,open});
 }
 function residualReleaseMultiplier({normal,tailTriggered=false,tailScalar=0,
   downsideProtection=0,profile='strong'}){
@@ -3553,6 +3560,29 @@ function residualReleaseMultiplier({normal,tailTriggered=false,tailScalar=0,
 // here. Change the SHAPE of the model here, then run `npm run balance`.
 // ---------------------------------------------------------------------------
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+function studioGenreHistory({genre,repetition=0,previousFilm=null,isSequel=false}){
+  const repeat=Math.max(0,Math.min(BAL.repCap,Number(repetition)||0));
+  if(isSequel||repeat===0||previousFilm?.genre!==genre)return Object.freeze({
+    repetition:repeat,streakLength:repeat?repeat+1:1,priorOutcome:'none',effect:0,direction:'neutral'
+  });
+  const prior=previousFilm.resultSnapshot||previousFilm;
+  const actual=Number(prior.gross),expected=Number(prior.expectedGross),audience=Number(prior.audience);
+  const ratio=actual>0&&expected>0?actual/expected:null;
+  const strong=ratio!=null&&ratio>=1.05||Number.isFinite(audience)&&audience>=72;
+  const weak=ratio!=null&&ratio<=.90&&Number.isFinite(audience)&&audience<=64;
+  const priorOutcome=strong?'strong':weak?'weak':'mixed';
+  const model=OUTCOME_V1.genreHistory;
+  let effect=0;
+  if(repeat===1)effect=strong?model.secondSuccess:weak?model.secondWeak:0;
+  else{
+    const fatigue=Math.max(model.maximumFatigue,
+      model.thirdBase-model.additionalFatigue*(repeat-2));
+    effect=fatigue+(strong?model.successOffset:weak?model.weakPenalty:0);
+  }
+  effect=Math.round(clamp(effect,model.maximumFatigue,model.secondSuccess)*1000000)/1000000;
+  return Object.freeze({repetition:repeat,streakLength:repeat+1,priorOutcome,effect,
+    direction:effect>0?'positive':effect<0?'negative':'neutral'});
+}
 
 const TALENT_ROLES=Object.freeze(['actor','actress','director','writer']);
 const TALENT_FIT_MULTIPLIERS=Object.freeze({
@@ -3762,8 +3792,11 @@ function simulate(input, rng) {
   const winMult = W.genres[genre] != null ? W.genres[genre] : W.def;
 
   // Commercial ceiling: what a film of this genre, year, canvas and season can gross.
+  const genreHistory=input.genreHistory||studioGenreHistory({genre,repetition:rep,
+    previousFilm:input.previousFilm,isSequel:!!fr});
+  const genreHistoryMultiplier=outcomeEnabled?1+genreHistory.effect:Math.pow(BAL.repPotential,rep);
   let potential = BAL.genrePotential[genre] * BAL.eraScale[year] * BAL.scaleFactor[tier]
-    * market * Math.pow(BAL.repPotential, rep) * winMult * (fx.pot || 1);
+    * market * genreHistoryMultiplier * winMult * (fx.pot || 1);
   if (SPECTACLE.includes(genre) && tier === 'Low') potential *= BAL.spectacleLowPenalty;
   if (INTIMATE.includes(genre) && tier === 'High') potential *= BAL.intimateHighPenalty;
 
@@ -3832,7 +3865,8 @@ function simulate(input, rng) {
   const vol = BAL.vol[genre];
   const releaseNormal=stdNormal(rng);
   let luck = Math.exp(vol * releaseNormal - vol * vol / 2), brokeOut = false,tailScalar=0;
-  const pBreak = (BAL.bMax / (1 + Math.exp(-(audience - BAL.bMid) / BAL.bWidth))) * Math.pow(BAL.repBreakout, rep);
+  const pBreak = (BAL.bMax / (1 + Math.exp(-(audience - BAL.bMid) / BAL.bWidth)))
+    * (outcomeEnabled?1:Math.pow(BAL.repBreakout,rep));
   if (rng() < pBreak) {
     tailScalar=rng();
     luck *= residualLayerEnabled?1:BAL.breakoutMin + tailScalar * (BAL.breakoutMax - BAL.breakoutMin);
@@ -3880,7 +3914,7 @@ function simulate(input, rng) {
         tailTriggered:brokeOut,profile:residualProfile})}),
     historical:Object.freeze({...historical,expectationEffect:historicalExpectationEffect}),gross,theatricalReturn,theatricalProfit,
     bondPayout, bondPaid, profit, roi, ceilingReturn, overCeiling,
-    verdict, color, market, windowMultiplier: winMult, repetition: rep
+    verdict, color, market, windowMultiplier: winMult, repetition: rep,genreHistory
   };
 }
 
@@ -4077,10 +4111,26 @@ function buildResultNarrative(snapshot){
   if(c.windowMultiplier>=1.05)add(positive,"window",108,`The ${String(id.window).toLowerCase()} release suited this ${String(id.genre).toLowerCase()} film.`);else if(c.windowMultiplier<=.92)add(negative,"window",108,`The ${String(id.window).toLowerCase()} release worked against this ${String(id.genre).toLowerCase()} film.`);
   if(c.castPower>=1.18)add(positive,"cast",104,"The cast brought substantial star power.");else if(c.castPower<=1)add(negative,"cast",104,"The cast brought limited opening-weekend pull, leaving more work to the concept and reviews.");
   if(c.creativeEvidence?.components?.execution?.score>=1.6)add(positive,"creative",103,"The director and writer brought demonstrated creative execution to the finished film.");
-  if(marketing==="low")add(negative,"marketing-low",110,"The campaign left clear audience reach unused for a package with room to grow.");else if(marketing==="high")add(negative,"marketing-high",110,"Marketing spend was too heavy for the audience the film could realistically reach.");else add(positive,"marketing",48,"Marketing spend was efficient for the size and potential of the production.");
-  if(c.repetition>0)add(negative,"repetition",112,`This was the studio's ${c.repetition>1?`${c.repetition+1}th straight`:"second consecutive"} ${String(id.genre).toLowerCase()} film, reducing audience appetite.`);
+  if(marketing==="low")add(negative,"marketing-low",110,id.marketing==="Modest"
+    ?"The modest campaign was too small for a film with this much commercial potential."
+    :"Marketing was too light for a film with this much commercial potential.");
+  else if(marketing==="high")add(negative,"marketing-high",110,id.marketing==="Blockbuster Push"
+    ?"The blockbuster campaign cost more than this film's likely audience could justify."
+    :"Marketing spend was too heavy for this film's likely audience.");
+  else add(positive,"marketing",48,"Marketing spend was efficient for the size and potential of the production.");
+  const genreHistory=c.genreHistory;
+  if(genreHistory?.effect>0)add(positive,"genre-momentum",114,
+    `The studio's recent ${id.genre} success helped keep audience interest high.`);
+  else if(genreHistory?.effect<0&&genreHistory.repetition===1)add(negative,"genre-fatigue",114,
+    `Following a weaker ${id.genre} release, returning immediately to the Genre tested audience appetite.`);
+  else if(genreHistory?.effect<0&&genreHistory.repetition>=2){
+    const count=genreHistory.streakLength===3?'three':genreHistory.streakLength===4?'four':String(genreHistory.streakLength);
+    add(negative,"genre-fatigue",114,genreHistory.priorOutcome==='strong'
+      ?`${count[0].toUpperCase()+count.slice(1)} straight ${id.genre} releases created some fatigue, although the studio's recent success softened the effect.`
+      :`After ${count} straight ${id.genre} releases, the studio was beginning to test audience appetite for more of the same.`);
+  }
   if(s.totalInvested>c.ceilingReturn)add(negative,"economics",120,`The ${formatNarrativeMoney(s.totalInvested)} commitment was too large for the opportunity, leaving little room for error.`);
-  if(c.brokeOut)add(positive,"breakout",62,"Word of mouth broke beyond the normal audience curve and materially expanded the result.");
+  if(c.brokeOut&&!c.outcome?.enabled)add(positive,"breakout",62,"Word of mouth broke beyond the normal audience curve and materially expanded the result.");
   const fitRoleOrder={Director:0,Writer:1,"Lead actor":2,"Lead actress":3};
   for(const person of (s.talent||[]).filter(person=>person.fit&&person.fit!=="Good").sort((a,b)=>fitRoleOrder[a.role]-fitRoleOrder[b.role]).slice(0,2)){
     const role=person.role.toLowerCase();
@@ -4128,18 +4178,25 @@ function buildResultNarrative(snapshot){
   if(c.outcome?.enabled){
     const environment=c.outcome.environment,effect=environment.effect;
     if(Math.abs(effect)>=.02){
-      if(effect>0)external.push("The release found unusually clear space in the market.");
+      if(effect>0)external.push(environment.open
+        ?`The ${String(id.window).toLowerCase()} corridor offered relatively little direct competition for this kind of ${String(id.genre).toLowerCase()} film.`
+        :`The film found unusually clear space among comparable ${String(id.window).toLowerCase()} releases.`);
       else if(environment.namedCompetitor)external.push(environment.namedKind==="direct"
         ?`${environment.namedCompetitor} was competing for the same ${id.genre} audience that ${String(id.window).toLowerCase()}.`
         :`${environment.namedCompetitor} was chasing a substantially overlapping audience in the same corridor.`);
-      else external.push(`The ${String(id.window).toLowerCase()} market was crowded with major releases chasing the same audience.`);
+      else if(environment.directCompetitorCount>=2)external.push(
+        `${environment.directCompetitorCount===2?'Two':'Several'} major ${id.genre} releases were competing for the same ${String(id.window).toLowerCase()} audience.`);
+      else if(environment.overlapCompetitorCount>=2)external.push(
+        `Several major event films were competing for much of the same ${String(id.window).toLowerCase()} audience.`);
+      else if(environment.exceptionalCongestion)external.push(
+        `An unusually congested ${String(id.window).toLowerCase()} corridor left less room for this kind of film.`);
     }
     const residual=c.outcome.residual.effect;
-    if(Math.abs(residual)>=.025){
-      if(residual>=.12)releaseBreak.push("The film also caught a major favourable break at the box office.");
-      else if(residual>0)releaseBreak.push("The film also caught a favourable break at the box office.");
-      else if(residual<=-.12)releaseBreak.push("On top of the other headwinds, the movie caught a brutal release break.");
-      else releaseBreak.push("The release caught an unusually difficult break.");
+    if(Math.abs(residual)>=.18){
+      if(residual>=.25)releaseBreak.push("Even after accounting for the package and market, the film significantly outperformed its outlook.");
+      else if(residual>0)releaseBreak.push("The film performed better than the known factors alone would have suggested.");
+      else if(residual<=-.25)releaseBreak.push("Even after accounting for the package and market, the film significantly underperformed its outlook.");
+      else releaseBreak.push("The film underperformed even after accounting for the known factors.");
     }
   }
   const order=list=>list.sort((a,b)=>b.priority-a.priority||a.key.localeCompare(b.key));order(positive);order(negative);
@@ -4385,7 +4442,7 @@ function buildResultSnapshot(input){
   const talent=Object.freeze(roles.map(([role,label])=>{const person=input.selected[role];return Object.freeze({role:label,name:person.name,salary:person.salary,power:person.power,fit:talentGenreFit(input.year,role,person,input.selected.genre)})}));
   const bondPremium=input.fx.bond?input.costs.eventExpense:0,otherEventExpense=input.costs.eventExpense-bondPremium;
   const event=Object.freeze({id:input.eventId||null,choice:input.eventChoice||null,label:input.eventLabel||"",expense:input.costs.eventExpense,otherExpense:otherEventExpense,bondPremium,revenue:input.costs.eventRevenue,bondRate:input.fx.bond||0,bondPayout:input.bondPayout});
-  const commercial=Object.freeze({genre:input.selected.genre,type:input.selected.type,scale:input.selected.tier,market:input.market,windowMultiplier:input.windowMultiplier,potential:input.potential,reach:input.reach,legs:input.legs,awareness:input.awareness,marketingEfficiency:input.marketingEfficiency,expectedGross:input.expectedGross,baselineExpectedGross:input.baselineExpectedGross,realisedPerformanceMultiplier:input.luck,rawLuck:input.rawLuck,historical:input.historical,brokeOut:input.brokeOut,repetition:input.repetition,ceilingReturn:input.ceilingReturn,castPower:input.castPower,directorPower:input.directorPower,writerPower:input.writerPower,eventPotentialMultiplier:input.fx.pot||1,eventReachMultiplier:input.fx.reach||1,eventAudienceAdjustment:input.fx.aud||0,franchiseBefore:input.franchiseBefore?Object.freeze({...input.franchiseBefore}):null,outcome:input.outcome,creativeEvidence:input.creativeEvidence});
+  const commercial=Object.freeze({genre:input.selected.genre,type:input.selected.type,scale:input.selected.tier,market:input.market,windowMultiplier:input.windowMultiplier,potential:input.potential,reach:input.reach,legs:input.legs,awareness:input.awareness,marketingEfficiency:input.marketingEfficiency,expectedGross:input.expectedGross,baselineExpectedGross:input.baselineExpectedGross,realisedPerformanceMultiplier:input.luck,rawLuck:input.rawLuck,historical:input.historical,brokeOut:input.brokeOut,repetition:input.repetition,genreHistory:input.genreHistory,ceilingReturn:input.ceilingReturn,castPower:input.castPower,directorPower:input.directorPower,writerPower:input.writerPower,eventPotentialMultiplier:input.fx.pot||1,eventReachMultiplier:input.fx.reach||1,eventAudienceAdjustment:input.fx.aud||0,franchiseBefore:input.franchiseBefore?Object.freeze({...input.franchiseBefore}):null,outcome:input.outcome,creativeEvidence:input.creativeEvidence});
   const identity=Object.freeze({studioName:input.studioName,title:input.selected.title,year:input.year,genre:input.selected.genre,type:input.selected.type,scale:input.selected.tier,window:input.selected.window,marketing:input.selected.marketing});
   return Object.freeze({identity,audience:input.audience,critics:input.critics,gross:input.gross,baseCost:input.costs.base,talent,talentTotal:input.costs.talent,rightsCost:input.costs.rights,marketingCost:input.costs.marketing,event,otherEventExpense,bondPremium,totalEventExpense:input.costs.eventExpense,totalInvested:input.costs.total,studioShare:input.studioShare,theatricalReturn:input.theatricalReturn,eventRevenue:input.costs.eventRevenue,bondPayout:input.bondPayout,profit:input.profit,breakEven:input.costs.breakEven,roi:input.roi,verdict:input.verdict,headline:input.headline,headlineScalar:input.headlineScalar,cashBefore:input.cashBefore,cashAfter:Math.max(0,input.cashBefore+input.profit),expectedGross:input.expectedGross,commercial});
 }
@@ -4461,18 +4518,20 @@ function release(){
   const frLive=(tname==="Sequel"&&franchiseActive(state.franchises[g]))?state.franchises[g]:null;
   const franchiseBefore=frLive?{health:frLive.health,strength:frLive.strength,count:frLive.count}:null;
   const rep=frLive?0:Math.min(BAL.repCap,g===state.lastGenre?state.genreRepeats+1:0);
+  const genreHistory=studioGenreHistory({genre:g,repetition:rep,
+    previousFilm:state.filmography.at(-1)||null,isSequel:!!frLive});
   // ---- all randomness and all arithmetic now lives in sim.js ----
   const R=simulate({year:y,genre:g,type:tname,tier:state.selected.tier,window:state.selected.window,
-    talent:state.selected,market:demandNow(y,g),fx,franchise:frLive,repetition:rep,costs:c},rnd);
+    talent:state.selected,market:demandNow(y,g),fx,franchise:frLive,repetition:rep,genreHistory,costs:c},rnd);
   const {audience,critics,gross,expectedGross,theatricalReturn,bondPayout,profit,roi,verdict,color,
     potential,reach,legs,awareness,mktEff,luck,rawLuck,brokeOut,ceilingReturn,effectiveCast,
     historical,baselineExpectedGross,outcome,creativeEvidence,
-    directorPower,writerPower,
+    directorPower,writerPower,genreHistory:resolvedGenreHistory,
     windowMultiplier:winMult}=R;
   const market=R.market,be=c.breakEven;
   const cashBefore=state.cash,resolvedOffer=chosenEventOffer(),eventLabel=state.eventChoice&&resolvedOffer&&resolvedOffer[state.eventChoice]?resolvedOffer[state.eventChoice].label:"";
   const headlineScalar=rnd(),headline=makeHeadline(verdict,state.selected.title,gross,state.selected.window,y,g,audience,headlineScalar);
-  const resultSnapshot=buildResultSnapshot({audience,critics,gross,costs:c,selected:state.selected,studioName:state.studioName,year:y,studioShare:BAL.studioShare,theatricalReturn,bondPayout,profit,roi,verdict,headline,headlineScalar,cashBefore,expectedGross,fx,eventId:state.hasEvent&&state.event?state.event.id:null,eventChoice:state.eventChoice,eventLabel,market,windowMultiplier:winMult,potential,reach,legs,awareness,marketingEfficiency:mktEff,luck,rawLuck,historical,baselineExpectedGross,outcome,creativeEvidence,brokeOut,repetition:rep,ceilingReturn,castPower:effectiveCast,directorPower,writerPower,franchiseBefore});
+  const resultSnapshot=buildResultSnapshot({audience,critics,gross,costs:c,selected:state.selected,studioName:state.studioName,year:y,studioShare:BAL.studioShare,theatricalReturn,bondPayout,profit,roi,verdict,headline,headlineScalar,cashBefore,expectedGross,fx,eventId:state.hasEvent&&state.event?state.event.id:null,eventChoice:state.eventChoice,eventLabel,market,windowMultiplier:winMult,potential,reach,legs,awareness,marketingEfficiency:mktEff,luck,rawLuck,historical,baselineExpectedGross,outcome,creativeEvidence,brokeOut,repetition:rep,genreHistory:resolvedGenreHistory,ceilingReturn,castPower:effectiveCast,directorPower,writerPower,franchiseBefore});
   const narrative=buildResultNarrative(resultSnapshot),newspaper=buildNewspaperStory(resultSnapshot);
   // Franchise health is responsive: sequels can strengthen, weaken or shelve the property.
   const STRENGTH=FRANCHISE.STRENGTH;
