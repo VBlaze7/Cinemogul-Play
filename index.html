@@ -43,6 +43,8 @@ h1 span{color:var(--yellow)}.studio-brand{max-width:360px;margin:9px 3px 0;color
 .sectionhead h2{margin:0;font-family:"Oswald",sans-serif;font-size:18px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#f3efe4}.identity-input-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.identity-input{min-width:0;width:100%;height:48px;padding:10px 12px;border:1px solid #4a4d5d;border-radius:3px;background:#0f1017;color:#fff;font:600 16px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.identity-input:focus{outline:2px solid var(--cyan);outline-offset:2px}.identity-action{min-height:48px;padding:0 14px;color:#fff}.compact-action{min-height:48px;padding:7px 13px;color:#fff}.title-section .pagebtn{min-height:44px;height:auto;padding:6px 10px}.title-pending{margin:0 0 10px;color:var(--muted);font-size:12px;line-height:1.4}.title-pending[hidden]{display:none}.custom-title-panel{margin-top:10px;padding:11px;background:#111219;border:1px solid #343747;border-radius:3px}.custom-title-panel.selected{border-color:var(--cyan);box-shadow:inset 3px 0 0 var(--cyan)}.custom-title-panel label{display:block;margin-bottom:6px;color:#f3efe4;font-size:12px;font-weight:600}.custom-title-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.custom-title-panel p{margin:6px 0 0;color:var(--muted);font-size:10px;line-height:1.35}.title-grid .choice{overflow-wrap:anywhere}
 .pager{display:flex;align-items:center;gap:7px}.pagebtn{border:1px solid #333648;background:#1b1c27;color:white;border-radius:6px;min-width:34px;height:32px;font-weight:600}.pagebtn:disabled{opacity:.35}.pagecount{font-size:11px;color:var(--muted);min-width:38px;text-align:center}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.grid3,.genre-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.genre-blend-control{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,1.4fr);gap:5px 10px;align-items:center;margin-top:11px;padding:10px 11px;background:#111219;border:1px solid #343747;border-radius:3px}.genre-blend-control label{color:#f3efe4;font-family:"Oswald",sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase}.genre-blend-control label small{margin-left:5px;color:var(--muted);font:500 9px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.genre-blend-control select{min-width:0;width:100%;min-height:44px;padding:8px 32px 8px 10px;border:1px solid #4a4d5d;border-radius:3px;background:#0f1017;color:#fff;font:600 14px/1.2 "Oswald",sans-serif;letter-spacing:.6px;text-transform:uppercase}.genre-blend-control select:focus{outline:2px solid var(--cyan);outline-offset:2px}.genre-blend-control select:disabled{color:var(--muted);opacity:.7}.genre-blend-control p{grid-column:1/-1;margin:0;color:var(--muted);font-size:10px;line-height:1.35}
+@media(max-width:420px){.genre-blend-control{grid-template-columns:1fr}.genre-blend-control p{grid-column:1}}
 .choice{min-height:44px;padding:10px 8px;border-radius:3px;border:1px solid #3a3d4d;background:#1b1c27;color:#fff;font-weight:600;font-size:14px;line-height:1.14;letter-spacing:.2px}.choice.selected{background:#241f10;border-color:var(--yellow);border-left:4px solid var(--yellow);color:#fff;font-weight:600}
 .choice small{display:block;margin-top:4px;color:var(--muted);font-size:10px}.choice.selected small{color:#c9b877}
 .choice .choice-hint{color:#d8dcef;font-size:9px;letter-spacing:.7px;text-transform:uppercase}.choice.selected .choice-hint{color:#f1dda0}
@@ -469,7 +471,7 @@ b,strong{font-weight:600}
   <div id="slate" hidden aria-hidden="true" aria-busy="false">
   <div class="slate-stage" id="projectStage">
   <h2 class="slate-stage-title" id="projectHeading" tabindex="-1">Project</h2>
-  <section class="section"><div class="sectionhead"><h3 id="genreHeading" tabindex="-1">Genre</h3><div class="pager"><button class="pagebtn reroll" id="genreReroll"><span class="rricon">&#8635;</span>&nbsp;<span class="rrlabel"></span></button></div></div><div class="grid2 genre-grid" id="genreGrid"></div><p class="reroll-status" id="genreRerollStatus" hidden></p></section>
+  <section class="section"><div class="sectionhead"><h3 id="genreHeading" tabindex="-1">Primary Genre</h3><div class="pager"><button class="pagebtn reroll" id="genreReroll"><span class="rricon">&#8635;</span>&nbsp;<span class="rrlabel"></span></button></div></div><div class="grid2 genre-grid" id="genreGrid"></div><p class="reroll-status" id="genreRerollStatus" hidden></p><div class="genre-blend-control"><label for="genreBlendSelect">Genre Blend <small>Optional</small></label><select id="genreBlendSelect" aria-describedby="genreBlendHelp" disabled><option>Choose a Primary Genre</option></select><p id="genreBlendHelp">Keep the film pure or add one compatible creative influence.</p></div></section>
   <section class="section"><div class="sectionhead"><h3>Movie type</h3></div><div class="grid2" id="typeGrid"></div><div class="selectedcost"><span>Rights / development cost</span><b id="rightsCost"></b></div></section>
   <section class="section"><div class="sectionhead"><h3>Production scale</h3></div><div class="grid3" id="budgetGrid"></div></section>
   </div>
@@ -3206,6 +3208,64 @@ const TITLE_GEN={
 const GICON={"Action":"M13 2 3 14h7l-1 8 10-12h-7z","Animation":"M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a3 3 0 110 6 3 3 0 010-6z","Comedy":"M4 4h16v12H5l-1 4z","Drama":"M6 2h12v20l-6-4-6 4z","Horror":"M12 2a7 7 0 00-7 7v6l2-1 2 2 3-2 3 2 2-2 2 1V9a7 7 0 00-7-7z","Musical":"M9 3v12a3 3 0 11-2-3V6l10-2v9a3 3 0 11-2-3V3z","Romance":"M12 21S3 14 3 8a5 5 0 019-3 5 5 0 019 3c0 6-9 13-9 13z","Sci-Fi":"M12 2a10 10 0 100 20 10 10 0 000-20zm0 3c4 0 5 3 5 7s-1 7-5 7-5-3-5-7 1-7 5-7z","Superhero":"M12 2l7 3v6c0 5-3 8-7 11-4-3-7-6-7-11V5z","Thriller":"M11 2 3 13h7l-1 9 9-13h-6z"};
 const TIER_LABEL={A:"Major Star",B:"Established",C:"Rising",Indie:"Discovery"};
 
+/* ---- src/genre-blends.js ---- */
+// Genre Blends V1: a compact compatibility and display layer. Primary Genre
+// remains authoritative for costs, franchises, fatigue and release identity.
+const GENRE_BLEND_V1=Object.freeze({
+  demandPrimaryWeight:.75,
+  demandSecondaryWeight:.25,
+  windowSecondaryWeight:.10,
+  creativeSecondaryWeight:.25,
+  dualFitBonus:.12,
+  historicalSecondaryWeight:.25
+});
+const GENRE_BLEND_ROWS=Object.freeze([
+  Object.freeze({genres:Object.freeze(['Comedy','Romance']),name:'Romantic Comedy'}),
+  Object.freeze({genres:Object.freeze(['Action','Comedy']),name:'Action Comedy'}),
+  Object.freeze({genres:Object.freeze(['Action','Thriller']),name:'Action Thriller'}),
+  Object.freeze({genres:Object.freeze(['Animation','Musical']),name:'Animated Musical'}),
+  Object.freeze({genres:Object.freeze(['Sci-Fi','Horror']),name:'Sci-Fi Horror'}),
+  Object.freeze({genres:Object.freeze(['Comedy','Horror']),name:'Horror Comedy'}),
+  Object.freeze({genres:Object.freeze(['Drama','Romance']),name:'Romantic Drama'}),
+  Object.freeze({genres:Object.freeze(['Sci-Fi','Action']),name:'Sci-Fi Action'}),
+  Object.freeze({genres:Object.freeze(['Superhero','Action']),name:'Superhero Action'}),
+  Object.freeze({genres:Object.freeze(['Animation','Comedy']),name:'Animated Comedy'})
+]);
+
+const blendKey=(left,right)=>[left,right].sort().join('|');
+const BLEND_BY_KEY=new Map(GENRE_BLEND_ROWS.map(row=>[blendKey(...row.genres),row]));
+function genreBlend(primaryGenre,secondaryGenre){
+  if(!primaryGenre||!secondaryGenre||primaryGenre===secondaryGenre)return null;
+  return BLEND_BY_KEY.get(blendKey(primaryGenre,secondaryGenre))||null;
+}
+function normalizeSecondaryGenre(primaryGenre,secondaryGenre){
+  return genreBlend(primaryGenre,secondaryGenre)?secondaryGenre:null;
+}
+function compatibleSecondaryGenres(primaryGenre){
+  return Object.freeze(GENRE_BLEND_ROWS.flatMap(row=>{
+    if(row.genres[0]===primaryGenre)return[row.genres[1]];
+    if(row.genres[1]===primaryGenre)return[row.genres[0]];
+    return[];
+  }));
+}
+function genreDisplayName(primaryGenre,secondaryGenre){
+  return genreBlend(primaryGenre,secondaryGenre)?.name||primaryGenre||'';
+}
+function genreBlendIdentity(primaryGenre,secondaryGenre){
+  const blend=genreBlend(primaryGenre,secondaryGenre);
+  return blend?blendKey(...blend.genres):primaryGenre||'';
+}
+function genreBlendOptions(primaryGenre){
+  if(!primaryGenre)return Object.freeze([]);
+  return Object.freeze([
+    Object.freeze({secondaryGenre:null,label:`Pure ${primaryGenre}`,name:primaryGenre}),
+    ...compatibleSecondaryGenres(primaryGenre).map(secondaryGenre=>Object.freeze({
+      secondaryGenre,label:genreDisplayName(primaryGenre,secondaryGenre),
+      name:genreDisplayName(primaryGenre,secondaryGenre)
+    }))
+  ]);
+}
+
 /* ---- src/identity.js ---- */
 // Cosmetic identity helpers. These functions never touch the gameplay RNG.
 const STUDIO_NAME_MAX=36;
@@ -3240,6 +3300,19 @@ const TITLE_PATTERNS={
   "Superhero":["{a} {n}","The {n}","{one}","Rise of the {n}","{n} of {p}","{a} {one}"],
   "Thriller":["The {rd} {n}","{a} {n}","{one}","The {n} at {p}","A {a} {n}","{n} Number {rd}"]
 };
+
+const BLEND_TITLE_PATTERNS={
+  "Romantic Comedy":["When {o} Met the {n}","My {a} {n}","{v} {o}","A {n} in {p}","The {n} Problem"],
+  "Action Comedy":["{a} {n}","The {n} Problem","{one}","Operation {n}","Meet the {n}"],
+  "Action Thriller":["{one}","The {rd} {n}","{a} {n}","Operation {n}","The {n} at {p}"],
+  "Animated Musical":["The {a} {n}","{n}s of {p}","{c} Nights","The Song of {p}","{one}!"],
+  "Sci-Fi Horror":["{one}","The {m} {s}","The {a} {n}","{n} at {p}","Beyond {m}"],
+  "Horror Comedy":["The {a} {n}","{one}","Meet the {n}","The {n} Problem","A {n} in {p}"],
+  "Romantic Drama":["{v} {o}","The {a} {n}","A {n} Between Us","{t} in {p}","{one}"],
+  "Sci-Fi Action":["{a} {n}","The {m} {s}","Operation {n}","{one}","Beyond {m}"],
+  "Superhero Action":["{a} {n}","Rise of the {n}","{one}","{n} of {p}","Operation {n}"],
+  "Animated Comedy":["The {a} {n}","{n}s of {p}","Meet the {n}","{one}","The {n} Problem"]
+};
 function identityHash(value){let h=2166136261;for(const ch of String(value)){h^=ch.codePointAt(0);h=Math.imul(h,16777619)}return h>>>0}
 function cosmeticRandom(namespace){let seed=identityHash(namespace)||0x6d2b79f5;return()=>{seed=(seed+0x6D2B79F5)>>>0;let t=seed;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/0x100000000}}
 function sanitizeIdentityText(value,max,fallback=""){const cleaned=String(value??"").replace(/[\u0000-\u001f\u007f]/g," ").replace(/\s+/g," ").trim();return(cleaned||fallback).slice(0,max).trim()}
@@ -3249,15 +3322,17 @@ function studioNameDepth(){return STUDIO_PREFIX.length*STUDIO_SUFFIX.length}
 function mergedBank(genre,key){return[...(TITLE_GEN[genre]?.[key]||[]),...(TITLE_EXTRA[genre]?.[key]||[])]}
 function tokenValue(bank,key,random){const values=bank[key];return values&&values.length?values[Math.floor(random()*values.length)]:""}
 function renderPattern(pattern,bank,random){const seen={};return pattern.replace(/\{(one|a|n|p|t|c|v|o|m|s|rd)\}/g,(_,key)=>{let value=tokenValue(bank,key,random),guard=0;while(seen[key]?.has(value)&&(bank[key]?.length||0)>1&&guard++<8)value=tokenValue(bank,key,random);(seen[key]||(seen[key]=new Set())).add(value);return value}).replace(/\s+/g," ").replace(/\s+([,:!?])/g,"$1").replace(/\bA ([AEIOU])/g,"An $1").trim()}
-function titleBank(genre){const keys=["one","adj","noun","place","time","city","verb","obj","name","suf","ord"],bank={};for(const key of keys)bank[{adj:"a",noun:"n",place:"p",time:"t",city:"c",verb:"v",obj:"o",name:"m",suf:"s",ord:"rd"}[key]||key]=mergedBank(genre,key);return bank}
-function decorateTitle(title,type,franchise,index,batch){if(type==="Sequel"&&franchise){if(index===0&&batch===0)return franchise.title+(ROMAN[franchise.count+1]||` ${franchise.count+1}`);if(index===0)return`${franchise.title}: ${title}`;if(index===1)return`${title}: A ${franchise.title} Story`;return`Return to ${franchise.title}: ${title}`}if(type==="Reboot")return`${title}: Reborn`;if(type==="Remake")return`The New ${title}`;return title}
-function generateTitleOptions({seed,year,index,genre,type,batch=0,usedTitles=[],excludeTitles=[],franchise=null,count=3}){const random=cosmeticRandom(`title|${seed}|${year}|${index}|${genre}|${type}|${batch}`),patterns=TITLE_PATTERNS[genre]||TITLE_GEN[genre]?.pats||["{one}"],bank=titleBank(genre),blocked=new Set([...usedTitles,...excludeTitles].map(String)),out=[];let guard=0;while(out.length<count&&guard++<500){const pattern=patterns[Math.floor(random()*patterns.length)],raw=renderPattern(pattern,bank,random),title=sanitizeIdentityText(decorateTitle(raw,type,franchise,guard%3,batch),FILM_TITLE_MAX);if(title&&!blocked.has(title)&&!out.includes(title))out.push(title)}return out}
-function titleSpaceSize(genre){const bank=titleBank(genre),patterns=TITLE_PATTERNS[genre]||[];return patterns.reduce((sum,pattern)=>{let combinations=1;for(const token of pattern.matchAll(/\{(one|a|n|p|t|c|v|o|m|s|rd)\}/g))combinations*=Math.max(1,bank[token[1]]?.length||0);return sum+combinations},0)}
+function titleBank(genre,secondaryGenre){const keys=["one","adj","noun","place","time","city","verb","obj","name","suf","ord"],bank={};for(const key of keys){const token={adj:"a",noun:"n",place:"p",time:"t",city:"c",verb:"v",obj:"o",name:"m",suf:"s",ord:"rd"}[key]||key;bank[token]=[...mergedBank(genre,key),...(secondaryGenre?mergedBank(secondaryGenre,key):[])]}return bank}
+function normalizeTitleGrammar(title){return String(title).replace(/^(The New)\s+(?:The|A|An)\s+/i,"$1 ").replace(/^(The|A|An)\s+\1\b/i,"$1").replace(/^(Return to)\s+\1\b/i,"$1").replace(/\s+/g," ").trim()}
+function decorateTitle(title,type,franchise,index,batch){let decorated=title;if(type==="Sequel"&&franchise){if(index===0&&batch===0)decorated=franchise.title+(ROMAN[franchise.count+1]||` ${franchise.count+1}`);else if(index===0)decorated=`${franchise.title}: ${title}`;else if(index===1)decorated=`${title}: A ${franchise.title} Story`;else decorated=`Return to ${franchise.title}: ${title}`}else if(type==="Reboot")decorated=`${title}: Reborn`;else if(type==="Remake")decorated=`The New ${title}`;return normalizeTitleGrammar(decorated)}
+function generateTitleOptions({seed,year,index,genre,secondaryGenre=null,type,batch=0,usedTitles=[],excludeTitles=[],franchise=null,count=3}){const secondary=normalizeSecondaryGenre(genre,secondaryGenre),blendName=genreDisplayName(genre,secondary),identity=genreBlendIdentity(genre,secondary),random=cosmeticRandom(`title|${seed}|${year}|${index}|${identity}|${type}|${batch}`),patterns=secondary?BLEND_TITLE_PATTERNS[blendName]:(TITLE_PATTERNS[genre]||TITLE_GEN[genre]?.pats||["{one}"]),bank=titleBank(genre,secondary),blocked=new Set([...usedTitles,...excludeTitles].map(String)),out=[];let guard=0;while(out.length<count&&guard++<500){const pattern=patterns[Math.floor(random()*patterns.length)],raw=renderPattern(pattern,bank,random),title=sanitizeIdentityText(decorateTitle(raw,type,franchise,guard%3,batch),FILM_TITLE_MAX);if(title&&!blocked.has(title)&&!out.includes(title))out.push(title)}return out}
+function titleSpaceSize(genre,secondaryGenre=null){const secondary=normalizeSecondaryGenre(genre,secondaryGenre),bank=titleBank(genre,secondary),patterns=secondary?BLEND_TITLE_PATTERNS[genreDisplayName(genre,secondary)]:(TITLE_PATTERNS[genre]||[]);return patterns.reduce((sum,pattern)=>{let combinations=1;for(const token of pattern.matchAll(/\{(one|a|n|p|t|c|v|o|m|s|rd)\}/g))combinations*=Math.max(1,bank[token[1]]?.length||0);return sum+combinations},0)}
 
 /* ---- src/historical-intelligence.js ---- */
 // Pure, deterministic query/evaluation layer over the frozen historical
 // aggregates. Missing evidence is neutral; stored negative evidence is exposed
 // for audit only and never changes V1 performance.
+
 
 
 const ROLES=Object.freeze(['actor','actress','director','writer']);
@@ -3282,7 +3357,8 @@ const pairLookupKey=(year,a,b)=>{
   const people=[`${a.role}|${a.name}`,`${b.role}|${b.name}`].sort();
   return `${year}|${people[0]}|${people[1]}`;
 };
-function evaluateHistoricalPackage({year,genre,talent,enabled=HISTORICAL_V1.enabled}){
+
+function evaluateHistoricalGenre({year,genre,talent,enabled=HISTORICAL_V1.enabled}){
   const empty=Object.freeze({enabled:false,year:String(year),genre,individuals:Object.freeze([]),pairs:Object.freeze([]),positiveGenreMembers:0,repeatedPositiveGenreMembers:0,positivePairCount:0,positiveSameGenrePairCount:0,repeatedPositivePairCount:0,repeatedPositiveSameGenrePairCount:0,components:Object.freeze({individualExpectation:0,pairExpectation:0,breadthExpectation:0,individualDownside:0,pairDownside:0,breadthDownside:0}),expectationEffect:0,downsideProtection:0,storedNegativeCount:0});
   if(!enabled)return empty;
   const people=ROLES.map(role=>({role,name:talent[role]?.name||''}));
@@ -3310,8 +3386,70 @@ function evaluateHistoricalPackage({year,genre,talent,enabled=HISTORICAL_V1.enab
   return Object.freeze({enabled:true,year:String(year),genre,individuals:Object.freeze(individuals),pairs:Object.freeze(pairs),positiveGenreMembers,repeatedPositiveGenreMembers:individuals.filter(item=>item.repeatedPositive).length,positivePairCount:pairs.filter(item=>item.positiveCount>0).length,positiveSameGenrePairCount:pairs.filter(item=>item.positiveSameGenreCount>0).length,repeatedPositivePairCount:pairs.filter(item=>item.repeatedPositive).length,repeatedPositiveSameGenrePairCount:pairs.filter(item=>item.repeatedPositiveSameGenre).length,components:Object.freeze({individualExpectation:round(individualExpectation),pairExpectation:round(pairExpectation),breadthExpectation,individualDownside:round(individualDownside),pairDownside:round(pairDownside),breadthDownside}),expectationEffect:round(Math.min(HISTORICAL_V1.expectationCap,individualExpectation+pairExpectation+breadthExpectation)),downsideProtection:round(Math.min(HISTORICAL_V1.downsideProtectionCap,individualDownside+pairDownside+breadthDownside)),storedNegativeCount:individuals.reduce((sum,item)=>sum+item.storedNegativeCount,0)+pairs.reduce((sum,item)=>sum+item.storedNegativeCount,0)});
 }
 
+function secondaryHistoricalContribution(primary,secondary){
+  const primarySources=new Set([
+    ...primary.individuals.flatMap(item=>item.positiveFilmQids),
+    ...primary.pairs.flatMap(item=>[...item.positiveFilmQids,...item.positiveSameGenreFilmQids])
+  ]);
+  const individualItems=[],individualRiskItems=[];
+  let positiveMembers=0;
+  for(const item of secondary.individuals){
+    const qids=item.positiveFilmQids.filter(qid=>!primarySources.has(qid));
+    if(!qids.length)continue;
+    positiveMembers++;
+    const kind=PERFORMERS.has(item.role)?'performer':'creative';
+    const state=qids.length>=2?(item.genreRecentPositiveCount>0?'recentRepeated':'repeated'):'one';
+    individualItems.push({id:`secondary|${item.role}|${item.name}`,qids,
+      amount:HISTORICAL_V1.individualExpectation[kind][state]});
+    individualRiskItems.push({id:`secondary|${item.role}|${item.name}`,qids,
+      amount:HISTORICAL_V1.individualDownside[kind][state]});
+  }
+  const pairItems=[],pairRiskItems=[];
+  for(const item of secondary.pairs){
+    const qids=item.positiveSameGenreFilmQids.filter(qid=>!primarySources.has(qid));
+    if(!qids.length)continue;
+    const state=qids.length>=2?'repeatedSameGenre':'oneSameGenre';
+    pairItems.push({id:`secondary|${item.relationship}|${item.nameA}|${item.nameB}`,qids,
+      amount:HISTORICAL_V1.pairExpectation[state]});
+    pairRiskItems.push({id:`secondary|${item.relationship}|${item.nameA}|${item.nameB}`,qids,
+      amount:HISTORICAL_V1.pairDownside[state]});
+  }
+  const individualExpectation=contributionByFilm(individualItems,HISTORICAL_V1.individualExpectationCap);
+  const pairExpectation=contributionByFilm(pairItems,HISTORICAL_V1.pairExpectationCap);
+  const individualDownside=contributionByFilm(individualRiskItems,HISTORICAL_V1.individualDownsideCap);
+  const pairDownside=contributionByFilm(pairRiskItems,HISTORICAL_V1.pairDownsideCap);
+  const breadthExpectation=HISTORICAL_V1.breadthExpectation[positiveMembers]||0;
+  const breadthDownside=HISTORICAL_V1.breadthDownside[positiveMembers]||0;
+  const weight=GENRE_BLEND_V1.historicalSecondaryWeight;
+  return Object.freeze({positiveMembers,individualExpectation:round(individualExpectation*weight),
+    pairExpectation:round(pairExpectation*weight),breadthExpectation:round(breadthExpectation*weight),
+    individualDownside:round(individualDownside*weight),pairDownside:round(pairDownside*weight),
+    breadthDownside:round(breadthDownside*weight)});
+}
+function evaluateHistoricalPackage({year,genre,secondaryGenre=null,talent,enabled=HISTORICAL_V1.enabled}){
+  const primary=evaluateHistoricalGenre({year,genre,talent,enabled});
+  const secondaryName=normalizeSecondaryGenre(genre,secondaryGenre);
+  if(!enabled||!secondaryName)return primary;
+  const secondary=evaluateHistoricalGenre({year,genre:secondaryName,talent,enabled:true});
+  const contribution=secondaryHistoricalContribution(primary,secondary);
+  const secondaryExpectation=contribution.individualExpectation+contribution.pairExpectation+
+    contribution.breadthExpectation;
+  const secondaryDownside=contribution.individualDownside+contribution.pairDownside+
+    contribution.breadthDownside;
+  return Object.freeze({...primary,secondaryGenre:secondaryName,secondary:Object.freeze({
+    genre:secondaryName,individuals:secondary.individuals,pairs:secondary.pairs,
+    contribution
+  }),components:Object.freeze({...primary.components,
+    secondaryExpectation:round(secondaryExpectation),secondaryDownside:round(secondaryDownside)}),
+    expectationEffect:round(Math.min(HISTORICAL_V1.expectationCap,
+      primary.expectationEffect+secondaryExpectation)),
+    downsideProtection:round(Math.min(HISTORICAL_V1.downsideProtectionCap,
+      primary.downsideProtection+secondaryDownside))});
+}
+
 /* ---- src/outcome-engine.js ---- */
 // Pure Outcome Engine V1 helpers. No DOM, ambient RNG or mutable state.
+
 
 
 const OUTCOME_ROLES=Object.freeze(['actor','actress','director','writer']);
@@ -3430,7 +3568,20 @@ function creativeRoleSignal({role,name,genre,fit='Good'}){
   return Object.freeze({role,name,fit,careerCount:career[0],genreCount:same[0],
     experience,execution:outcomeRound(execution),suitability:outcomeRound(suitability)});
 }
-function evaluateCreativeEvidence({year,genre,talent}){
+function blendedCreativeRoleSignal({role,name,genre,secondaryGenre=null,fit='Good',secondaryFit='Good'}){
+  const primary=creativeRoleSignal({role,name,genre,fit});
+  const secondary=normalizeSecondaryGenre(genre,secondaryGenre)
+    ?creativeRoleSignal({role,name,genre:secondaryGenre,fit:secondaryFit}):null;
+  if(!secondary)return primary;
+  const dualBonus=primary.suitability>0&&secondary.suitability>0?GENRE_BLEND_V1.dualFitBonus:0;
+  const secondaryContribution=secondary.suitability*GENRE_BLEND_V1.creativeSecondaryWeight;
+  const suitability=outcomeClamp(primary.suitability+secondaryContribution+dualBonus,-1.5,2.6);
+  return Object.freeze({...primary,secondaryGenre,secondaryFit,secondaryExperience:secondary.experience,
+    secondarySuitability:secondary.suitability,secondaryContribution:outcomeRound(secondaryContribution),
+    dualFitBonus:dualBonus,suitability:outcomeRound(suitability)});
+}
+function evaluateCreativeEvidence({year,genre,secondaryGenre=null,talent}){
+  const secondary=normalizeSecondaryGenre(genre,secondaryGenre);
   const individuals=OUTCOME_ROLES.map(role=>{
     const name=talent[role]?.name||'';
     const record=OUTCOME_CREATIVE_INDIVIDUALS[personKey(role,name)]||null;
@@ -3467,19 +3618,57 @@ function evaluateCreativeEvidence({year,genre,talent}){
       for(const qid of sources)byFilm.set(qid,Math.max(byFilm.get(qid)||0,share));
     }
   }
+  let secondaryIndividuals=Object.freeze([]),secondaryPairs=Object.freeze([]),secondaryIndividualPoints=0;
+  if(secondary){
+    const primarySources=new Set([
+      ...individuals.flatMap(item=>item.positiveFilmQids),
+      ...pairs.flatMap(item=>[...item.collaborationFilmQids,...item.positiveFilmQids])
+    ]);
+    secondaryIndividuals=Object.freeze(OUTCOME_ROLES.map(role=>{
+      const name=talent[role]?.name||'';
+      const record=OUTCOME_CREATIVE_INDIVIDUALS[personKey(role,name)]||null;
+      const same=record?.g?.[secondary]||[0,0,[]],qids=Object.freeze(same[2]||[]);
+      const uniqueCount=qids.filter(qid=>!primarySources.has(qid)).length;
+      secondaryIndividualPoints+=genreEvidenceStrength(uniqueCount)*GENRE_BLEND_V1.creativeSecondaryWeight;
+      return Object.freeze({role,name,count:same[0],uniqueCount,proofYear:same[1]||null,
+        latent:!!same[1]&&same[1]>Number(year),positiveFilmQids:qids,
+        experience:careerGenreExperience({role,name,genre:secondary})});
+    }));
+    secondaryPairs=Object.freeze(OUTCOME_PAIRS.map(([roleA,roleB])=>{
+      const nameA=talent[roleA]?.name||'',nameB=talent[roleB]?.name||'';
+      const record=OUTCOME_CREATIVE_PAIRS[pairKey(roleA,nameA,roleB,nameB)]||null;
+      const same=record?.g?.[secondary]||[0,0,[]],workedSame=record?.wg?.[secondary]||[0,[]];
+      const sameGenreQids=new Set(workedSame[1]||[]);
+      for(const qid of sameGenreQids)byFilm.set(qid,Math.max(byFilm.get(qid)||0,
+        .4*GENRE_BLEND_V1.creativeSecondaryWeight));
+      if(same[0]>0&&(same[2]||[]).length){
+        const points=same[0]>=2?3:2,share=points/same[2].length*GENRE_BLEND_V1.creativeSecondaryWeight;
+        for(const qid of same[2])byFilm.set(qid,Math.max(byFilm.get(qid)||0,share));
+      }
+      return Object.freeze({roleA,nameA,roleB,nameB,sameGenreCount:same[0],
+        sameGenreCollaborationCount:workedSame[0],positiveSameGenreFilmQids:Object.freeze(same[2]||[]),
+        sameGenreCollaborationFilmQids:Object.freeze(workedSame[1]||[])});
+    }));
+  }
   const sourceContributions=[...byFilm.values()].sort((a,b)=>b-a);
   let compatibilityPoints=sourceContributions.reduce((sum,value,index)=>sum+value*Math.pow(.55,index),0);
   compatibilityPoints=Math.min(OUTCOME_V1.reception.compatibilityCreativeCap,compatibilityPoints);
+  const blendedIndividualPoints=Math.min(4,individualPoints+secondaryIndividualPoints);
   return Object.freeze({individuals:Object.freeze(individuals),pairs:Object.freeze(pairs),
-    individualPoints:outcomeRound(individualPoints),compatibilityPoints:outcomeRound(compatibilityPoints),
-    sourceFilmCount:byFilm.size,audienceLift:outcomeRound(individualPoints+compatibilityPoints),
-    criticLift:outcomeRound(individualPoints+compatibilityPoints)});
+    secondaryGenre:secondary,secondaryIndividuals,secondaryPairs,
+    individualPoints:outcomeRound(blendedIndividualPoints),
+    primaryIndividualPoints:outcomeRound(individualPoints),
+    secondaryIndividualPoints:outcomeRound(secondaryIndividualPoints),compatibilityPoints:outcomeRound(compatibilityPoints),
+    sourceFilmCount:byFilm.size,audienceLift:outcomeRound(blendedIndividualPoints+compatibilityPoints),
+    criticLift:outcomeRound(blendedIndividualPoints+compatibilityPoints)});
 }
-function evaluateReceptionPackage({year,genre,talent,fitByRole,typeQuality=1,
+function evaluateReceptionPackage({year,genre,secondaryGenre=null,talent,fitByRole,secondaryFitByRole,typeQuality=1,
   windowLift=0,dilemmaLift=0,chemistryLift=0,audienceNoise=0,criticNoise=0}){
-  const evidence=evaluateCreativeEvidence({year,genre,talent});
+  const secondary=normalizeSecondaryGenre(genre,secondaryGenre);
+  const evidence=evaluateCreativeEvidence({year,genre,secondaryGenre:secondary,talent});
   const roles=Object.freeze(Object.fromEntries(OUTCOME_ROLES.map(role=>[role,
-    creativeRoleSignal({role,name:talent[role]?.name||'',genre,fit:fitByRole?.[role]||'Good'})
+    blendedCreativeRoleSignal({role,name:talent[role]?.name||'',genre,secondaryGenre:secondary,
+      fit:fitByRole?.[role]||'Good',secondaryFit:secondaryFitByRole?.[role]||'Good'})
   ])));
   const execution=roles.director.execution+roles.writer.execution;
   const fit=Object.freeze(Object.fromEntries(OUTCOME_ROLES.map(role=>[role,roles[role].suitability])));
@@ -3512,6 +3701,8 @@ function evaluateReceptionPackage({year,genre,talent,fitByRole,typeQuality=1,
       byRole:fit,experienceByRole:Object.freeze(Object.fromEntries(OUTCOME_ROLES.map(role=>
         [role,roles[role].experience.band]))),experienceScore:outcomeRound(OUTCOME_ROLES.reduce(
         (sum,role)=>sum+roles[role].experience.strength,0)),
+      secondaryExperienceByRole:Object.freeze(Object.fromEntries(OUTCOME_ROLES.map(role=>
+        [role,roles[role].secondaryExperience?.band||'Neutral']))),
       audienceLift:outcomeRound(fitAudience),criticLift:outcomeRound(fitCritics)}),
     cohesion:Object.freeze({score:outcomeRound(cohesion),sourceFilmCount:evidence.sourceFilmCount,
       audienceLift:outcomeRound(cohesionAudience),criticLift:outcomeRound(cohesionCritics)}),
@@ -3619,16 +3810,31 @@ function talentHasMeaningfulGenreEvidence({year,role,person,genre}){
   const fit=talentGenreFit(year,role,person,genre);
   return creativeRoleSignal({role,name:person.name,genre,fit}).suitability>0;
 }
-function applyGenreAwareTalentSlot({year,role,genres:offerGenres,pool,hand,candidateOrder}){
+function applyGenreAwareTalentSlot({year,role,genres:offerGenres,pool,hand,candidateOrder,
+  primaryGenre=null,secondaryGenre=null}){
   const targetGenres=(offerGenres||[]).filter(Boolean);
-  if(!targetGenres.length)return hand;
-  const relevant=person=>targetGenres.some(genre=>
-    talentHasMeaningfulGenreEvidence({year,role,person,genre}));
-  if(hand.some(relevant))return hand;
+  const secondary=normalizeSecondaryGenre(primaryGenre,secondaryGenre);
+  if(!targetGenres.length&&!primaryGenre)return hand;
+  const profile=person=>{
+    if(!primaryGenre)return{rank:targetGenres.some(genre=>
+      talentHasMeaningfulGenreEvidence({year,role,person,genre}))?1:3};
+    const primary=creativeRoleSignal({role,name:person.name,genre:primaryGenre,
+      fit:talentGenreFit(year,role,person,primaryGenre)});
+    const secondarySignal=secondary?creativeRoleSignal({role,name:person.name,genre:secondary,
+      fit:talentGenreFit(year,role,person,secondary)}):null;
+    const primaryRelevant=primary.suitability>0,secondaryRelevant=secondarySignal?.suitability>0;
+    return{rank:primaryRelevant&&secondaryRelevant?0:primaryRelevant?1:
+      secondarySignal?.suitability>=.9?2:3};
+  };
+  const bestRank=primaryGenre?Math.min(3,...pool.map(person=>profile(person).rank)):1;
+  const relevant=person=>primaryGenre?profile(person).rank===bestRank:profile(person).rank<3;
+  if(bestRank>=3||hand.some(relevant))return hand;
 
   const cheapTwo=[...pool].sort((a,b)=>a.salary-b.salary).slice(0,2);
   const cheapCount=()=>hand.filter(person=>cheapTwo.includes(person)).length;
-  for(const incoming of candidateOrder){
+  const ordered=[...(candidateOrder||pool)].map((person,index)=>({person,index,rank:profile(person).rank}))
+    .sort((a,b)=>a.rank-b.rank||a.index-b.index).map(item=>item.person);
+  for(const incoming of ordered){
     if(hand.includes(incoming)||!relevant(incoming))continue;
     const incomingPremium=incoming.tier==='A';
     const outgoing=[...hand].reverse().find(person=>{
@@ -3765,6 +3971,30 @@ function demand(year, genre, jitter) {
   const j = (jitter && jitter[year] && jitter[year][genre]) || 0;
   return Math.max(0.4, Math.round((DATA[year].market[genre] + j) * 100) / 100);
 }
+function blendedDemand(year,genre,secondaryGenre,jitter){
+  const secondary=normalizeSecondaryGenre(genre,secondaryGenre);
+  if(!secondary)return demand(year,genre,jitter);
+  return Math.round((demand(year,genre,jitter)*GENRE_BLEND_V1.demandPrimaryWeight+
+    demand(year,secondary,jitter)*GENRE_BLEND_V1.demandSecondaryWeight)*100)/100;
+}
+function blendWindowMultiplier(window,genre,secondaryGenre){
+  const secondary=normalizeSecondaryGenre(genre,secondaryGenre),rules=WINDOWS[window];
+  const primary=rules.genres[genre]!=null?rules.genres[genre]:rules.def;
+  if(!secondary)return primary;
+  const secondaryValue=rules.genres[secondary]!=null?rules.genres[secondary]:rules.def;
+  return primary*(1-GENRE_BLEND_V1.windowSecondaryWeight)+
+    secondaryValue*GENRE_BLEND_V1.windowSecondaryWeight;
+}
+function blendedTalentSuitability({year,role,person,genre,secondaryGenre=null}){
+  const secondary=normalizeSecondaryGenre(genre,secondaryGenre);
+  const primary=creativeRoleSignal({role,name:person.name,genre,
+    fit:talentGenreFit(year,role,person,genre)});
+  const secondarySignal=secondary?creativeRoleSignal({role,name:person.name,genre:secondary,
+    fit:talentGenreFit(year,role,person,secondary)}):null;
+  const blended=blendedCreativeRoleSignal({role,name:person.name,genre,secondaryGenre:secondary,
+    fit:primary.fit,secondaryFit:secondarySignal?.fit||'Good'});
+  return Object.freeze({...blended,primary,secondary:secondarySignal});
+}
 
 // --- Costs -----------------------------------------------------------------
 function marketingSpend(production, tier) {
@@ -3853,6 +4083,7 @@ function classifyVerdict(roi, gross, audience, yearData) {
 function simulate(input, rng) {
   rng = requireRng(rng, 'simulate');
   const { year, genre, type, tier, window: win, talent, market, franchise: fr, repetition: rep, costs: c } = input;
+  const secondaryGenre=normalizeSecondaryGenre(genre,input.secondaryGenre);
   const fx = input.fx || {};
   const outcomeEnabled=OUTCOME_V1.enabled&&input.outcomeEngineEnabled!==false;
   const receptionLayerEnabled=outcomeEnabled&&input.outcomeReceptionEnabled!==false;
@@ -3871,7 +4102,7 @@ function simulate(input, rng) {
   const dir = effectiveTalentPower(year,'director',talent.director,genre);
   const wr = effectiveTalentPower(year,'writer',talent.writer,genre);
   const W = WINDOWS[win];
-  const winMult = W.genres[genre] != null ? W.genres[genre] : W.def;
+  const winMult = blendWindowMultiplier(win,genre,secondaryGenre);
 
   // Commercial ceiling: what a film of this genre, year, canvas and season can gross.
   const genreHistory=input.genreHistory||studioGenreHistory({genre,repetition:rep,
@@ -3907,8 +4138,10 @@ function simulate(input, rng) {
   const criticNoise=outcomeEnabled
     ?((((receptionScalar*1.61803398875+(Number(year)%17)/17+genre.length*.137)%1)*2-1)*6)
     :0;
-  const creativeEvidence=outcomeEnabled?evaluateReceptionPackage({year,genre,talent,
+  const creativeEvidence=outcomeEnabled?evaluateReceptionPackage({year,genre,secondaryGenre,talent,
     fitByRole:Object.fromEntries(TALENT_ROLES.map(role=>[role,talentGenreFit(year,role,talent[role],genre)])),
+    secondaryFitByRole:Object.fromEntries(TALENT_ROLES.map(role=>[role,secondaryGenre
+      ?talentGenreFit(year,role,talent[role],secondaryGenre):'Good'])),
     typeQuality:t.quality,windowLift:W.aud||0,dilemmaLift:fx.aud||0,chemistryLift:chemAud,
     audienceNoise:audNoise,criticNoise}):null;
   const audience=outcomeEnabled?creativeEvidence.audience:Math.max(42,Math.min(95,Math.round(
@@ -3923,7 +4156,8 @@ function simulate(input, rng) {
   // The historical layer is deterministic and sparse-positive. It changes no
   // RNG calls. A raw-power counterfactual caps its combined lift with the
   // legacy fit system, so overlapping context cannot stack without bound.
-  const historical=evaluateHistoricalPackage({year,genre,talent,enabled:HISTORICAL_V1.enabled&&input.historicalIntelligenceEnabled!==false});
+  const historical=evaluateHistoricalPackage({year,genre,secondaryGenre,talent,
+    enabled:HISTORICAL_V1.enabled&&input.historicalIntelligenceEnabled!==false});
   const rawCast=(talent.actor.power+talent.actress.power)/2,rawDir=talent.director.power,rawWr=talent.writer.power;
   const rawAudience=Math.max(42,Math.min(95,Math.round(
     BAL.audBase+(rawDir-1)*BAL.audDir+(rawWr-1)*BAL.audWr+(t.quality-1)*BAL.audQ
@@ -3992,7 +4226,8 @@ function simulate(input, rng) {
         tailTriggered:brokeOut,profile:residualProfile})}),
     historical:Object.freeze({...historical,expectationEffect:historicalExpectationEffect}),gross,theatricalReturn,theatricalProfit,
     bondPayout, bondPaid, profit, roi, ceilingReturn, overCeiling,
-    verdict, color, market, windowMultiplier: winMult, repetition: rep,genreHistory
+    verdict, color, market, windowMultiplier: winMult, repetition: rep,genreHistory,
+    secondaryGenre,genreName:genreDisplayName(genre,secondaryGenre)
   };
 }
 
@@ -4105,7 +4340,7 @@ function expectationAssessment(snapshot){
   if(!(expected>0))return Object.freeze({percent:0,direction:null,label:"Forecast unavailable",luck:"The result could not be compared with the pre-release forecast."});
   const percent=Math.round((gross/expected-1)*100),magnitude=Math.abs(percent);
   const direction=magnitude<=4?null:percent>0?"above":"below";
-  const variance=genreVarianceSignal(snapshot.identity?.genre,gross/expected);
+  const variance=genreVarianceSignal(snapshot.identity?.primaryGenre||snapshot.identity?.genre,gross/expected);
   const label=direction?`${magnitude}% ${direction} forecast`:"Roughly on forecast";
   let luck;
   if(!direction)luck="The film finished close to the pre-release forecast.";
@@ -4138,10 +4373,10 @@ function presentationPick(items,key){return items[identityHash(key)%items.length
 // facts and uses a presentation namespace, never the injected gameplay RNG.
 function buildNewspaperStory(snapshot,namespace="newspaper"){
   const s=snapshot,c=s.commercial,id=s.identity||{},ratio=s.expectedGross>0?s.gross/s.expectedGross:1;
-  const marketing=marketingAssessment(s),variance=genreVarianceSignal(id.genre,ratio);
+  const marketing=marketingAssessment(s),variance=genreVarianceSignal(id.primaryGenre||id.genre,ratio);
   const fundamentals=(s.audience>=68?1:0)+(c.market>=1?1:0)+(marketing==="efficient"?1:0)+(s.totalInvested<=c.ceilingReturn?1:0)+(c.castPower>=1.08?1:0);
   const family=resultStoryFamily(s,{strong:fundamentals>=4,weak:fundamentals<=2,variance});
-  const studio=id.studioName||"The studio",studioPossessive=possessive(studio),title=id.title||"The film",genre=String(id.genre||"film").toLowerCase(),type=titleCaseType(id.type),director=talentName(s,"Director");
+  const studio=id.studioName||"The studio",studioPossessive=possessive(studio),title=id.title||"The film",genre=String(id.genreName||id.genre||"film").toLowerCase(),type=titleCaseType(id.type),director=talentName(s,"Director");
   const profit=s.profit>=0?`${formatNarrativeMoney(s.profit)} profit`:`${formatNarrativeMoney(Math.abs(s.profit))} loss`;
   const leadByFamily={
     "BREAKOUT HIT":[`${studioPossessive} ${type} ${genre} release broke beyond its expected curve and banked a ${profit}.`,`Word of mouth sent '${title}' beyond its expected lane, leaving ${studio} with a ${profit}.`],
@@ -4159,12 +4394,13 @@ function buildNewspaperStory(snapshot,namespace="newspaper"){
     "CLOSE CALL":[`'${title}' finished close to safety but left ${studio} with a ${profit}.`,`${studioPossessive} ${genre} release hovered around break-even and closed on a ${profit}.`],
     "DISAPPOINTMENT":[`'${title}' opened soft and left ${studio} carrying a ${profit}.`,`${director}'s ${type} ${genre} film could not turn its package into viable business, ending in a ${profit}.`]
   };
-  const key=[namespace,id.studioName,id.title,id.year,id.genre,id.type,s.verdict,Math.round(s.gross),Math.round(s.profit*10),s.audience,family].join("|");
+  const key=[namespace,id.studioName,id.title,id.year,id.genre,id.secondaryGenre||"",id.type,s.verdict,Math.round(s.gross),Math.round(s.profit*10),s.audience,family].join("|");
   const lead=presentationPick(leadByFamily[family],key+"|lead");
   return Object.freeze({family,headline:s.headline,snippet:lead});
 }
 function buildResultNarrative(snapshot){
   const s=snapshot,c=s.commercial,id=s.identity||{},positive=[],negative=[],external=[],releaseBreak=[];
+  const primaryGenre=id.primaryGenre||id.genre,genreName=id.genreName||id.genre;
   const add=(list,key,priority,text)=>list.push({key,priority,text});
   const marketing=marketingAssessment(s),expectation=expectationAssessment(s);
   if(c.outcome?.enabled){
@@ -4182,8 +4418,8 @@ function buildResultNarrative(snapshot){
       else if(cBand==="weak")add(negative,"critics",106,"Weak reviews added a modest commercial headwind.");
     }
   }else if(s.audience>=72)add(positive,"audience",86,`Audiences responded strongly (${s.audience}/100), giving the film durable word of mouth.`);else if(s.audience<=55)add(negative,"audience",86,`Audience response was weak (${s.audience}/100), limiting the film's commercial legs.`);
-  if(c.market>=1.1)add(positive,"market",70,`${id.genre} was in strong demand in ${id.year}.`);else if(c.market<.9)add(negative,"market",70,`${id.genre} demand was soft in ${id.year}, limiting the film's opportunity.`);
-  if(c.windowMultiplier>=1.05)add(positive,"window",108,`The ${String(id.window).toLowerCase()} release suited this ${String(id.genre).toLowerCase()} film.`);else if(c.windowMultiplier<=.92)add(negative,"window",108,`The ${String(id.window).toLowerCase()} release worked against this ${String(id.genre).toLowerCase()} film.`);
+  if(c.market>=1.1)add(positive,"market",70,`${genreName} was in strong demand in ${id.year}.`);else if(c.market<.9)add(negative,"market",70,`${genreName} demand was soft in ${id.year}, limiting the film's opportunity.`);
+  if(c.windowMultiplier>=1.05)add(positive,"window",108,`The ${String(id.window).toLowerCase()} release suited this ${String(genreName).toLowerCase()} film.`);else if(c.windowMultiplier<=.92)add(negative,"window",108,`The ${String(id.window).toLowerCase()} release worked against this ${String(genreName).toLowerCase()} film.`);
   if(c.castPower>=1.18)add(positive,"cast",104,"The cast brought substantial star power.");else if(c.castPower<=1)add(negative,"cast",104,"The cast brought limited opening-weekend pull, leaving more work to the concept and reviews.");
   if(c.creativeEvidence?.components?.execution?.score>=1.6)add(positive,"creative",103,"The director and writer brought demonstrated creative execution to the finished film.");
   if(marketing==="low")add(negative,"marketing-low",110,id.marketing==="Modest"
@@ -4195,22 +4431,25 @@ function buildResultNarrative(snapshot){
   else add(positive,"marketing",48,"Marketing spend was efficient for the size and potential of the production.");
   const genreHistory=c.genreHistory;
   if(genreHistory?.effect>0)add(positive,"genre-momentum",114,
-    `The studio's recent ${id.genre} success helped keep audience interest high.`);
+    `The studio's recent ${primaryGenre} success helped keep audience interest high.`);
   else if(genreHistory?.effect<0&&genreHistory.repetition===1)add(negative,"genre-fatigue",114,
-    `Following a weaker ${id.genre} release, returning immediately to the Genre tested audience appetite.`);
+    `Following a weaker ${primaryGenre} release, returning immediately to the Genre tested audience appetite.`);
   else if(genreHistory?.effect<0&&genreHistory.repetition>=2){
     const count=genreHistory.streakLength===3?'three':genreHistory.streakLength===4?'four':String(genreHistory.streakLength);
     add(negative,"genre-fatigue",114,genreHistory.priorOutcome==='strong'
-      ?`${count[0].toUpperCase()+count.slice(1)} straight ${id.genre} releases created some fatigue, although the studio's recent success softened the effect.`
-      :`After ${count} straight ${id.genre} releases, the studio was beginning to test audience appetite for more of the same.`);
+      ?`${count[0].toUpperCase()+count.slice(1)} straight ${primaryGenre} releases created some fatigue, although the studio's recent success softened the effect.`
+      :`After ${count} straight ${primaryGenre} releases, the studio was beginning to test audience appetite for more of the same.`);
   }
   if(s.totalInvested>c.ceilingReturn)add(negative,"economics",120,`The ${formatNarrativeMoney(s.totalInvested)} commitment was too large for the opportunity, leaving little room for error.`);
   if(c.brokeOut&&!c.outcome?.enabled)add(positive,"breakout",62,"Word of mouth broke beyond the normal audience curve and materially expanded the result.");
   const fitRoleOrder={Director:0,Writer:1,"Lead actor":2,"Lead actress":3};
-  for(const person of (s.talent||[]).filter(person=>person.fit&&person.fit!=="Good").sort((a,b)=>fitRoleOrder[a.role]-fitRoleOrder[b.role]).slice(0,2)){
+  for(const person of (s.talent||[]).filter(person=>person.fit&&
+    (person.fit!=="Good"||id.secondaryGenre&&person.primarySuitability>0&&person.secondarySuitability>0))
+    .sort((a,b)=>fitRoleOrder[a.role]-fitRoleOrder[b.role]).slice(0,2)){
     const role=person.role.toLowerCase();
-    if(person.fit==="Strong")add(positive,"fit-"+person.role,102,`${person.name}, your ${role}, was a strong fit for ${id.genre} and gave the creative package extra lift.`);
-    else add(negative,"fit-"+person.role,102,`${person.name}, your ${role}, was a wildcard fit for ${id.genre}, so less of their usual strength translated to the project.`);
+    if(id.secondaryGenre&&person.primarySuitability>0&&person.secondarySuitability>0)add(positive,"fit-"+person.role,102,`${person.name}, your ${role}, brought useful experience in both ${primaryGenre} and ${id.secondaryGenre}.`);
+    else if(person.fit==="Strong")add(positive,"fit-"+person.role,102,`${person.name}, your ${role}, was a strong fit for ${genreName} and gave the creative package extra lift.`);
+    else add(negative,"fit-"+person.role,102,`${person.name}, your ${role}, was a wildcard fit for ${genreName}, so less of their usual strength translated to the project.`);
   }
   if(c.outcome?.enabled&&c.creativeEvidence){
     const pair=c.creativeEvidence.pairs.filter(item=>item.generalCount>0||item.collaborationCount>0)
@@ -4230,9 +4469,12 @@ function buildResultNarrative(snapshot){
       const currentIndividual=c.historical?.individuals?.find(item=>
         item.role===individual.role&&item.name===individual.name);
       const proven=currentIndividual?.genrePositiveCount>0;
+      const secondaryIndividual=c.creativeEvidence.secondaryIndividuals?.find(item=>
+        item.role===individual.role&&item.name===individual.name&&
+        (item.uniqueCount>0||item.experience?.strength>0));
       add(positive,"creative-individual",123,proven
-        ?`${individual.name} was working in familiar ${id.genre} territory.`
-        :`${individual.name} was well suited to ${id.genre}.`);
+        ?`${individual.name} was working in familiar ${primaryGenre} territory.`
+        :`${individual.name} was well suited to ${secondaryIndividual?genreName:primaryGenre}.`);
     }
   }
   if(c.eventAudienceAdjustment>=3)add(positive,"event-audience",116,"The selected Studio Dilemma response improved the finished film's audience appeal.");else if(c.eventAudienceAdjustment<0)add(negative,"event-audience",116,"The selected Studio Dilemma response reduced the finished film's audience appeal.");
@@ -4247,11 +4489,11 @@ function buildResultNarrative(snapshot){
     const singles=h.individuals.filter(item=>item.genrePositiveCount===1).sort((a,b)=>a.role.localeCompare(b.role));
     const same=h.pairs.filter(item=>item.positiveSameGenreCount>0).sort((a,b)=>b.positiveSameGenreCount-a.positiveSameGenreCount||a.relationship.localeCompare(b.relationship));
     const general=h.pairs.filter(item=>item.positiveCount>0&&!item.positiveSameGenreCount).sort((a,b)=>b.positiveCount-a.positiveCount||a.relationship.localeCompare(b.relationship));
-    for(const item of same)historical.push({key:"historical-same-"+item.relationship,priority:item.repeatedPositiveSameGenre?134:128,text:item.repeatedPositiveSameGenre?`${item.nameA} and ${item.nameB} had repeatedly succeeded together in ${id.genre}.`:`${item.nameA} and ${item.nameB} had already delivered a commercially successful ${id.genre} film together.`});
-    for(const item of repeated)historical.push({key:"historical-repeat-"+item.role,priority:124,text:`${item.name} had already built a strong commercial record in ${id.genre}.`});
-    if(h.positiveGenreMembers>=3)historical.push({key:"historical-breadth",priority:121,text:`Several key members of the package already had successful ${id.genre} track records.`});
-    for(const item of general)historical.push({key:"historical-general-"+item.relationship,priority:item.repeatedPositive?118:106,text:item.repeatedPositive?`${item.nameA} and ${item.nameB} had an established commercial track record together, although not in ${id.genre}.`:`${item.nameA} and ${item.nameB} had already delivered a commercially successful film together, although not in ${id.genre}.`});
-    for(const item of singles)historical.push({key:"historical-one-"+item.role,priority:105,text:`${item.name} had previously delivered a commercially successful ${id.genre} film.`});
+    for(const item of same)historical.push({key:"historical-same-"+item.relationship,priority:item.repeatedPositiveSameGenre?134:128,text:item.repeatedPositiveSameGenre?`${item.nameA} and ${item.nameB} had repeatedly succeeded together in ${primaryGenre}.`:`${item.nameA} and ${item.nameB} had already delivered a commercially successful ${primaryGenre} film together.`});
+    for(const item of repeated)historical.push({key:"historical-repeat-"+item.role,priority:124,text:`${item.name} had already built a strong commercial record in ${primaryGenre}.`});
+    if(h.positiveGenreMembers>=3)historical.push({key:"historical-breadth",priority:121,text:`Several key members of the package already had successful ${primaryGenre} track records.`});
+    for(const item of general)historical.push({key:"historical-general-"+item.relationship,priority:item.repeatedPositive?118:106,text:item.repeatedPositive?`${item.nameA} and ${item.nameB} had an established commercial track record together, although not in ${primaryGenre}.`:`${item.nameA} and ${item.nameB} had already delivered a commercially successful film together, although not in ${primaryGenre}.`});
+    for(const item of singles)historical.push({key:"historical-one-"+item.role,priority:105,text:`${item.name} had previously delivered a commercially successful ${primaryGenre} film.`});
     historical.sort((a,b)=>b.priority-a.priority||a.key.localeCompare(b.key));
     if(historical[0])positive.push(historical[0]);
   }
@@ -4259,13 +4501,13 @@ function buildResultNarrative(snapshot){
     const environment=c.outcome.environment,effect=environment.effect;
     if(Math.abs(effect)>=.02){
       if(effect>0)external.push(environment.open
-        ?`The ${String(id.window).toLowerCase()} corridor offered relatively little direct competition for this kind of ${String(id.genre).toLowerCase()} film.`
+        ?`The ${String(id.window).toLowerCase()} corridor offered relatively little direct competition for this kind of ${String(primaryGenre).toLowerCase()} film.`
         :`The film found unusually clear space among comparable ${String(id.window).toLowerCase()} releases.`);
       else if(environment.namedCompetitor)external.push(environment.namedKind==="direct"
-        ?`${environment.namedCompetitor} was competing for the same ${id.genre} audience that ${String(id.window).toLowerCase()}.`
+        ?`${environment.namedCompetitor} was competing for the same ${primaryGenre} audience that ${String(id.window).toLowerCase()}.`
         :`${environment.namedCompetitor} was chasing a substantially overlapping audience in the same corridor.`);
       else if(environment.directCompetitorCount>=2)external.push(
-        `${environment.directCompetitorCount===2?'Two':'Several'} major ${id.genre} releases were competing for the same ${String(id.window).toLowerCase()} audience.`);
+        `${environment.directCompetitorCount===2?'Two':'Several'} major ${primaryGenre} releases were competing for the same ${String(id.window).toLowerCase()} audience.`);
       else if(environment.overlapCompetitorCount>=2)external.push(
         `Several major event films were competing for much of the same ${String(id.window).toLowerCase()} audience.`);
       else if(environment.exceptionalCongestion)external.push(
@@ -4310,6 +4552,7 @@ const simMinimumNextCost = minimumNextCost;
 
 
 
+
 // Seeded runs: ?seed=12345 reproduces a campaign exactly. No seed = unseeded.
 const SEED = new URLSearchParams(location.search).get('seed');
 const unseededRng = () => Math.random();
@@ -4334,25 +4577,25 @@ function headlineOrder(length,random){
   for(let i=out.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[out[i],out[j]]=[out[j],out[i]]}
   return out
 }
-function makeHeadline(v,title,gross,win,y,gen,audience,scalar){
+function makeHeadline(v,title,gross,win,y,gen,audience,scalar,displayGenre=gen){
   const random=headlineRandom(scalar);
   // ~50% of the time, use a genre-specific pun when one fits the outcome tier.
   const goodV=["HIT","BLOCKBUSTER","CULTURAL EVENT"].includes(v),badV=["FLOP","BOMB"].includes(v),strongAudience=audience>=72;
   const gp=GENRE_PUNS[gen];
   if(gp&&(goodV||badV)&&random()<0.5){const pool=goodV?gp.good:gp.bad;let t=pool[Math.floor(random()*pool.length)];
     if(badV&&strongAudience)t=HEADLINES[v][2];
-    return t.replace("{T}",title).replace("{G}",money(gross)).replace("{W}",win).replace("{Y}",y).replace("{GEN}",gen);}
+    return t.replace("{T}",title).replace("{G}",money(gross)).replace("{W}",win).replace("{Y}",y).replace("{GEN}",displayGenre);}
   if(!state.usedHeads)state.usedHeads={};
   if(!state.usedHeads[v]||!state.usedHeads[v].length)state.usedHeads[v]=headlineOrder(HEADLINES[v].length,random);
   const idx=state.usedHeads[v].pop(),template=badV&&strongAudience&&/audiences shrug/i.test(HEADLINES[v][idx])?HEADLINES[v][2]:HEADLINES[v][idx];
-  return template.replace("{T}",title).replace("{G}",money(gross)).replace("{W}",win).replace("{Y}",y).replace("{GEN}",gen);
+  return template.replace("{T}",title).replace("{G}",money(gross)).replace("{W}",win).replace("{Y}",y).replace("{GEN}",displayGenre);
 }
 // Per-campaign demandNow jitter: the era text describes the climate; each run
 // gets its own weather (+/-0.08 on every year-genre demandNow, fixed at first read).
-function demandNow(y,gn){if(!state.jitter[y])state.jitter[y]=rollJitter(y,rnd);return simDemand(y,gn,state.jitter)}
+function demandNow(y,gn,secondaryGenre=null){if(!state.jitter[y])state.jitter[y]=rollJitter(y,rnd);return secondaryGenre?blendedDemand(y,gn,secondaryGenre,state.jitter):simDemand(y,gn,state.jitter)}
 function makeEventSeed(){return Math.floor(rnd()*0x100000000)>>>0}
 function newCosmeticSeed(){if(SEED!=null)return identityHash(`campaign|${SEED}`);try{const values=new Uint32Array(1);crypto.getRandomValues(values);return values[0]}catch(error){return identityHash(`campaign|${Date.now()}|${performance.timeOrigin||0}`)}}
-function freshCampaignState(){const cosmeticSeed=newCosmeticSeed();return{cash:START_CASH,films:0,streak:0,index:0,mode:"build",lastGenre:null,genreRepeats:0,rerolls:REROLLS,franchises:{},draws:{},usedTitles:new Set(),offeredTitles:new Set(),filmography:[],jitter:{},rolled:false,genreOffer:[],genreRerolls:GENRE_REROLLS,event:null,eventYear:null,eventChoice:null,eventOffer:null,eventSeed:makeEventSeed(),eventContexts:{},hasEvent:false,bankrupt:false,cosmeticSeed,studioNameCounter:0,studioName:generateStudioName(cosmeticSeed,0),studioConfirmed:false,titleBatch:0,titleMode:"none",customTitle:"",titleOptions:[],selected:{genre:null,type:null,tier:null,window:null,marketing:null,title:""},pages:{}}}
+function freshCampaignState(){const cosmeticSeed=newCosmeticSeed();return{cash:START_CASH,films:0,streak:0,index:0,mode:"build",lastGenre:null,genreRepeats:0,rerolls:REROLLS,franchises:{},draws:{},usedTitles:new Set(),offeredTitles:new Set(),filmography:[],jitter:{},rolled:false,genreOffer:[],genreRerolls:GENRE_REROLLS,event:null,eventYear:null,eventChoice:null,eventOffer:null,eventSeed:makeEventSeed(),eventContexts:{},hasEvent:false,bankrupt:false,cosmeticSeed,studioNameCounter:0,studioName:generateStudioName(cosmeticSeed,0),studioConfirmed:false,titleBatch:0,titleMode:"none",customTitle:"",titleOptions:[],selected:{genre:null,secondaryGenre:null,type:null,tier:null,window:null,marketing:null,title:""},pages:{}}}
 let state=freshCampaignState();
 let lifecycleId=0,pendingTimeouts=new Set(),pendingFrames=new Set(),revealTimeouts=new Set(),revealInProgress=false,revealPrepared=false,revealSettled=false,slateRevealSnapshot=null,rerollTimeouts=new Set(),rerollOperationId=0,rerollInProgress=false,activeReroll=null,resultPositioningOperation=null;
 function clearSlateRevealCallbacks(){revealTimeouts.forEach(handle=>{clearTimeout(handle);pendingTimeouts.delete(handle)});revealTimeouts.clear()}
@@ -4381,23 +4624,24 @@ function year(){return CAMPAIGN[state.index]}
 function talentSelectionValid(role){const selected=state.selected[role],hand=state.draws[role];return!!(selected&&hand&&hand.some(person=>person.name===selected.name))}
 function talentSelectionsComplete(){return roles.every(([role])=>talentSelectionValid(role))}
 function filmTitleValid(){const title=sanitizeIdentityText(state.selected.title,FILM_TITLE_MAX);return!!title&&(state.titleMode==="custom"||state.titleOptions?.includes(title))}
-function productionSelectionsComplete(){const s=state.selected,tierIndex={Low:0,Medium:1,High:2}[s.tier],marketing=MKT_TIERS.some(t=>t.key===s.marketing),title=filmTitleValid(),genre=state.genreOffer.includes(s.genre),type=!!TYPES[s.type]&&!(s.type==="Sequel"&&!franchiseActive(state.franchises[s.genre])),tier=Number.isFinite(BASE_TIERS[year()]?.[s.genre]?.[tierIndex]),window=!!WINDOWS[s.window];return state.rolled&&talentSelectionsComplete()&&genre&&type&&tier&&window&&marketing&&title}
-function eventDependencySignature(id){if(!productionSelectionsComplete()||!id)return"";const s=state.selected,p=packageCostsNow(),role=r=>s[r]||{},parts={trailer:[s.genre,s.tier,role("actor").name,role("actor").salary],reshoots:[s.genre,p.production],finalcut:[s.genre,s.type,role("director").name],festival:[s.genre,s.tier,role("director").power,role("writer").power],scandal:[s.genre,s.tier,role("actor").name],awards:[s.genre,s.tier,role("director").name,role("director").power,role("writer").power],bond:[s.tier,p.production],rival:[s.genre,s.tier],toys:[s.genre,s.type,p.production],tvrights:[s.genre,s.tier,p.production],international:[s.genre,s.tier,p.production],threed:[s.genre,s.tier,p.production]};return[year(),id,...(parts[id]||parts.tvrights)].join("|")}
-function eventPackageContextKey(){if(!productionSelectionsComplete())return"";const s=state.selected,p=packageCostsNow();return[year(),s.genre,s.type,s.tier,p.production,s.director?.power,s.writer?.power].join("|")}
+function productionSelectionsComplete(){const s=state.selected,tierIndex={Low:0,Medium:1,High:2}[s.tier],marketing=MKT_TIERS.some(t=>t.key===s.marketing),title=filmTitleValid(),genre=state.genreOffer.includes(s.genre),blend=!s.secondaryGenre||normalizeSecondaryGenre(s.genre,s.secondaryGenre)===s.secondaryGenre,type=!!TYPES[s.type]&&!(s.type==="Sequel"&&!franchiseActive(state.franchises[s.genre])),tier=Number.isFinite(BASE_TIERS[year()]?.[s.genre]?.[tierIndex]),window=!!WINDOWS[s.window];return state.rolled&&talentSelectionsComplete()&&genre&&blend&&type&&tier&&window&&marketing&&title}
+function eventDependencySignature(id){if(!productionSelectionsComplete()||!id)return"";const s=state.selected,p=packageCostsNow(),role=r=>s[r]||{},genre=s.secondaryGenre?[s.genre,s.secondaryGenre]:[s.genre],parts={trailer:[...genre,s.tier,role("actor").name,role("actor").salary],reshoots:[...genre,p.production],finalcut:[...genre,s.type,role("director").name],festival:[...genre,s.tier,role("director").power,role("writer").power],scandal:[...genre,s.tier,role("actor").name],awards:[...genre,s.tier,role("director").name,role("director").power,role("writer").power],bond:[...genre,s.tier,p.production],rival:[...genre,s.tier],toys:[...genre,s.type,p.production],tvrights:[...genre,s.tier,p.production],international:[...genre,s.tier,p.production],threed:[...genre,s.tier,p.production]};return[year(),id,...(parts[id]||parts.tvrights)].join("|")}
+function eventPackageContextKey(){if(!productionSelectionsComplete())return"";const s=state.selected,p=packageCostsNow(),genre=s.secondaryGenre?[s.genre,s.secondaryGenre]:[s.genre];return[year(),...genre,s.type,s.tier,p.production,s.director?.power,s.writer?.power].join("|")}
 function eventHash(text){let h=2166136261;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
 function refreshEventAfterPackageChange(before){if(!productionSelectionsComplete()){if(before&&state.hasEvent){state.event=null;state.eventYear=null;state.eventChoice=null;state.eventOffer=null}return}if(!state.hasEvent)return;if(!state.event){chooseContextEvent();return}if(!eventEligible(state.event.id)){state.event=null;state.eventChoice=null;state.eventOffer=null;chooseContextEvent();return}if(state.eventChoice&&before!==eventDependencySignature(state.event.id)){state.eventChoice=null;state.eventOffer=null}}
 function resetGeneratedTitleContext(){state.titleBatch=0;state.titleOptions=[];if(state.titleMode!=="custom"){state.titleMode="none";state.selected.title=""}}
 function titleContextReady(){return!!state.selected.genre&&!!state.selected.type}
 function restoreChoiceFocus(hostId,value,enabled){if(!enabled)return;const host=$(hostId),target=host&&[...host.querySelectorAll("button")].find(button=>button.dataset.choiceValue===String(value));if(target)focusProjectWithoutScroll(target)}
-function renderChoices(hostId,items,key,formatter,animate){const host=$(hostId);if(!host)return;host.innerHTML="";items.forEach((item,i)=>{const val=typeof item==="string"?item:item.name,selected=state.selected[key]===val||state.selected[key]?.name===val;const b=document.createElement("button");b.type="button";b.dataset.choiceValue=val;b.className="choice"+(selected?" selected":"")+(animate?" dealt":"");b.setAttribute("aria-pressed",selected?"true":"false");if(animate)b.style.animationDelay=(i*35)+"ms";if(formatter)b.innerHTML=formatter(item);else b.textContent=val;b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected[key]=item;if(key==="title")state.titleMode="generated";if(key==="genre"){if(state.selected.type==="Sequel"&&!franchiseActive(state.franchises[item]))state.selected.type=null;resetGeneratedTitleContext();if(titleContextReady())generateTitles()}refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus(hostId,val,restore)};host.appendChild(b)})}
+function renderChoices(hostId,items,key,formatter,animate){const host=$(hostId);if(!host)return;host.innerHTML="";items.forEach((item,i)=>{const val=typeof item==="string"?item:item.name,selected=state.selected[key]===val||state.selected[key]?.name===val;const b=document.createElement("button");b.type="button";b.dataset.choiceValue=val;b.className="choice"+(selected?" selected":"")+(animate?" dealt":"");b.setAttribute("aria-pressed",selected?"true":"false");if(animate)b.style.animationDelay=(i*35)+"ms";if(formatter)b.innerHTML=formatter(item);else b.textContent=val;b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected[key]=item;if(key==="title")state.titleMode="generated";if(key==="genre"){state.selected.secondaryGenre=null;if(state.selected.type==="Sequel"&&!franchiseActive(state.franchises[item]))state.selected.type=null;resetGeneratedTitleContext();if(titleContextReady())generateTitles()}refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus(hostId,val,restore)};host.appendChild(b)})}
 function renderGenres(animate){renderChoices("genreGrid",state.genreOffer,"genre",gn=>{const fr=state.franchises[gn];if(!fr)return gn;const dots=fr.health>=60?3:fr.health>=30?2:1,dotcol=dots===3?"var(--cyan)":dots===2?"var(--yellow)":"var(--red)",safeTitle=escapeHtml(fr.title);return gn+`<small>${safeTitle} · Hype <span class="frdots" style="color:${dotcol}">${"●".repeat(dots)}${"○".repeat(3-dots)}</span></small>`},animate);updateGenreRerollBtn()}
+function renderGenreBlend(){const select=$("genreBlendSelect"),primary=state.selected.genre;if(!select)return;select.textContent="";if(!primary){const option=document.createElement("option");option.value="";option.textContent="Choose a Primary Genre";select.appendChild(option);select.disabled=true;return}const secondary=normalizeSecondaryGenre(primary,state.selected.secondaryGenre);state.selected.secondaryGenre=secondary;for(const item of genreBlendOptions(primary)){const option=document.createElement("option");option.value=item.secondaryGenre||"";option.textContent=item.label;option.selected=item.secondaryGenre===secondary;select.appendChild(option)}select.disabled=false;select.onchange=()=>{const before=eventDependencySignature(state.event?.id);state.selected.secondaryGenre=normalizeSecondaryGenre(primary,select.value||null);resetGeneratedTitleContext();if(titleContextReady())generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();try{select.focus({preventScroll:true})}catch(error){select.focus()}}}
 function renderTypes(){const host=$("typeGrid"),fr=state.selected.genre?state.franchises[state.selected.genre]:null,active=franchiseActive(fr);host.innerHTML="";Object.keys(TYPES).forEach(tp=>{const locked=tp==="Sequel"&&!active;const b=document.createElement("button");b.type="button";b.disabled=locked;b.dataset.choiceValue=tp;b.className="choice"+(state.selected.type===tp?" selected":"");b.setAttribute("aria-pressed",state.selected.type===tp?"true":"false");b.textContent=tp;if(tp==="Sequel"){const note=document.createElement("small");note.textContent=locked?(fr?`franchise shelved at ${Math.round(fr.health)} health`:"needs a hit in this genre"):`${fr.title} · ${Math.round(fr.health)} health`;b.appendChild(note)}b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.type=tp;resetGeneratedTitleContext();generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus("typeGrid",tp,restore)};host.appendChild(b)});if(state.selected.type==="Sequel"&&!active){const before=eventDependencySignature(state.event?.id);state.selected.type=null;resetGeneratedTitleContext();refreshEventAfterPackageChange(before)}}
 function renderWindows(){const descriptions={Winter:"Quieter early-year corridor",Summer:"Tentpole season",Fall:"Prestige and awards season",Holiday:"Family and event season"};renderChoices("windowGrid",Object.keys(WINDOWS),"window",w=>w+`<small>${descriptions[w]}</small>`)}
 function renderMarketing(){const host=$("marketingGrid");host.innerHTML="";MKT_TIERS.forEach(t=>{const selected=state.selected.marketing===t.key,b=document.createElement("button");b.type="button";b.dataset.choiceValue=t.key;b.className="choice"+(selected?" selected":"");b.setAttribute("aria-pressed",selected?"true":"false");b.innerHTML=t.key+"<small>"+t.blurb+"</small>";b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.marketing=t.key;refreshEventAfterPackageChange(before);renderMarketing();renderEvent();updateCosts();restoreChoiceFocus("marketingGrid",t.key,restore)};host.appendChild(b)});const tally=state.rolled?livePackageTally():null,t=MKT_TIERS.find(x=>x.key===state.selected.marketing);$("marketingLabel").textContent=tally&&t?money(tally.marketing):"Choose one";$("marketingDesc").textContent=t?Math.round(t.pct*100)+"% of known production":"Select a marketing push"}
 function packageCostsNow(){return simPackageCosts({year:year(),genre:state.selected.genre,tier:state.selected.tier,type:state.selected.type,talent:state.selected,marketingTier:state.selected.marketing,rolled:state.rolled})}
 function eventEligible(id){if(!productionSelectionsComplete())return false;const g=state.selected.genre,tp=state.selected.type,p=packageCostsNow();if(id==="festival"||id==="awards")return["Drama","Musical","Romance","Animation","Thriller"].includes(g)||state.selected.director.power>=1.18||state.selected.writer.power>=1.18;if(id==="toys")return["Animation","Superhero","Action","Sci-Fi"].includes(g)||["Existing IP","Reboot","Sequel"].includes(tp);if(id==="bond")return state.selected.tier==="High"||p.production>=55;if(id==="rival")return state.selected.tier!=="Low"||["Action","Sci-Fi","Superhero","Animation"].includes(g);if(id==="international")return Number(year())>=1997&&(state.selected.tier!=="Low"||["Action","Animation","Sci-Fi","Superhero"].includes(g));if(id==="threed")return(year()==="2009"||year()==="2012")&&state.selected.tier!=="Low"&&["Action","Animation","Sci-Fi","Superhero"].includes(g);return true}
 function chooseContextEvent(){if(!productionSelectionsComplete()||!state.hasEvent)return;if(state.event&&state.eventYear===year()&&eventEligible(state.event.id))return;state.event=null;state.eventChoice=null;state.eventOffer=null;const eligible=EVENTS.filter(e=>eventEligible(e.id));if(!eligible.length){state.hasEvent=false;state.eventYear=null;return}const key=eventPackageContextKey(),cached=state.eventContexts[key];state.event=eligible.find(e=>e.id===cached)||eligible[eventHash(state.eventSeed+"|"+key)%eligible.length];state.eventContexts[key]=state.event.id;state.eventYear=year()}
-function buildEventOffer(id){const p=packageCostsNow(),g=state.selected.genre,tp=state.selected.type,scale=state.selected.tier.toLowerCase(),actor=state.selected.actor.name,director=state.selected.director.name;const scaleCost={Low:2,Medium:3,High:5}[state.selected.tier];switch(id){
+function buildEventOffer(id){const p=packageCostsNow(),g=genreDisplayName(state.selected.genre,state.selected.secondaryGenre),tp=state.selected.type,scale=state.selected.tier.toLowerCase(),actor=state.selected.actor.name,director=state.selected.director.name;const scaleCost={Low:2,Medium:3,High:5}[state.selected.tier];switch(id){
 case"trailer":{const cost=clamp(Math.round(1+state.selected.actor.salary*.25),1,7);return{tag:"Production",text:`With ${actor} attached to your ${scale}-scale ${g.toLowerCase()} film, the lead's agent demands a bigger trailer, a private chef and poster approval.`,a:{label:`Keep the star happy (-${money(cost)})`,fx:{cash:-cost,aud:2}},b:{label:"Hold the line",fx:{reach:.96}}}}
 case"reshoots":{const cost=clamp(Math.round(p.production*.06),2,15);return{tag:"Production",text:`The first assembly of your ${money(p.production)} ${g.toLowerCase()} production has a weak final act. The producer wants a reshoot reserve before release.`,a:{label:`Fix the ending (-${money(cost)})`,fx:{cash:-cost,aud:5}},b:{label:"Ship the first cut",fx:{aud:-4}}}}
 case"finalcut":return{tag:"Production",text:`${director} wants final cut on this ${tp.toLowerCase()} ${g.toLowerCase()} film. The studio can protect the commercial edit or back the director's vision.`,a:{label:"Grant final cut",fx:{aud:3,pot:.97}},b:{label:"Keep studio control",fx:{aud:-2,reach:1.03}}};
@@ -4457,7 +4701,8 @@ function drawGenres(previous){
   if(offer.length!==GENRE_HAND_SIZE||new Set(offer).size!==GENRE_HAND_SIZE)throw new Error("Invalid Genre hand");
   offer.sort();
   state.genreOffer=offer;
-  if(!offer.includes(state.selected.genre))state.selected.genre=null;
+  if(!offer.includes(state.selected.genre)){state.selected.genre=null;state.selected.secondaryGenre=null}
+  else state.selected.secondaryGenre=normalizeSecondaryGenre(state.selected.genre,state.selected.secondaryGenre);
 }
 function rerollGenres(){if(state.genreRerolls<=0||!state.rolled||rerollInProgress)return;const op=beginRerollOperation({kind:"genre",hostId:"genreGrid",buttonId:"genreReroll",headingId:"genreHeading",statusId:"genreRerollStatus",label:"Genre"});if(!op)return;buzz(12);state.genreRerolls--;
   const contextBefore=eventDependencySignature(state.event?.id);
@@ -4498,7 +4743,8 @@ function drawRole(role,exclude){
     let swap=hand.filter(p=>p.tier==="Indie"||p.tier==="C").sort((a,b)=>a.salary-b.salary)[0]||hand[hand.length-1];
     hand[hand.indexOf(swap)]=cheapTwo[Math.floor(rnd()*cheapTwo.length)];
   }
-  applyGenreAwareTalentSlot({year:year(),role,genres:state.genreOffer,pool,hand,candidateOrder});
+  applyGenreAwareTalentSlot({year:year(),role,genres:state.genreOffer,pool,hand,candidateOrder,
+    primaryGenre:state.selected.genre,secondaryGenre:state.selected.secondaryGenre});
   hand.sort((a,b)=>a.name.localeCompare(b.name));
   const selected=state.selected[role];
   state.draws[role]=hand;
@@ -4506,7 +4752,7 @@ function drawRole(role,exclude){
 function rerollRole(role){if(state.rerolls<=0||rerollInProgress)return;const roleInfo=roles.find(([name])=>name===role),label=role==="actor"?"Lead Actor":role==="actress"?"Lead Actress":roleInfo?roleInfo[1]:role,op=beginRerollOperation({kind:"talent",role,hostId:role+"Grid",buttonId:role+"Reroll",headingId:role+"Heading",statusId:role+"RerollStatus",label});if(!op)return;buzz(12);const contextBefore=eventDependencySignature(state.event?.id);state.rerolls--;const prev=new Set(state.draws[role].map(p=>p.name));drawRole(role,prev);refreshEventAfterPackageChange(contextBefore);renderRole(role,false);renderEvent();roles.forEach(([r])=>updateRerollBtn(r));const btn=$(role+"Reroll");btn.classList.remove("spin");void btn.offsetWidth;btn.classList.add("spin");updateCosts();startRerollPresentation(op)}
 function updateRerollBtn(role){const b=$(role+"Reroll");if(!b)return;b.querySelector(".rrlabel").textContent="Talent reroll · "+state.rerolls;b.disabled=rerollInProgress||state.rerolls<=0;updateRerollGuide()}
 function renderRole(role,animate){const list=state.draws[role],host=$(role+"Grid");if(!host||!list)return;const offeredSelection=list.find(item=>item.name===state.selected[role]?.name);state.selected[role]=offeredSelection;host.innerHTML="";list.forEach((item,i)=>{const selected=offeredSelection===item,b=document.createElement("button"),name=document.createElement("span"),meta=document.createElement("small"),tier=document.createElement("span"),salary=document.createElement("span");b.type="button";b.dataset.choiceValue=item.name;b.className="choice talent-choice"+(selected?" selected":"")+(animate?" dealt":"");b.setAttribute("aria-pressed",selected?"true":"false");if(animate)b.style.animationDelay=(i*35)+"ms";name.className="talent-name";name.textContent=item.name;meta.className="talent-meta";tier.textContent=TIER_LABEL[item.tier];salary.textContent=money(item.salary);meta.append(tier,salary);b.append(name,meta);b.onclick=()=>{const restore=document.activeElement===b,contextBefore=eventDependencySignature(state.event?.id);state.selected[role]=item;refreshEventAfterPackageChange(contextBefore);renderRole(role);renderEvent();updateCosts();restoreChoiceFocus(role+"Grid",item.name,restore)};host.appendChild(b)});const selected=state.selected[role],name=$(role+"Name"),cost=$(role+"Cost");name.textContent=selected?TIER_LABEL[selected.tier]:"No selection";cost.textContent=selected?money(selected.salary):"Choose one";name.parentNode?.classList.toggle("empty",!selected);updateRerollBtn(role)}
-function generateTitles(excludeCurrent=false){if(!titleContextReady()){state.titleOptions=[];return}const fr=state.franchises[state.selected.genre],prior=excludeCurrent?[...(state.titleOptions||[])]:[],used=new Set(state.usedTitles),find=(blocked,start)=>{for(let offset=0;offset<96;offset++){const batch=start+offset,options=generateTitleOptions({seed:state.cosmeticSeed,year:year(),index:state.index,genre:state.selected.genre,type:state.selected.type,batch,usedTitles:blocked,excludeTitles:prior,franchise:franchiseActive(fr)?fr:null,count:3});if(options.length===3)return{batch,options}}return null};let found=find(new Set([...used,...state.offeredTitles]),state.titleBatch);if(!found)found=find(used,state.titleBatch);state.titleOptions=found?found.options:[];if(found)state.titleBatch=found.batch;state.titleOptions.forEach(title=>state.offeredTitles.add(title))}
+function generateTitles(excludeCurrent=false){if(!titleContextReady()){state.titleOptions=[];return}const fr=state.franchises[state.selected.genre],prior=excludeCurrent?[...(state.titleOptions||[])]:[],used=new Set(state.usedTitles),find=(blocked,start)=>{for(let offset=0;offset<96;offset++){const batch=start+offset,options=generateTitleOptions({seed:state.cosmeticSeed,year:year(),index:state.index,genre:state.selected.genre,secondaryGenre:state.selected.secondaryGenre,type:state.selected.type,batch,usedTitles:blocked,excludeTitles:prior,franchise:franchiseActive(fr)?fr:null,count:3});if(options.length===3)return{batch,options}}return null};let found=find(new Set([...used,...state.offeredTitles]),state.titleBatch);if(!found)found=find(used,state.titleBatch);state.titleOptions=found?found.options:[];if(found)state.titleBatch=found.batch;state.titleOptions.forEach(title=>state.offeredTitles.add(title))}
 function rerollTitles(){if(!titleContextReady())return;const before=eventDependencySignature(state.event?.id);if(state.titleMode==="generated"){state.titleMode="none";state.selected.title=""}state.titleBatch++;generateTitles(true);refreshEventAfterPackageChange(before);renderTitles();renderEvent();updateCosts();$("titleStatus").textContent="Three new movie titles generated. Choose one to lock it."}
 function updateCustomTitleDraft(value){state.customTitle=sanitizeIdentityText(value,FILM_TITLE_MAX);renderTitles()}
 function lockCustomTitle(){const clean=sanitizeIdentityText(state.customTitle,FILM_TITLE_MAX);if(!clean)return;const before=eventDependencySignature(state.event?.id);state.customTitle=clean;state.titleMode="custom";state.selected.title=clean;refreshEventAfterPackageChange(before);renderTitles();renderEvent();updateCosts();$("titleStatus").textContent=`Custom title locked: ${clean}.`}
@@ -4518,14 +4764,15 @@ function setOpeningBackgroundHidden(hidden){const wrap=document.querySelector(".
 function showOpening(){cancelPendingAsync();state.mode="opening";state.studioConfirmed=false;renderStudioIdentity();$("builder").style.display="none";$("result").classList.remove("show","revealed");$("ending").classList.remove("show");const overlay=$("openingOverlay");overlay.hidden=false;setOpeningBackgroundHidden(true);syncFooterClearance();nextFrame(()=>{try{$("openingCard").focus({preventScroll:true})}catch(error){$("openingCard").focus()}})}
 function startOpeningCampaign(){confirmStudioName();$("openingOverlay").hidden=true;setOpeningBackgroundHidden(false);startRound()}
 function openingKeydown(event){if(event.key==="Escape"){event.preventDefault();return}if(event.key!=="Tab")return;const focusable=[$("openingStudioName"),$("openingStudioReroll"),$("openingStart")].filter(el=>!el.disabled&&!el.hidden),first=focusable[0],last=focusable[focusable.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}
-function renderAll(animate){renderGenres(animate);renderMarketing();renderTypes();renderBudgets();renderWindows();renderTitles();renderEvent();$("rightsCost").textContent=state.selected.type?money(TYPES[state.selected.type].cost):"Choose one"}
+function renderAll(animate){renderGenres(animate);renderGenreBlend();renderMarketing();renderTypes();renderBudgets();renderWindows();renderTitles();renderEvent();$("rightsCost").textContent=state.selected.type?money(TYPES[state.selected.type].cost):"Choose one"}
 function costs(){return computeCosts({year:year(),genre:state.selected.genre,tier:state.selected.tier,type:state.selected.type,talent:state.selected,marketingTier:state.selected.marketing,rolled:state.rolled,fx:chosenEventFx(),cash:state.cash})}
 function buildResultSnapshot(input){
-  const talent=Object.freeze(roles.map(([role,label])=>{const person=input.selected[role];return Object.freeze({role:label,name:person.name,salary:person.salary,power:person.power,fit:talentGenreFit(input.year,role,person,input.selected.genre)})}));
+  const primaryGenre=input.selected.genre,secondaryGenre=normalizeSecondaryGenre(primaryGenre,input.selected.secondaryGenre),genreName=genreDisplayName(primaryGenre,secondaryGenre);
+  const talent=Object.freeze(roles.map(([role,label])=>{const person=input.selected[role],fit=talentGenreFit(input.year,role,person,primaryGenre),secondaryFit=secondaryGenre?talentGenreFit(input.year,role,person,secondaryGenre):null,blend=blendedTalentSuitability({year:input.year,role,person,genre:primaryGenre,secondaryGenre});return Object.freeze({role:label,name:person.name,salary:person.salary,power:person.power,fit,secondaryFit,primarySuitability:blend.primary.suitability,secondarySuitability:blend.secondary?.suitability||0,blendSuitability:blend.suitability})}));
   const bondPremium=input.fx.bond?input.costs.eventExpense:0,otherEventExpense=input.costs.eventExpense-bondPremium;
   const event=Object.freeze({id:input.eventId||null,choice:input.eventChoice||null,label:input.eventLabel||"",expense:input.costs.eventExpense,otherExpense:otherEventExpense,bondPremium,revenue:input.costs.eventRevenue,bondRate:input.fx.bond||0,bondPayout:input.bondPayout});
-  const commercial=Object.freeze({genre:input.selected.genre,type:input.selected.type,scale:input.selected.tier,market:input.market,windowMultiplier:input.windowMultiplier,potential:input.potential,reach:input.reach,legs:input.legs,awareness:input.awareness,marketingEfficiency:input.marketingEfficiency,expectedGross:input.expectedGross,baselineExpectedGross:input.baselineExpectedGross,realisedPerformanceMultiplier:input.luck,rawLuck:input.rawLuck,historical:input.historical,brokeOut:input.brokeOut,repetition:input.repetition,genreHistory:input.genreHistory,ceilingReturn:input.ceilingReturn,castPower:input.castPower,directorPower:input.directorPower,writerPower:input.writerPower,eventPotentialMultiplier:input.fx.pot||1,eventReachMultiplier:input.fx.reach||1,eventAudienceAdjustment:input.fx.aud||0,franchiseBefore:input.franchiseBefore?Object.freeze({...input.franchiseBefore}):null,outcome:input.outcome,creativeEvidence:input.creativeEvidence});
-  const identity=Object.freeze({studioName:input.studioName,title:input.selected.title,year:input.year,genre:input.selected.genre,type:input.selected.type,scale:input.selected.tier,window:input.selected.window,marketing:input.selected.marketing});
+  const commercial=Object.freeze({genre:primaryGenre,primaryGenre,secondaryGenre,genreName,type:input.selected.type,scale:input.selected.tier,market:input.market,windowMultiplier:input.windowMultiplier,potential:input.potential,reach:input.reach,legs:input.legs,awareness:input.awareness,marketingEfficiency:input.marketingEfficiency,expectedGross:input.expectedGross,baselineExpectedGross:input.baselineExpectedGross,realisedPerformanceMultiplier:input.luck,rawLuck:input.rawLuck,historical:input.historical,brokeOut:input.brokeOut,repetition:input.repetition,genreHistory:input.genreHistory,ceilingReturn:input.ceilingReturn,castPower:input.castPower,directorPower:input.directorPower,writerPower:input.writerPower,eventPotentialMultiplier:input.fx.pot||1,eventReachMultiplier:input.fx.reach||1,eventAudienceAdjustment:input.fx.aud||0,franchiseBefore:input.franchiseBefore?Object.freeze({...input.franchiseBefore}):null,outcome:input.outcome,creativeEvidence:input.creativeEvidence});
+  const identity=Object.freeze({studioName:input.studioName,title:input.selected.title,year:input.year,genre:primaryGenre,primaryGenre,secondaryGenre,genreName,type:input.selected.type,scale:input.selected.tier,window:input.selected.window,marketing:input.selected.marketing});
   return Object.freeze({identity,audience:input.audience,critics:input.critics,gross:input.gross,baseCost:input.costs.base,talent,talentTotal:input.costs.talent,rightsCost:input.costs.rights,marketingCost:input.costs.marketing,event,otherEventExpense,bondPremium,totalEventExpense:input.costs.eventExpense,totalInvested:input.costs.total,studioShare:input.studioShare,theatricalReturn:input.theatricalReturn,eventRevenue:input.costs.eventRevenue,bondPayout:input.bondPayout,profit:input.profit,breakEven:input.costs.breakEven,roi:input.roi,verdict:input.verdict,headline:input.headline,headlineScalar:input.headlineScalar,cashBefore:input.cashBefore,cashAfter:Math.max(0,input.cashBefore+input.profit),expectedGross:input.expectedGross,commercial});
 }
 function accountingPrecision(s){const f=10,r=n=>(n<0?-1:1)*Math.round(Math.abs(n)*f),talentMatch=s.talent.reduce((sum,t)=>sum+r(t.salary),0)===r(s.talentTotal),costsMatch=r(s.baseCost)+r(s.talentTotal)+r(s.rightsCost)+r(s.marketingCost)+r(s.totalEventExpense)===r(s.totalInvested),returnsMatch=r(s.theatricalReturn)+r(s.eventRevenue)+r(s.bondPayout)-r(s.totalInvested)===r(s.profit);return talentMatch&&costsMatch&&returnsMatch?1:2}
@@ -4584,7 +4831,7 @@ function finishSlateHandoff(){emptySlateTheatre();const slate=$("slate");slate.c
 function recoverSlateReveal(error){console.error("Slate reveal recovered after an error",error);clearSlateRevealCallbacks();slateRevealSnapshot=null;try{emptySlateTheatre()}catch(cleanupError){console.error("Slate theatre cleanup failed",cleanupError)}try{setProductionFormVisible(true)}catch(exposeError){const slate=document.getElementById("slate");if(slate){slate.hidden=false;slate.setAttribute("aria-hidden","false")}console.error("Slate form exposure fallback used",exposeError)}document.documentElement.classList.remove("slate-handoff-active");revealInProgress=false;revealSettled=true;const btn=document.getElementById("rollBtn"),roll=document.getElementById("rollSection");if(btn){btn.classList.remove("rolling");btn.textContent=ROLL_LABEL;btn.removeAttribute("aria-label");btn.disabled=true;btn.setAttribute("tabindex","-1")}if(roll){roll.classList.add("roll-section-settled");roll.setAttribute("aria-hidden","true");roll.style.display="none"}try{updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));updateCosts()}catch(costError){const main=document.getElementById("mainBtn");if(main)main.disabled=true;console.error("Slate cost refresh failed",costError)}announceSlate("Slate ready. A presentation fallback was used.")}
 function settleSlateReveal(animate=true){if(revealSettled)return;let completed=false;try{prepareSlate();clearSlateRevealCallbacks();const btn=$("rollBtn"),moveFocus=document.activeElement===btn,theatre=$("slateTheatre"),theatreVisible=!theatre.hidden,rect=theatreVisible?theatre.getBoundingClientRect():$("rollSection").getBoundingClientRect(),anchorTop=theatreVisible?rect.top:rect.bottom,reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches,useFade=!!animate&&!reduce&&theatreVisible,roll=$("rollSection"),slate=$("slate");document.documentElement.classList.add("slate-handoff-active");fixTheatreForHandoff(theatre,rect,useFade);roll.classList.add("roll-section-settled");roll.setAttribute("aria-hidden","true");roll.style.display="none";setProductionFormVisible(true);updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));const residual=preserveSlateAnchor(anchorTop),quickOffset=!useFade&&!reduce&&theatreVisible&&residual>.5;if(useFade||quickOffset){if(residual>.5){slate.style.setProperty("--slate-handoff-offset",residual+"px");if(quickOffset)slate.style.setProperty("--slate-handoff-duration",".08s");slate.classList.add("slate-handoff-offset")}if(useFade)slate.classList.add("slate-handoff-in");else theatre.style.visibility="hidden"}slateRevealSnapshot=null;revealInProgress=false;revealSettled=true;btn.classList.remove("rolling");btn.textContent=ROLL_LABEL;btn.removeAttribute("aria-label");btn.disabled=true;btn.setAttribute("tabindex","-1");updateCosts();if(moveFocus){const project=$("projectHeading");focusProjectWithoutScroll(project);nextFrame(()=>{if(document.activeElement===btn)focusProjectWithoutScroll(project)})}announceSlate("Slate ready");if(useFade)revealLater(finishSlateHandoff,THEATRE_HANDOFF_MS+20);else if(quickOffset)revealLater(finishSlateHandoff,90);else finishSlateHandoff();completed=true}catch(error){recoverSlateReveal(error)}finally{if(!completed&&!revealSettled)recoverSlateReveal(new Error("Slate settlement did not complete"));if(revealSettled)revealInProgress=false}}
 function revealSlate(){prepareSlate();$("rollBtn").classList.remove("rolling");openSlateTheatre();revealLater(()=>renderTheatreStep("actor"),500);revealLater(()=>renderTheatreStep("actress"),1000);revealLater(()=>renderTheatreStep("director"),1500);revealLater(()=>renderTheatreStep("writer"),2000);revealLater(()=>renderTheatreStep("release"),2500);revealLater(()=>renderTheatreStep("dilemma"),3000);revealLater(()=>settleSlateReveal(true),3240)}
-function startRound(){cancelPendingAsync();state.mode="build";state.rolled=false;state.genreOffer=[];state.titleBatch=0;state.titleMode="none";state.customTitle="";state.titleOptions=[];updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));const ov=state.index===0?0:OVERHEAD[year()];state.cash=Math.max(0,state.cash-ov);setCash(state.cash);$("overheadLine").textContent=state.index===0?"First-film overhead covered by your backers.":"Studio overhead: -"+money(ov)+" (deducted)";resetSlateRevealUi();state.selected={genre:null,type:null,tier:null,window:null,marketing:null,title:""};state.event=null;state.eventYear=null;state.eventChoice=null;state.eventOffer=null;state.hasEvent=(state.index===0)?false:(rnd()<0.55);renderStudioIdentity();const campaignPosition="Film "+(state.index+1)+" of "+CAMPAIGN.length;$("year").textContent=year();$("quip").textContent=current().quip;$("era").textContent=current().era;$("progress").style.width=((state.index)/(CAMPAIGN.length-1)*100)+"%";$("yearCount").textContent=campaignPosition;$("mobileYear").textContent=year();$("mobileFilm").textContent=campaignPosition.replace(" of ","/");$("builder").style.display="block";$("result").classList.remove("show","revealed");$("verdict").classList.remove("stamp","stampin");$("ending").classList.remove("show");$("mainBtn").textContent="Greenlight & release";$("rollBtn").textContent=ROLL_LABEL;$("rollBtn").removeAttribute("aria-label");$("rollBtn").disabled=false;$("rollBtn").classList.remove("rolling");$("genreReroll").classList.remove("spin");$("rollSection").classList.remove("roll-section-settled");$("rollSection").style.display="block";$("talentSections").innerHTML="";resetEventPresentation();updateCosts();window.scrollTo({top:0,behavior:"smooth"})}
+function startRound(){cancelPendingAsync();state.mode="build";state.rolled=false;state.genreOffer=[];state.titleBatch=0;state.titleMode="none";state.customTitle="";state.titleOptions=[];updateGenreRerollBtn();roles.forEach(([role])=>updateRerollBtn(role));const ov=state.index===0?0:OVERHEAD[year()];state.cash=Math.max(0,state.cash-ov);setCash(state.cash);$("overheadLine").textContent=state.index===0?"First-film overhead covered by your backers.":"Studio overhead: -"+money(ov)+" (deducted)";resetSlateRevealUi();state.selected={genre:null,secondaryGenre:null,type:null,tier:null,window:null,marketing:null,title:""};state.event=null;state.eventYear=null;state.eventChoice=null;state.eventOffer=null;state.hasEvent=(state.index===0)?false:(rnd()<0.55);renderStudioIdentity();const campaignPosition="Film "+(state.index+1)+" of "+CAMPAIGN.length;$("year").textContent=year();$("quip").textContent=current().quip;$("era").textContent=current().era;$("progress").style.width=((state.index)/(CAMPAIGN.length-1)*100)+"%";$("yearCount").textContent=campaignPosition;$("mobileYear").textContent=year();$("mobileFilm").textContent=campaignPosition.replace(" of ","/");$("builder").style.display="block";$("result").classList.remove("show","revealed");$("verdict").classList.remove("stamp","stampin");$("ending").classList.remove("show");$("mainBtn").textContent="Greenlight & release";$("rollBtn").textContent=ROLL_LABEL;$("rollBtn").removeAttribute("aria-label");$("rollBtn").disabled=false;$("rollBtn").classList.remove("rolling");$("genreReroll").classList.remove("spin");$("rollSection").classList.remove("roll-section-settled");$("rollSection").style.display="block";$("talentSections").innerHTML="";resetEventPresentation();updateCosts();window.scrollTo({top:0,behavior:"smooth"})}
 function documentScrollY(){const y=window.pageYOffset;if(Number.isFinite(y))return y;const root=document.documentElement.scrollTop;if(Number.isFinite(root))return root;return document.body&&Number.isFinite(document.body.scrollTop)?document.body.scrollTop:0}
 function resultViewTop(result){let top=0,node=result;while(node){if(Number.isFinite(node.offsetTop))top+=node.offsetTop;node=node.offsetParent}const max=Math.max(0,document.documentElement.scrollHeight-window.innerHeight);return clamp(top,0,max)}
 function positionResultView(top){let scrollError=null;try{window.scrollTo({top,left:0,behavior:"auto"})}catch(error){scrollError=error;try{window.scrollTo(0,top);scrollError=null}catch(fallbackError){scrollError=fallbackError}}try{document.documentElement.scrollTop=top}catch(error){if(!scrollError)scrollError=error}try{if(document.body)document.body.scrollTop=top}catch(error){if(!scrollError)scrollError=error}if(scrollError&&Math.abs(documentScrollY()-top)>1)console.error("Result scroll positioning unavailable",scrollError)}
@@ -4595,7 +4842,7 @@ function release(){
   if(!productionSelectionsComplete()||revealInProgress||rerollInProgress||(state.hasEvent&&!state.eventChoice))return;
   const c=costs();if(!greenlightAffordability(c,state.cash).affordable){updateCosts();return}
   cancelPendingAsync();
-  const d=current(),y=year(),g=state.selected.genre,tname=state.selected.type,t=TYPES[tname];
+  const d=current(),y=year(),g=state.selected.genre,secondaryGenre=normalizeSecondaryGenre(g,state.selected.secondaryGenre),genreName=genreDisplayName(g,secondaryGenre),tname=state.selected.type,t=TYPES[tname];
   const fx=chosenEventFx();
   const frLive=(tname==="Sequel"&&franchiseActive(state.franchises[g]))?state.franchises[g]:null;
   const franchiseBefore=frLive?{health:frLive.health,strength:frLive.strength,count:frLive.count}:null;
@@ -4603,8 +4850,8 @@ function release(){
   const genreHistory=studioGenreHistory({genre:g,repetition:rep,
     previousFilm:state.filmography.at(-1)||null,isSequel:!!frLive});
   // ---- all randomness and all arithmetic now lives in sim.js ----
-  const R=simulate({year:y,genre:g,type:tname,tier:state.selected.tier,window:state.selected.window,
-    talent:state.selected,market:demandNow(y,g),fx,franchise:frLive,repetition:rep,genreHistory,costs:c},rnd);
+  const R=simulate({year:y,genre:g,secondaryGenre,type:tname,tier:state.selected.tier,window:state.selected.window,
+    talent:state.selected,market:demandNow(y,g,secondaryGenre),fx,franchise:frLive,repetition:rep,genreHistory,costs:c},rnd);
   const {audience,critics,gross,expectedGross,theatricalReturn,bondPayout,profit,roi,verdict,color,
     potential,reach,legs,awareness,mktEff,luck,rawLuck,brokeOut,ceilingReturn,effectiveCast,
     historical,baselineExpectedGross,outcome,creativeEvidence,
@@ -4612,7 +4859,7 @@ function release(){
     windowMultiplier:winMult}=R;
   const market=R.market,be=c.breakEven;
   const cashBefore=state.cash,resolvedOffer=chosenEventOffer(),eventLabel=state.eventChoice&&resolvedOffer&&resolvedOffer[state.eventChoice]?resolvedOffer[state.eventChoice].label:"";
-  const headlineScalar=rnd(),headline=makeHeadline(verdict,state.selected.title,gross,state.selected.window,y,g,audience,headlineScalar);
+  const headlineScalar=rnd(),headline=makeHeadline(verdict,state.selected.title,gross,state.selected.window,y,g,audience,headlineScalar,genreName);
   const resultSnapshot=buildResultSnapshot({audience,critics,gross,costs:c,selected:state.selected,studioName:state.studioName,year:y,studioShare:BAL.studioShare,theatricalReturn,bondPayout,profit,roi,verdict,headline,headlineScalar,cashBefore,expectedGross,fx,eventId:state.hasEvent&&state.event?state.event.id:null,eventChoice:state.eventChoice,eventLabel,market,windowMultiplier:winMult,potential,reach,legs,awareness,marketingEfficiency:mktEff,luck,rawLuck,historical,baselineExpectedGross,outcome,creativeEvidence,brokeOut,repetition:rep,genreHistory:resolvedGenreHistory,ceilingReturn,castPower:effectiveCast,directorPower,writerPower,franchiseBefore});
   const narrative=buildResultNarrative(resultSnapshot),newspaper=buildNewspaperStory(resultSnapshot);
   // Franchise health is responsive: sequels can strengthen, weaken or shelve the property.
@@ -4626,10 +4873,10 @@ function release(){
   state.usedTitles.add(state.selected.title);state.lastGenre=g;state.genreRepeats=rep;
   state.cash=Math.max(0,cashBefore+profit);state.films++;state.streak=profit>0?state.streak+1:0;
   if(state.streak>0&&state.streak%3===0)state.rerolls++;
-  state.filmography.push({y,title:state.selected.title,verdict,gross:Math.round(gross),theatricalReturn,eventRevenue:c.eventRevenue,eventExpense:c.eventExpense,bondPayout,totalCost:c.total,profit,cashBefore,cashAfter:state.cash,roi,type:tname,genre:g,audience,critics,franchiseHealth:state.franchises[g]?state.franchises[g].health:null,headline:resultSnapshot.headline,resultSnapshot});
+  state.filmography.push({y,title:state.selected.title,verdict,gross:Math.round(gross),theatricalReturn,eventRevenue:c.eventRevenue,eventExpense:c.eventExpense,bondPayout,totalCost:c.total,profit,cashBefore,cashAfter:state.cash,roi,type:tname,genre:g,primaryGenre:g,secondaryGenre,genreName,audience,critics,franchiseHealth:state.franchises[g]?state.franchises[g].health:null,headline:resultSnapshot.headline,resultSnapshot});
   setCash(state.cash);$("films").textContent=state.films;$("streak").textContent=state.streak;setStreakPips();
   $("verdict").textContent=verdict;$("verdict").style.color=color;$("headline").textContent=newspaper.headline;
-  $("movieTitle").textContent=state.selected.title;$("resultStudio").textContent=state.studioName+" presents";$("resultTitle").textContent=state.selected.title;$("resultMeta").textContent=`${y} · ${g} · ${tname}`;
+  $("movieTitle").textContent=state.selected.title;$("resultStudio").textContent=state.studioName+" presents";$("resultTitle").textContent=state.selected.title;$("resultMeta").textContent=`${y} · ${genreName} · ${tname}`;
   $("summary").textContent=newspaper.snippet;
   $("expectedGrossMetric").textContent=money(expectedGross);$("grossMetric").textContent=money(gross);$("breakEven").textContent=money(be);$("audienceMetric").textContent=audience+"/100";$("criticsMetric").textContent=critics+"/100";
   $("expectationDelta").textContent=narrative.expectation.label;$("expectationDelta").className="expectation-delta "+(narrative.expectation.direction||"on");
