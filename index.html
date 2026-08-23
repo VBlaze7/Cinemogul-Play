@@ -82,7 +82,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #movieTitle{display:none}
 .result.show:not(.revealed) .revealtarget{opacity:0}
 .result .revealtarget{transition:opacity .5s ease}
-@media(prefers-reduced-motion:reduce){.verdict.stampin,.choice.dealt,.theatre-stage,.rollbtn.rolling{animation:none!important}.slate-card-inner,.slate-card-front,.slate-card-back{transition:none!important}.card-group-turning .slate-card-inner{transform:none!important}.card-group-turning .slate-card-front{transform:none!important;opacity:1}.card-group-turning .slate-card-back{display:none}}.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}.metric{background:#1b1c27;border:1px solid #2b2d3c;border-radius:3px;padding:10px 7px;color:var(--muted);font-size:11px}.metric b{display:block;color:white;font-size:18px;margin-top:4px;font-variant-numeric:tabular-nums}.expectation-delta{display:inline-block;margin-top:10px;padding:5px 9px;border:1px solid currentColor;color:var(--cyan);font-family:"Oswald",sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase}.expectation-delta.above{color:var(--green)}.expectation-delta.below{color:var(--red)}.why{padding-left:18px;line-height:1.45;color:#dde1f5;font-size:14px}
+@media(prefers-reduced-motion:reduce){.verdict.stampin,.choice.dealt,.theatre-stage,.rollbtn.rolling{animation:none!important}.slate-card-inner,.slate-card-front,.slate-card-back{transition:none!important}.card-group-turning .slate-card-inner{transform:none!important}.card-group-turning .slate-card-front{transform:none!important;opacity:1}.card-group-turning .slate-card-back{display:none}}.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}.metric{background:#1b1c27;border:1px solid #2b2d3c;border-radius:3px;padding:10px 7px;color:var(--muted);font-size:11px}.metric-note{display:block;margin-top:2px;color:#9499af;font-size:9px;line-height:1.2}.metric b{display:block;color:white;font-size:18px;margin-top:4px;font-variant-numeric:tabular-nums}.expectation-delta{display:inline-block;margin-top:10px;padding:5px 9px;border:1px solid currentColor;color:var(--cyan);font-family:"Oswald",sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase}.expectation-delta.above{color:var(--green)}.expectation-delta.below{color:var(--red)}.why{padding-left:18px;line-height:1.45;color:#dde1f5;font-size:14px}
 .studio-debrief .sectionhead{margin-bottom:12px}.debrief-group[hidden]{display:none}.debrief-group h4{margin:0 0 5px;color:var(--cyan);font-family:"Oswald",sans-serif;font-size:12px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase}.debrief-group .why{margin:0}.debrief-group+.debrief-group{margin-top:13px}.debrief-luck{border-left:3px solid var(--yellow);padding:8px 10px;background:#171821}.debrief-luck h4{color:var(--yellow)}
 .bottom{padding:13px;border-radius:8px;background:#1b1c27;border:1px solid #2b2d3c;margin-top:14px}
 .accountinggrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.accountinggroup{background:#171821;border:1px solid #2b2d3c;border-radius:4px;padding:12px}.accountinggroup .kicker{margin-bottom:7px}.accountrow{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:5px 0;border-bottom:1px solid #292b39;color:var(--muted);font-size:12px;line-height:1.3}.accountrow:last-child{border-bottom:0}.accountrow b{color:#fff;text-align:right;font-variant-numeric:tabular-nums}.accountrow.total{margin-top:4px;padding-top:8px;border-top:1px solid #44485b;border-bottom:0;color:#fff;font-weight:600}.accountrow.total b{color:var(--yellow);font-size:15px}.accountdetail{display:block;margin:-1px 0 5px;color:#9499af;font-size:10px;line-height:1.35}.talentdetails{margin-top:8px;border-top:1px solid #343747;padding-top:7px}.talentdetails summary{cursor:pointer;color:var(--cyan);font-size:11px;font-weight:600}.talentdetails[open] summary{margin-bottom:5px}.talentdetails .accountrow{padding-left:7px;font-size:11px}.accountingequation{margin-top:12px;background:#111219;border:1px solid #343747;border-left:3px solid var(--green);border-radius:4px;padding:10px 12px}.equationrow{display:grid;grid-template-columns:18px 1fr auto;gap:6px;padding:3px 0;color:var(--muted);font-size:12px}.equationrow b{color:#fff;font-variant-numeric:tabular-nums}.equationrow.final{margin-top:5px;padding-top:7px;border-top:1px solid #44485b;color:#fff;font-weight:600}.equationrow.final b{color:var(--yellow)}.metric b.profitvalue.positive,.accountrow.total b.profitvalue.positive,.equationrow.final b.profitvalue.positive{color:var(--green)}.metric b.profitvalue.negative,.accountrow.total b.profitvalue.negative,.equationrow.final b.profitvalue.negative{color:var(--red)}.metric b.profitvalue.neutral,.accountrow.total b.profitvalue.neutral,.equationrow.final b.profitvalue.neutral{color:var(--text)}.accountingnote{margin:9px 0 0;color:var(--muted);font-size:10px;line-height:1.4}
@@ -522,7 +522,7 @@ b,strong{font-weight:600}
     <div class="grossbig" id="gross"></div>
     <div class="verdict" id="verdict"></div>
     <div class="metrics">
-      <div class="metric">Package expectation<b id="expectedGrossMetric"></b></div>
+      <div class="metric">PRE-RELEASE FORECAST<span class="metric-note">Before reception and release conditions</span><b id="expectedGrossMetric"></b></div>
       <div class="metric">Actual box office<b id="grossMetric"></b></div>
       <div class="metric">Break-even<b id="breakEven"></b></div>
       <div class="metric">Profit<b id="profit"></b></div>
@@ -3030,9 +3030,8 @@ const OUTCOME_V1=Object.freeze({
     totalCap:.15,
     namedThreshold:.02
   }),
-  residual:Object.freeze({positiveSigma:.075,strongDownsideSigma:.12,
-    averageDownsideSigma:.14,weakDownsideSigma:.28,incoherentDownsideSigma:.34,
-    tailMin:1.03,tailMax:1.10})
+  residual:Object.freeze({positiveSigma:.075,strongDownsideSigma:.12,strongDownsideFloor:.85,
+    averageDownsideSigma:.14,weakDownsideSigma:.28,tailMin:1.03,tailMax:1.10})
 });
 const MKT_TIERS=[
  {key:"Modest",pct:0.15,blurb:"Trailer & word of mouth"},
@@ -3538,14 +3537,14 @@ function evaluateReleaseEnvironment({year,window,genre}){
 function residualReleaseMultiplier({normal,tailTriggered=false,tailScalar=0,
   downsideProtection=0,profile='strong'}){
   const sigma=normal>=0?OUTCOME_V1.residual.positiveSigma:
-    profile==='incoherent'?OUTCOME_V1.residual.incoherentDownsideSigma:
     profile==='weak'?OUTCOME_V1.residual.weakDownsideSigma:
     profile==='average'?OUTCOME_V1.residual.averageDownsideSigma:
     OUTCOME_V1.residual.strongDownsideSigma;
   let multiplier=Math.exp(sigma*normal-sigma*sigma/2);
   if(tailTriggered)multiplier*=OUTCOME_V1.residual.tailMin+
     tailScalar*(OUTCOME_V1.residual.tailMax-OUTCOME_V1.residual.tailMin);
-  multiplier=outcomeClamp(multiplier,.75,1.30);
+  multiplier=outcomeClamp(multiplier,
+    profile==='strong'?OUTCOME_V1.residual.strongDownsideFloor:.75,1.30);
   if(multiplier<1)multiplier=1-(1-multiplier)*(1-downsideProtection);
   return outcomeRound(multiplier);
 }
@@ -3853,11 +3852,7 @@ function simulate(input, rng) {
   const historicalCap=Math.max(0,Math.min(HISTORICAL_V1.expectationCap,HISTORICAL_V1.combinedLegacyContextCap/(1+legacyContextEffect)-legacyContextEffect/(1+legacyContextEffect)));
   const historicalExpectationEffect=Math.min(historical.expectationEffect,historicalCap);
   const reception=outcomeEnabled?receptionCommercialEffect(audience,critics):null;
-  const scaleCoherent=!(SPECTACLE.includes(genre)&&tier==='Low')&&
-    !(INTIMATE.includes(genre)&&tier==='High');
-  const windowCoherent=winMult>=.97;
   const residualProfile=!outcomeEnabled||reception.effect<0?'weak':
-    reception.effect>0&&(!scaleCoherent||!windowCoherent)?'incoherent':
     reception.effect>=.05?'strong':'average';
 
   // OFF retains the exact pre-task Luck path. ON reuses the same normal,
@@ -4024,17 +4019,14 @@ function marketingAssessment(snapshot){
 }
 function expectationAssessment(snapshot){
   const expected=snapshot.expectedGross,gross=snapshot.gross;
-  if(!(expected>0))return Object.freeze({percent:0,direction:null,label:"Expectation unavailable",luck:"Luck could not be separated cleanly from the result."});
+  if(!(expected>0))return Object.freeze({percent:0,direction:null,label:"Forecast unavailable",luck:"The result could not be compared with the pre-release forecast."});
   const percent=Math.round((gross/expected-1)*100),magnitude=Math.abs(percent);
   const direction=magnitude<=4?null:percent>0?"above":"below";
   const variance=genreVarianceSignal(snapshot.identity?.genre,gross/expected);
-  const label=direction?`${magnitude}% ${direction} expectation`:"Roughly on expectation";
+  const label=direction?`${magnitude}% ${direction} forecast`:"Roughly on forecast";
   let luck;
-  if(!direction)luck="Luck was fairly ordinary. The film finished close to expectation.";
-  else if(direction==="above"&&variance.direction==="good")luck=`The movie caught fire, finishing ${magnitude}% above what the package predicted.`;
-  else if(direction==="below"&&variance.direction==="bad")luck=`The release caught a brutal break, finishing ${magnitude}% below expectation.`;
-  else if(direction==="above")luck=`The film caught a favourable break and finished ${magnitude}% above expectation.`;
-  else luck=`The release landed ${magnitude}% below expectation, but stayed within a normal range.`;
+  if(!direction)luck="The film finished close to the pre-release forecast.";
+  else luck=`The film finished ${magnitude}% ${direction} the pre-release forecast.`;
   return Object.freeze({percent,direction,label,luck});
 }
 
@@ -4094,7 +4086,7 @@ function buildResultNarrative(snapshot){
   const marketing=marketingAssessment(s),expectation=expectationAssessment(s);
   if(c.outcome?.enabled){
     const reception=c.outcome.reception,aBand=reception.audienceBand,cBand=reception.criticBand;
-    if(reception.synergy>0)add(positive,"reception-both",132,"Strong audience and critical response pushed the film beyond its original commercial outlook.");
+    if(reception.synergy>0)add(positive,"reception-both",132,"Strong audience and critical response gave the film a significant commercial lift.");
     else if(reception.synergy<0)add(negative,"reception-both",132,"Audiences and critics both struggled with the finished film, sharply limiting its theatrical trajectory.");
     else{
       if(aBand==="excellent")add(positive,"audience",126,"Audiences responded exceptionally well, giving the film excellent theatrical legs.");
@@ -4102,7 +4094,7 @@ function buildResultNarrative(snapshot){
       else if(aBand==="terrible")add(negative,"audience",126,"Audiences failed to connect with the film, causing substantial commercial damage.");
       else if(aBand==="weak")add(negative,"audience",120,"Audiences struggled to connect with the film, limiting its theatrical legs.");
       if(cBand==="exceptional")add(positive,"critics",116,"Critics embraced the finished film, adding momentum to the release.");
-      else if(cBand==="strong")add(positive,"critics",110,"Strong reviews added modest commercial momentum.");
+      else if(cBand==="strong")add(positive,"critics",110,"Critics responded strongly, adding modest commercial momentum.");
       else if(cBand==="terrible")add(negative,"critics",112,"A hostile critical response added another headwind.");
       else if(cBand==="weak")add(negative,"critics",106,"Weak reviews added a modest commercial headwind.");
     }
@@ -4151,9 +4143,14 @@ function buildResultNarrative(snapshot){
       add(positive,"creative-pair",125,proven
         ?`${pair.nameA} and ${pair.nameB} came in with a track record of working well together.`
         :`${pair.nameA} and ${pair.nameB} clicked creatively.`);
-    }else if(individual)add(positive,"creative-individual",123,individual.role==='director'
-      ?`${individual.name} was working in familiar ${id.genre} territory.`
-      :`${individual.name} looked completely at home in ${id.genre}.`);
+    }else if(individual){
+      const currentIndividual=c.historical?.individuals?.find(item=>
+        item.role===individual.role&&item.name===individual.name);
+      const proven=currentIndividual?.genrePositiveCount>0;
+      add(positive,"creative-individual",123,proven
+        ?`${individual.name} was working in familiar ${id.genre} territory.`
+        :`${individual.name} was well suited to ${id.genre}.`);
+    }
   }
   if(c.eventAudienceAdjustment>=3)add(positive,"event-audience",116,"The selected Studio Dilemma response improved the finished film's audience appeal.");else if(c.eventAudienceAdjustment<0)add(negative,"event-audience",116,"The selected Studio Dilemma response reduced the finished film's audience appeal.");
   if(c.eventReachMultiplier<1)add(negative,"event-reach",117,"The selected Studio Dilemma response reduced the film's commercial reach.");
