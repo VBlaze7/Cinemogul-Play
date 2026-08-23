@@ -43,8 +43,8 @@ h1 span{color:var(--yellow)}.studio-brand{max-width:360px;margin:9px 3px 0;color
 .sectionhead h2{margin:0;font-family:"Oswald",sans-serif;font-size:18px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#f3efe4}.identity-input-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.identity-input{min-width:0;width:100%;height:48px;padding:10px 12px;border:1px solid #4a4d5d;border-radius:3px;background:#0f1017;color:#fff;font:600 16px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.identity-input:focus{outline:2px solid var(--cyan);outline-offset:2px}.identity-action{min-height:48px;padding:0 14px;color:#fff}.compact-action{min-height:48px;padding:7px 13px;color:#fff}.title-section .pagebtn{min-height:44px;height:auto;padding:6px 10px}.title-pending{margin:0 0 10px;color:var(--muted);font-size:12px;line-height:1.4}.title-pending[hidden]{display:none}.custom-title-panel{margin-top:10px;padding:11px;background:#111219;border:1px solid #343747;border-radius:3px}.custom-title-panel.selected{border-color:var(--cyan);box-shadow:inset 3px 0 0 var(--cyan)}.custom-title-panel label{display:block;margin-bottom:6px;color:#f3efe4;font-size:12px;font-weight:600}.custom-title-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.custom-title-panel p{margin:6px 0 0;color:var(--muted);font-size:10px;line-height:1.35}.title-grid .choice{overflow-wrap:anywhere}
 .pager{display:flex;align-items:center;gap:7px}.pagebtn{border:1px solid #333648;background:#1b1c27;color:white;border-radius:6px;min-width:34px;height:32px;font-weight:600}.pagebtn:disabled{opacity:.35}.pagecount{font-size:11px;color:var(--muted);min-width:38px;text-align:center}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.grid3,.genre-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.genre-blend-control{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,1.4fr);gap:5px 10px;align-items:center;margin-top:11px;padding:10px 11px;background:#111219;border:1px solid #343747;border-radius:3px}.genre-blend-control label{color:#f3efe4;font-family:"Oswald",sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase}.genre-blend-control label small{margin-left:5px;color:var(--muted);font:500 9px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.genre-blend-control select{min-width:0;width:100%;min-height:44px;padding:8px 32px 8px 10px;border:1px solid #4a4d5d;border-radius:3px;background:#0f1017;color:#fff;font:600 14px/1.2 "Oswald",sans-serif;letter-spacing:.6px;text-transform:uppercase}.genre-blend-control select:focus{outline:2px solid var(--cyan);outline-offset:2px}.genre-blend-control select:disabled{color:var(--muted);opacity:.7}.genre-blend-control p{grid-column:1/-1;margin:0;color:var(--muted);font-size:10px;line-height:1.35}
-@media(max-width:420px){.genre-blend-control{grid-template-columns:1fr}.genre-blend-control p{grid-column:1}}
+.genre-blend-control{margin-top:8px}.genre-blend-control[hidden]{display:none}.genre-blend-label{display:flex;align-items:baseline;gap:6px;margin:0 1px 5px;color:#f3efe4;font-family:"Oswald",sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase}.genre-blend-label small{color:var(--muted);font:500 9px/1.2 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:1px}.genre-blend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:5px}.choice.genre-blend-choice{min-height:34px;padding:6px 7px;font-family:"Oswald",sans-serif;font-size:11px;line-height:1.1;letter-spacing:.55px;text-transform:uppercase}.choice.genre-blend-choice:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+@media(max-width:520px){.genre-blend-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .choice{min-height:44px;padding:10px 8px;border-radius:3px;border:1px solid #3a3d4d;background:#1b1c27;color:#fff;font-weight:600;font-size:14px;line-height:1.14;letter-spacing:.2px}.choice.selected{background:#241f10;border-color:var(--yellow);border-left:4px solid var(--yellow);color:#fff;font-weight:600}
 .choice small{display:block;margin-top:4px;color:var(--muted);font-size:10px}.choice.selected small{color:#c9b877}
 .choice .choice-hint{color:#d8dcef;font-size:9px;letter-spacing:.7px;text-transform:uppercase}.choice.selected .choice-hint{color:#f1dda0}
@@ -471,7 +471,7 @@ b,strong{font-weight:600}
   <div id="slate" hidden aria-hidden="true" aria-busy="false">
   <div class="slate-stage" id="projectStage">
   <h2 class="slate-stage-title" id="projectHeading" tabindex="-1">Project</h2>
-  <section class="section"><div class="sectionhead"><h3 id="genreHeading" tabindex="-1">Primary Genre</h3><div class="pager"><button class="pagebtn reroll" id="genreReroll"><span class="rricon">&#8635;</span>&nbsp;<span class="rrlabel"></span></button></div></div><div class="grid2 genre-grid" id="genreGrid"></div><p class="reroll-status" id="genreRerollStatus" hidden></p><div class="genre-blend-control"><label for="genreBlendSelect">Genre Blend <small>Optional</small></label><select id="genreBlendSelect" aria-describedby="genreBlendHelp" disabled><option>Choose a Primary Genre</option></select><p id="genreBlendHelp">Keep the film pure or add one compatible creative influence.</p></div></section>
+  <section class="section"><div class="sectionhead"><h3 id="genreHeading" tabindex="-1">Primary Genre</h3><div class="pager"><button class="pagebtn reroll" id="genreReroll"><span class="rricon">&#8635;</span>&nbsp;<span class="rrlabel"></span></button></div></div><div class="grid2 genre-grid" id="genreGrid"></div><p class="reroll-status" id="genreRerollStatus" hidden></p><div class="genre-blend-control" id="genreBlendControl" hidden><div class="genre-blend-label" id="genreBlendLabel">Genre Blend <small>Optional</small></div><div class="genre-blend-grid" id="genreBlendGrid" role="group" aria-labelledby="genreBlendLabel"></div></div></section>
   <section class="section"><div class="sectionhead"><h3>Movie type</h3></div><div class="grid2" id="typeGrid"></div><div class="selectedcost"><span>Rights / development cost</span><b id="rightsCost"></b></div></section>
   <section class="section"><div class="sectionhead"><h3>Production scale</h3></div><div class="grid3" id="budgetGrid"></div></section>
   </div>
@@ -601,7 +601,7 @@ b,strong{font-weight:600}
 /* ---- src/data/talent-expansion.js ---- */
 // Generated from tools/data/talent-expansion-repaired.csv.
 // Do not edit by hand; regenerate with tools/talent-role-suitability.py --write.
-const TALENT_EXPANSION_FREEZE_SHA256="21f23607a733e874454056546c69aac03c4522e9298506378131e00e977fc17e";
+const TALENT_EXPANSION_FREEZE_SHA256="333b168b5d216498ce6dc29ab81d85086497210f49d546fbc041a7ab26010914";
 const TALENT_CORE_REMOVAL_ROWS=Object.freeze([
   Object.freeze({"year":"1975","role":"actor","name":"Harrison Ford"}),
   Object.freeze({"year":"1975","role":"actress","name":"Jessica Lange"}),
@@ -638,6 +638,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Alan Arkin","salary":0.25,"power":1.08,"tier":"C"},
       {"name":"Anthony Zerbe","salary":0.25,"power":1.08,"tier":"C"},
       {"name":"Anton Diffring","salary":0.55,"power":1.17,"tier":"B"},
+      {"name":"Bill McKinney","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"Bruce Davison","salary":0.2,"power":1.04,"tier":"C"},
       {"name":"Bruce Dern","salary":0.55,"power":1.17,"tier":"B"},
       {"name":"Burt Lancaster","salary":0.55,"power":1.17,"tier":"B"},
@@ -661,8 +662,8 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"James Woods","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"John Cazale","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"John Cleese","salary":0.2,"power":1.03,"tier":"C"},
-      {"name":"John Landis","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"Kirk Douglas","salary":0.5,"power":1.15,"tier":"B"},
+      {"name":"Kurt Russell","salary":0.4,"power":1.12,"tier":"B"},
       {"name":"Mako","salary":0.2,"power":1.03,"tier":"C"},
       {"name":"Michael Lerner","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"Mitchell Ryan","salary":0.08,"power":0.97,"tier":"Indie"},
@@ -673,7 +674,6 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Richard Attenborough","salary":0.5,"power":1.16,"tier":"B"},
       {"name":"Richard Bakalyan","salary":0.25,"power":1.08,"tier":"C"},
       {"name":"Roddy McDowall","salary":0.55,"power":1.17,"tier":"B"},
-      {"name":"Roman Polanski","salary":0.4,"power":1.12,"tier":"B"},
       {"name":"Sammo Hung","salary":0.25,"power":1.08,"tier":"C"},
       {"name":"Sean Connery","salary":0.5,"power":1.16,"tier":"B"},
       {"name":"Slim Pickens","salary":0.6,"power":1.18,"tier":"B"},
@@ -1507,10 +1507,10 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Ken Lo","salary":3.55,"power":1.05,"tier":"C"},
       {"name":"Lanny Flaherty","salary":3.65,"power":1.05,"tier":"C"},
       {"name":"Lee Byung-hun","salary":1.5,"power":0.98,"tier":"Indie"},
-      {"name":"M. Night Shyamalan","salary":1.5,"power":0.98,"tier":"Indie"},
       {"name":"Macaulay Culkin","salary":4.0,"power":1.06,"tier":"C"},
       {"name":"Martin Donovan","salary":3.45,"power":1.05,"tier":"C"},
       {"name":"Martin Landau","salary":8.3,"power":1.14,"tier":"B"},
+      {"name":"Michael Gaston","salary":1.5,"power":0.98,"tier":"Indie"},
       {"name":"Michael Madsen","salary":12.0,"power":1.2,"tier":"B"},
       {"name":"Michael Rispoli","salary":1.5,"power":0.98,"tier":"Indie"},
       {"name":"Nathan Lane","salary":4.0,"power":1.06,"tier":"C"},
@@ -2402,6 +2402,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Colin Firth","salary":12.0,"power":1.18,"tier":"B"},
       {"name":"Colin Quinn","salary":8.0,"power":1.14,"tier":"B"},
       {"name":"Danny Glover","salary":12.0,"power":1.18,"tier":"B"},
+      {"name":"David Jensen","salary":4.0,"power":1.08,"tier":"C"},
       {"name":"David Oyelowo","salary":11.2,"power":1.18,"tier":"B"},
       {"name":"Dick Van Dyke","salary":8.0,"power":1.14,"tier":"B"},
       {"name":"Dolph Lundgren","salary":12.0,"power":1.18,"tier":"B"},
@@ -2439,7 +2440,6 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Sebastian Koch","salary":10.2,"power":1.18,"tier":"B"},
       {"name":"Stephen Fry","salary":8.0,"power":1.17,"tier":"B"},
       {"name":"Tchéky Karyo","salary":11.2,"power":1.18,"tier":"B"},
-      {"name":"Terry Gilliam","salary":3.0,"power":1.05,"tier":"C"},
       {"name":"Terry Notary","salary":4.0,"power":1.07,"tier":"C"},
       {"name":"Victor McGuire","salary":8.0,"power":1.14,"tier":"B"},
       {"name":"Vince Vaughn","salary":8.0,"power":1.15,"tier":"B"},
@@ -2764,6 +2764,8 @@ const TALENT_CORE_REPAIR_ROWS=Object.freeze([
   Object.freeze({"year":"2023","role":"writer","name":"Eric Roth","originalSalary":0.8,"originalPower":1.06,"originalTier":"C","salary":2.0,"power":1.16,"tier":"B"}),
 ]);
 const TALENT_RELEVANCE_LEGACY_ROWS=Object.freeze([
+  Object.freeze({"year":"1975","role":"actor","currentName":"Bill McKinney","legacy":{"name":"John Landis","salary":0.08,"power":0.97,"tier":"Indie"}}),
+  Object.freeze({"year":"1975","role":"actor","currentName":"Kurt Russell","legacy":{"name":"Roman Polanski","salary":0.4,"power":1.12,"tier":"B"}}),
   Object.freeze({"year":"1975","role":"actor","currentName":"Richard Bakalyan","legacy":{"name":"Martin Scorsese","salary":0.2,"power":1.02,"tier":"C"}}),
   Object.freeze({"year":"1980","role":"actor","currentName":"Percy Herbert","legacy":{"name":"Percy Herbert","salary":0.95,"power":1.16,"tier":"B"}}),
   Object.freeze({"year":"1980","role":"actor","currentName":"Peter Brocco","legacy":{"name":"Peter Brocco","salary":0.85,"power":1.14,"tier":"B"}}),
@@ -2774,6 +2776,7 @@ const TALENT_RELEVANCE_LEGACY_ROWS=Object.freeze([
   Object.freeze({"year":"1992","role":"actor","currentName":"Iain Cuthbertson","legacy":{"name":"Iain Cuthbertson","salary":4.0,"power":1.14,"tier":"B"}}),
   Object.freeze({"year":"1992","role":"actor","currentName":"Marc Lawrence","legacy":{"name":"Marc Lawrence","salary":4.2,"power":1.14,"tier":"B"}}),
   Object.freeze({"year":"1992","role":"actor","currentName":"Vincent Schiavelli","legacy":{"name":"Vincent Schiavelli","salary":5.8,"power":1.18,"tier":"B"}}),
+  Object.freeze({"year":"1997","role":"actor","currentName":"Michael Gaston","legacy":{"name":"M. Night Shyamalan","salary":1.5,"power":0.98,"tier":"Indie"}}),
   Object.freeze({"year":"1997","role":"actor","currentName":"Richard Widmark","legacy":{"name":"Richard Widmark","salary":7.45,"power":1.12,"tier":"B"}}),
   Object.freeze({"year":"1997","role":"actor","currentName":"Xander Berkeley","legacy":{"name":"Robert W. Castle","salary":7.0,"power":1.1,"tier":"B"}}),
   Object.freeze({"year":"1997","role":"director","currentName":"Akira Kurosawa","legacy":{"name":"Akira Kurosawa","salary":4.15,"power":1.14,"tier":"B"}}),
@@ -2791,11 +2794,11 @@ const TALENT_RELEVANCE_LEGACY_ROWS=Object.freeze([
   Object.freeze({"year":"2012","role":"director","currentName":"James Ivory","legacy":{"name":"James Ivory","salary":4.75,"power":1.14,"tier":"B"}}),
   Object.freeze({"year":"2012","role":"writer","currentName":"Sergio Donati","legacy":{"name":"Sergio Donati","salary":1.25,"power":1.1,"tier":"B"}}),
   Object.freeze({"year":"2018","role":"actor","currentName":"Al Sapienza","legacy":{"name":"Al Sapienza","salary":8.85,"power":1.18,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actor","currentName":"David Jensen","legacy":{"name":"Terry Gilliam","salary":8.0,"power":1.14,"tier":"B"}}),
   Object.freeze({"year":"2018","role":"actor","currentName":"George Takei","legacy":{"name":"George Takei","salary":8.0,"power":1.16,"tier":"B"}}),
   Object.freeze({"year":"2018","role":"actor","currentName":"Gregg Henry","legacy":{"name":"Gregg Henry","salary":8.0,"power":1.14,"tier":"B"}}),
   Object.freeze({"year":"2018","role":"actor","currentName":"Lloyd Kaufman","legacy":{"name":"Lloyd Kaufman","salary":11.4,"power":1.18,"tier":"B"}}),
   Object.freeze({"year":"2018","role":"actor","currentName":"Nicholas Woodeson","legacy":{"name":"Nicholas Woodeson","salary":8.0,"power":1.14,"tier":"B"}}),
-  Object.freeze({"year":"2018","role":"actor","currentName":"Terry Gilliam","legacy":{"name":"Terry Gilliam","salary":8.0,"power":1.14,"tier":"B"}}),
   Object.freeze({"year":"2018","role":"actress","currentName":"Julie Christie","legacy":{"name":"Julie Christie","salary":8.15,"power":1.15,"tier":"B"}}),
   Object.freeze({"year":"2018","role":"writer","currentName":"Christopher Markus & Stephen McFeely","legacy":{"name":"Christopher Markus & Stephen McFeely","salary":3.0,"power":1.22,"tier":"A"}}),
   Object.freeze({"year":"2018","role":"writer","currentName":"Dario Argento","legacy":{"name":"Dario Argento","salary":1.2,"power":1.1,"tier":"B"}}),
@@ -4634,7 +4637,7 @@ function titleContextReady(){return!!state.selected.genre&&!!state.selected.type
 function restoreChoiceFocus(hostId,value,enabled){if(!enabled)return;const host=$(hostId),target=host&&[...host.querySelectorAll("button")].find(button=>button.dataset.choiceValue===String(value));if(target)focusProjectWithoutScroll(target)}
 function renderChoices(hostId,items,key,formatter,animate){const host=$(hostId);if(!host)return;host.innerHTML="";items.forEach((item,i)=>{const val=typeof item==="string"?item:item.name,selected=state.selected[key]===val||state.selected[key]?.name===val;const b=document.createElement("button");b.type="button";b.dataset.choiceValue=val;b.className="choice"+(selected?" selected":"")+(animate?" dealt":"");b.setAttribute("aria-pressed",selected?"true":"false");if(animate)b.style.animationDelay=(i*35)+"ms";if(formatter)b.innerHTML=formatter(item);else b.textContent=val;b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected[key]=item;if(key==="title")state.titleMode="generated";if(key==="genre"){state.selected.secondaryGenre=null;if(state.selected.type==="Sequel"&&!franchiseActive(state.franchises[item]))state.selected.type=null;resetGeneratedTitleContext();if(titleContextReady())generateTitles()}refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus(hostId,val,restore)};host.appendChild(b)})}
 function renderGenres(animate){renderChoices("genreGrid",state.genreOffer,"genre",gn=>{const fr=state.franchises[gn];if(!fr)return gn;const dots=fr.health>=60?3:fr.health>=30?2:1,dotcol=dots===3?"var(--cyan)":dots===2?"var(--yellow)":"var(--red)",safeTitle=escapeHtml(fr.title);return gn+`<small>${safeTitle} · Hype <span class="frdots" style="color:${dotcol}">${"●".repeat(dots)}${"○".repeat(3-dots)}</span></small>`},animate);updateGenreRerollBtn()}
-function renderGenreBlend(){const select=$("genreBlendSelect"),primary=state.selected.genre;if(!select)return;select.textContent="";if(!primary){const option=document.createElement("option");option.value="";option.textContent="Choose a Primary Genre";select.appendChild(option);select.disabled=true;return}const secondary=normalizeSecondaryGenre(primary,state.selected.secondaryGenre);state.selected.secondaryGenre=secondary;for(const item of genreBlendOptions(primary)){const option=document.createElement("option");option.value=item.secondaryGenre||"";option.textContent=item.label;option.selected=item.secondaryGenre===secondary;select.appendChild(option)}select.disabled=false;select.onchange=()=>{const before=eventDependencySignature(state.event?.id);state.selected.secondaryGenre=normalizeSecondaryGenre(primary,select.value||null);resetGeneratedTitleContext();if(titleContextReady())generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();try{select.focus({preventScroll:true})}catch(error){select.focus()}}}
+function renderGenreBlend(){const control=$("genreBlendControl"),host=$("genreBlendGrid"),primary=state.selected.genre;if(!control||!host)return;host.replaceChildren();control.hidden=!primary;if(!primary)return;const secondary=normalizeSecondaryGenre(primary,state.selected.secondaryGenre);state.selected.secondaryGenre=secondary;for(const item of genreBlendOptions(primary)){const selected=item.secondaryGenre===secondary,b=document.createElement("button"),value=item.secondaryGenre||"";b.type="button";b.className="choice genre-blend-choice"+(selected?" selected":"");b.dataset.choiceValue=value;b.textContent=item.label;b.setAttribute("aria-label",item.label);b.setAttribute("aria-pressed",selected?"true":"false");b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.secondaryGenre=normalizeSecondaryGenre(primary,item.secondaryGenre);resetGeneratedTitleContext();if(titleContextReady())generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus("genreBlendGrid",value,restore)};host.appendChild(b)}}
 function renderTypes(){const host=$("typeGrid"),fr=state.selected.genre?state.franchises[state.selected.genre]:null,active=franchiseActive(fr);host.innerHTML="";Object.keys(TYPES).forEach(tp=>{const locked=tp==="Sequel"&&!active;const b=document.createElement("button");b.type="button";b.disabled=locked;b.dataset.choiceValue=tp;b.className="choice"+(state.selected.type===tp?" selected":"");b.setAttribute("aria-pressed",state.selected.type===tp?"true":"false");b.textContent=tp;if(tp==="Sequel"){const note=document.createElement("small");note.textContent=locked?(fr?`franchise shelved at ${Math.round(fr.health)} health`:"needs a hit in this genre"):`${fr.title} · ${Math.round(fr.health)} health`;b.appendChild(note)}b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.type=tp;resetGeneratedTitleContext();generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus("typeGrid",tp,restore)};host.appendChild(b)});if(state.selected.type==="Sequel"&&!active){const before=eventDependencySignature(state.event?.id);state.selected.type=null;resetGeneratedTitleContext();refreshEventAfterPackageChange(before)}}
 function renderWindows(){const descriptions={Winter:"Quieter early-year corridor",Summer:"Tentpole season",Fall:"Prestige and awards season",Holiday:"Family and event season"};renderChoices("windowGrid",Object.keys(WINDOWS),"window",w=>w+`<small>${descriptions[w]}</small>`)}
 function renderMarketing(){const host=$("marketingGrid");host.innerHTML="";MKT_TIERS.forEach(t=>{const selected=state.selected.marketing===t.key,b=document.createElement("button");b.type="button";b.dataset.choiceValue=t.key;b.className="choice"+(selected?" selected":"");b.setAttribute("aria-pressed",selected?"true":"false");b.innerHTML=t.key+"<small>"+t.blurb+"</small>";b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.marketing=t.key;refreshEventAfterPackageChange(before);renderMarketing();renderEvent();updateCosts();restoreChoiceFocus("marketingGrid",t.key,restore)};host.appendChild(b)});const tally=state.rolled?livePackageTally():null,t=MKT_TIERS.find(x=>x.key===state.selected.marketing);$("marketingLabel").textContent=tally&&t?money(tally.marketing):"Choose one";$("marketingDesc").textContent=t?Math.round(t.pct*100)+"% of known production":"Select a marketing push"}
