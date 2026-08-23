@@ -599,7 +599,7 @@ b,strong{font-weight:600}
 /* ---- src/data/talent-expansion.js ---- */
 // Generated from tools/data/talent-expansion-repaired.csv.
 // Do not edit by hand; regenerate with tools/talent-role-suitability.py --write.
-const TALENT_EXPANSION_FREEZE_SHA256="1339c2752c6694da604c87770cd9f8aa058cd7a6a5fa5555ba0a56b6e4599e58";
+const TALENT_EXPANSION_FREEZE_SHA256="21f23607a733e874454056546c69aac03c4522e9298506378131e00e977fc17e";
 const TALENT_CORE_REMOVAL_ROWS=Object.freeze([
   Object.freeze({"year":"1975","role":"actor","name":"Harrison Ford"}),
   Object.freeze({"year":"1975","role":"actress","name":"Jessica Lange"}),
@@ -662,7 +662,6 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"John Landis","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"Kirk Douglas","salary":0.5,"power":1.15,"tier":"B"},
       {"name":"Mako","salary":0.2,"power":1.03,"tier":"C"},
-      {"name":"Martin Scorsese","salary":0.2,"power":1.02,"tier":"C"},
       {"name":"Michael Lerner","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"Mitchell Ryan","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"Patrick Magee","salary":0.45,"power":1.15,"tier":"B"},
@@ -670,6 +669,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Paul Sorvino","salary":0.08,"power":0.97,"tier":"Indie"},
       {"name":"Pedro Armendáriz Jr.","salary":0.2,"power":1.05,"tier":"C"},
       {"name":"Richard Attenborough","salary":0.5,"power":1.16,"tier":"B"},
+      {"name":"Richard Bakalyan","salary":0.25,"power":1.08,"tier":"C"},
       {"name":"Roddy McDowall","salary":0.55,"power":1.17,"tier":"B"},
       {"name":"Roman Polanski","salary":0.4,"power":1.12,"tier":"B"},
       {"name":"Sammo Hung","salary":0.25,"power":1.08,"tier":"C"},
@@ -845,8 +845,8 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Marc McClure","salary":0.15,"power":0.97,"tier":"Indie"},
       {"name":"Mickey Rourke","salary":0.15,"power":0.97,"tier":"Indie"},
       {"name":"Morgan Paull","salary":0.35,"power":1.03,"tier":"C"},
-      {"name":"Percy Herbert","salary":0.95,"power":1.16,"tier":"B"},
-      {"name":"Peter Brocco","salary":0.85,"power":1.14,"tier":"B"},
+      {"name":"Percy Herbert","salary":0.3,"power":1.02,"tier":"C"},
+      {"name":"Peter Brocco","salary":0.3,"power":1.02,"tier":"C"},
       {"name":"Randy Quaid","salary":1.0,"power":1.16,"tier":"B"},
       {"name":"Richard Gere","salary":0.15,"power":0.97,"tier":"Indie"},
       {"name":"Richard Lawson","salary":0.4,"power":1.05,"tier":"C"},
@@ -869,7 +869,6 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Blythe Danner","salary":0.3,"power":1.05,"tier":"C"},
       {"name":"Brigitte Fossey","salary":0.65,"power":1.13,"tier":"B"},
       {"name":"Brooke Shields","salary":0.1,"power":0.97,"tier":"Indie"},
-      {"name":"Catherine Scorsese","salary":0.25,"power":1.04,"tier":"C"},
       {"name":"Cathleen Nesbitt","salary":0.8,"power":1.17,"tier":"B"},
       {"name":"Cloris Leachman","salary":0.8,"power":1.18,"tier":"B"},
       {"name":"Colleen Camp","salary":0.35,"power":1.06,"tier":"C"},
@@ -894,6 +893,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Nancy Kyes","salary":0.1,"power":0.97,"tier":"Indie"},
       {"name":"Patti D'Arbanville","salary":0.35,"power":1.06,"tier":"C"},
       {"name":"Penelope Milford","salary":0.35,"power":1.06,"tier":"C"},
+      {"name":"Sally Kirkland","salary":0.35,"power":1.06,"tier":"C"},
       {"name":"Sarah Douglas","salary":0.3,"power":1.05,"tier":"C"},
       {"name":"Shelley Winters","salary":0.8,"power":1.18,"tier":"B"},
       {"name":"Susannah York","salary":0.8,"power":1.18,"tier":"B"},
@@ -968,7 +968,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Charles Bronson","salary":3.9,"power":1.18,"tier":"B"},
       {"name":"Charles Durning","salary":5.8,"power":1.31,"tier":"A"},
       {"name":"Chris Mulkey","salary":1.5,"power":1.08,"tier":"C"},
-      {"name":"Christian Marquand","salary":2.8,"power":1.14,"tier":"B"},
+      {"name":"Christian Marquand","salary":1.0,"power":1.02,"tier":"C"},
       {"name":"Christopher Plummer","salary":3.9,"power":1.18,"tier":"B"},
       {"name":"David Lander","salary":2.5,"power":1.12,"tier":"B"},
       {"name":"David Suchet","salary":0.5,"power":0.98,"tier":"Indie"},
@@ -1303,7 +1303,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Adam Sandler","salary":0.75,"power":0.98,"tier":"Indie"},
       {"name":"Alexei Sayle","salary":1.6,"power":1.05,"tier":"C"},
       {"name":"Benicio del Toro","salary":0.8,"power":0.98,"tier":"Indie"},
-      {"name":"Burt Lancaster","salary":4.8,"power":1.16,"tier":"B"},
+      {"name":"Burt Lancaster","salary":1.5,"power":1.05,"tier":"C"},
       {"name":"Campbell Scott","salary":0.8,"power":0.98,"tier":"Indie"},
       {"name":"Charles Napier","salary":5.1,"power":1.16,"tier":"B"},
       {"name":"Chris Cooper","salary":0.8,"power":0.98,"tier":"Indie"},
@@ -1318,7 +1318,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Elijah Wood","salary":0.8,"power":0.98,"tier":"Indie"},
       {"name":"Graham Greene","salary":1.9,"power":1.05,"tier":"C"},
       {"name":"Harvey Keitel","salary":6.0,"power":1.18,"tier":"B"},
-      {"name":"Iain Cuthbertson","salary":4.0,"power":1.14,"tier":"B"},
+      {"name":"Iain Cuthbertson","salary":1.5,"power":1.05,"tier":"C"},
       {"name":"Jeff Bridges","salary":5.8,"power":1.18,"tier":"B"},
       {"name":"Joe Pesci","salary":5.55,"power":1.17,"tier":"B"},
       {"name":"John C. Reilly","salary":0.8,"power":0.98,"tier":"Indie"},
@@ -1330,7 +1330,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Loren Dean","salary":0.8,"power":0.98,"tier":"Indie"},
       {"name":"Luke Perry","salary":0.8,"power":0.98,"tier":"Indie"},
       {"name":"Macaulay Culkin","salary":0.8,"power":0.98,"tier":"Indie"},
-      {"name":"Marc Lawrence","salary":4.2,"power":1.14,"tier":"B"},
+      {"name":"Marc Lawrence","salary":1.5,"power":1.05,"tier":"C"},
       {"name":"Marshall Bell","salary":2.0,"power":1.06,"tier":"C"},
       {"name":"Matt Craven","salary":1.8,"power":1.05,"tier":"C"},
       {"name":"Matt Malloy","salary":0.8,"power":0.98,"tier":"Indie"},
@@ -1354,7 +1354,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Tom Sizemore","salary":2.0,"power":1.06,"tier":"C"},
       {"name":"Tony Todd","salary":1.8,"power":1.05,"tier":"C"},
       {"name":"Val Kilmer","salary":2.0,"power":1.05,"tier":"C"},
-      {"name":"Vincent Schiavelli","salary":5.8,"power":1.18,"tier":"B"},
+      {"name":"Vincent Schiavelli","salary":1.5,"power":1.05,"tier":"C"},
       {"name":"Vondie Curtis-Hall","salary":0.8,"power":0.98,"tier":"Indie"},
       {"name":"Xander Berkeley","salary":5.7,"power":1.17,"tier":"B"}
     ]),
@@ -1520,9 +1520,8 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Ralph Fiennes","salary":1.5,"power":0.98,"tier":"Indie"},
       {"name":"Richard Gere","salary":10.45,"power":1.18,"tier":"B"},
       {"name":"Richard Harris","salary":7.3,"power":1.11,"tier":"B"},
-      {"name":"Richard Widmark","salary":7.45,"power":1.12,"tier":"B"},
+      {"name":"Richard Widmark","salary":3.0,"power":1.05,"tier":"C"},
       {"name":"Robert Duvall","salary":12.0,"power":1.2,"tier":"B"},
-      {"name":"Robert W. Castle","salary":7.0,"power":1.1,"tier":"B"},
       {"name":"Ron Livingston","salary":1.5,"power":0.98,"tier":"Indie"},
       {"name":"Rory Cochrane","salary":3.35,"power":1.05,"tier":"C"},
       {"name":"Ryan Phillippe","salary":1.5,"power":0.98,"tier":"Indie"},
@@ -1538,7 +1537,8 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Vincent Gallo","salary":3.85,"power":1.06,"tier":"C"},
       {"name":"William Fichtner","salary":1.5,"power":0.98,"tier":"Indie"},
       {"name":"Winston Chao","salary":1.5,"power":0.98,"tier":"Indie"},
-      {"name":"Wolfgang Bodison","salary":1.5,"power":0.98,"tier":"Indie"}
+      {"name":"Wolfgang Bodison","salary":1.5,"power":0.98,"tier":"Indie"},
+      {"name":"Xander Berkeley","salary":12.0,"power":1.2,"tier":"B"}
     ]),
     actress:Object.freeze([
       {"name":"Alanna Ubach","salary":5.0,"power":1.08,"tier":"C"},
@@ -1601,7 +1601,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Valeria Golino","salary":8.0,"power":1.14,"tier":"B"}
     ]),
     director:Object.freeze([
-      {"name":"Akira Kurosawa","salary":4.15,"power":1.14,"tier":"B"},
+      {"name":"Akira Kurosawa","salary":1.5,"power":1.02,"tier":"C"},
       {"name":"Andy Tennant","salary":1.0,"power":0.98,"tier":"Indie"},
       {"name":"Antonio Margheriti","salary":4.1,"power":1.14,"tier":"B"},
       {"name":"Bill Condon","salary":1.85,"power":1.04,"tier":"C"},
@@ -1653,7 +1653,7 @@ const TALENT_EXPANSION=Object.freeze({
     writer:Object.freeze([
       {"name":"Adam Brooks","salary":0.3,"power":0.98,"tier":"Indie"},
       {"name":"Adam Rifkin","salary":0.8,"power":1.06,"tier":"C"},
-      {"name":"Adriano Bolzoni","salary":1.2,"power":1.11,"tier":"B"},
+      {"name":"Adriano Bolzoni","salary":0.6,"power":1.04,"tier":"C"},
       {"name":"Amy Heckerling","salary":0.6,"power":1.04,"tier":"C"},
       {"name":"Andrew Davies","salary":0.6,"power":1.04,"tier":"C"},
       {"name":"Andy Breckman","salary":0.8,"power":1.06,"tier":"C"},
@@ -1718,7 +1718,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Elias Koteas","salary":9.55,"power":1.18,"tier":"B"},
       {"name":"Ewan McGregor","salary":2.0,"power":1.04,"tier":"C"},
       {"name":"Ewen Bremner","salary":2.0,"power":1.04,"tier":"C"},
-      {"name":"G. D. Spradlin","salary":7.45,"power":1.15,"tier":"B"},
+      {"name":"G. D. Spradlin","salary":2.0,"power":1.04,"tier":"C"},
       {"name":"Gabriel Byrne","salary":10.0,"power":1.18,"tier":"B"},
       {"name":"Gerard Butler","salary":1.0,"power":0.97,"tier":"Indie"},
       {"name":"Hayden Christensen","salary":1.0,"power":0.97,"tier":"Indie"},
@@ -1831,7 +1831,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"David Fincher","salary":1.1,"power":1.05,"tier":"C"},
       {"name":"Dean Parisot","salary":0.55,"power":0.97,"tier":"Indie"},
       {"name":"Dennis Dugan","salary":1.9,"power":1.07,"tier":"C"},
-      {"name":"Dino Risi","salary":4.75,"power":1.19,"tier":"B"},
+      {"name":"Dino Risi","salary":0.2,"power":1.02,"tier":"C"},
       {"name":"Fatih Akin","salary":0.5,"power":0.96,"tier":"Indie"},
       {"name":"Gaspar Noé","salary":0.55,"power":0.97,"tier":"Indie"},
       {"name":"George Tillman, Jr.","salary":0.55,"power":0.96,"tier":"Indie"},
@@ -1879,7 +1879,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Shinya Tsukamoto","salary":0.6,"power":1.06,"tier":"C"},
       {"name":"Sooraj R. Barjatya","salary":0.6,"power":1.06,"tier":"C"},
       {"name":"Tamara Jenkins","salary":0.2,"power":0.96,"tier":"Indie"},
-      {"name":"Ugo Pirro","salary":1.25,"power":1.14,"tier":"B"},
+      {"name":"Ugo Pirro","salary":0.6,"power":1.06,"tier":"C"},
       {"name":"Émile Gaudreault","salary":0.6,"power":1.06,"tier":"C"}
     ]),
   }),
@@ -1903,7 +1903,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"David Oyelowo","salary":0.75,"power":0.97,"tier":"Indie"},
       {"name":"Dean Stockwell","salary":11.4,"power":1.16,"tier":"B"},
       {"name":"Don Duong","salary":3.05,"power":1.04,"tier":"C"},
-      {"name":"Ed Lauter","salary":11.45,"power":1.16,"tier":"B"},
+      {"name":"Ed Lauter","salary":2.0,"power":1.02,"tier":"C"},
       {"name":"Eddie Marsan","salary":2.95,"power":1.04,"tier":"C"},
       {"name":"Eric Idle","salary":6.0,"power":1.12,"tier":"B"},
       {"name":"Eric Roberts","salary":12.0,"power":1.16,"tier":"B"},
@@ -1916,7 +1916,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Horatio Sanz","salary":2.4,"power":1.03,"tier":"C"},
       {"name":"Hugh Jackman","salary":4.0,"power":1.07,"tier":"C"},
       {"name":"Héctor Elizondo","salary":11.0,"power":1.16,"tier":"B"},
-      {"name":"Jack Warden","salary":11.6,"power":1.16,"tier":"B"},
+      {"name":"Jack Warden","salary":2.0,"power":1.02,"tier":"C"},
       {"name":"Jacques Dutronc","salary":10.45,"power":1.16,"tier":"B"},
       {"name":"James Morrison","salary":3.95,"power":1.06,"tier":"C"},
       {"name":"Jason Flemyng","salary":12.0,"power":1.16,"tier":"B"},
@@ -2025,7 +2025,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Robert Luketic","salary":1.0,"power":0.97,"tier":"Indie"},
       {"name":"Rod Lurie","salary":1.0,"power":0.97,"tier":"Indie"},
       {"name":"Santiago Segura","salary":2.5,"power":1.08,"tier":"C"},
-      {"name":"Sidney Lumet","salary":5.4,"power":1.18,"tier":"B"},
+      {"name":"Sidney Lumet","salary":2.0,"power":1.06,"tier":"C"},
       {"name":"Simon Wells","salary":1.0,"power":0.97,"tier":"Indie"},
       {"name":"Steve Carr","salary":1.0,"power":0.97,"tier":"Indie"},
       {"name":"Teddy Chan","salary":2.5,"power":1.08,"tier":"C"},
@@ -2183,7 +2183,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Laeta Kalogridis","salary":0.3,"power":0.96,"tier":"Indie"},
       {"name":"Luc Besson","salary":1.5,"power":1.16,"tier":"B"},
       {"name":"Lucile Hadžihalilović","salary":0.3,"power":0.96,"tier":"Indie"},
-      {"name":"Mario Monicelli","salary":1.5,"power":1.15,"tier":"B"},
+      {"name":"Mario Monicelli","salary":0.6,"power":1.06,"tier":"C"},
       {"name":"Mark Bomback","salary":0.8,"power":1.06,"tier":"C"},
       {"name":"Mark Fergus","salary":0.3,"power":0.96,"tier":"Indie"},
       {"name":"Massy Tadjedin","salary":0.3,"power":0.96,"tier":"Indie"},
@@ -2248,10 +2248,10 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Tim Guinee","salary":9.0,"power":1.14,"tier":"B"},
       {"name":"Timothy Spall","salary":10.0,"power":1.2,"tier":"B"},
       {"name":"Toby Jones","salary":10.0,"power":1.2,"tier":"B"},
-      {"name":"Tom Skerritt","salary":9.75,"power":1.19,"tier":"B"},
+      {"name":"Tom Skerritt","salary":4.0,"power":1.05,"tier":"C"},
       {"name":"Treva Etienne","salary":4.0,"power":1.05,"tier":"C"},
       {"name":"Tzi Ma","salary":8.3,"power":1.13,"tier":"B"},
-      {"name":"Umberto Orsini","salary":8.45,"power":1.13,"tier":"B"},
+      {"name":"Umberto Orsini","salary":4.0,"power":1.05,"tier":"C"},
       {"name":"Victor Garber","salary":8.0,"power":1.12,"tier":"B"},
       {"name":"Wayne Duvall","salary":8.15,"power":1.12,"tier":"B"},
       {"name":"Werner Daehn","salary":4.0,"power":1.05,"tier":"C"},
@@ -2320,8 +2320,8 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Francis Ford Coppola","salary":4.65,"power":1.13,"tier":"B"},
       {"name":"Gus Van Sant","salary":6.0,"power":1.18,"tier":"B"},
       {"name":"Harald Zwart","salary":2.5,"power":1.06,"tier":"C"},
-      {"name":"Jacques Rivette","salary":5.2,"power":1.16,"tier":"B"},
-      {"name":"James Ivory","salary":4.75,"power":1.14,"tier":"B"},
+      {"name":"Jacques Rivette","salary":2.0,"power":1.02,"tier":"C"},
+      {"name":"James Ivory","salary":2.0,"power":1.02,"tier":"C"},
       {"name":"Joe Carnahan","salary":2.15,"power":1.03,"tier":"C"},
       {"name":"Joel Coen","salary":6.0,"power":1.18,"tier":"B"},
       {"name":"John Curran","salary":2.0,"power":1.02,"tier":"C"},
@@ -2370,7 +2370,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Pam Brady","salary":0.7,"power":1.05,"tier":"C"},
       {"name":"Randall Miller","salary":0.75,"power":1.05,"tier":"C"},
       {"name":"Robin Swicord","salary":1.5,"power":1.12,"tier":"B"},
-      {"name":"Sergio Donati","salary":1.25,"power":1.1,"tier":"B"},
+      {"name":"Sergio Donati","salary":0.7,"power":1.04,"tier":"C"},
       {"name":"Stanley Tong","salary":1.2,"power":1.1,"tier":"B"},
       {"name":"Steve Koren","salary":0.8,"power":1.06,"tier":"C"},
       {"name":"Steven Zaillian","salary":3.0,"power":1.23,"tier":"A"},
@@ -2383,7 +2383,7 @@ const TALENT_EXPANSION=Object.freeze({
   "2018":Object.freeze({
     actor:Object.freeze([
       {"name":"Adrian Scarborough","salary":8.0,"power":1.14,"tier":"B"},
-      {"name":"Al Sapienza","salary":8.85,"power":1.18,"tier":"B"},
+      {"name":"Al Sapienza","salary":3.0,"power":1.05,"tier":"C"},
       {"name":"Alon Abutbul","salary":8.0,"power":1.14,"tier":"B"},
       {"name":"Andy Lau","salary":12.0,"power":1.18,"tier":"B"},
       {"name":"Anthony Daniels","salary":8.0,"power":1.14,"tier":"B"},
@@ -2404,8 +2404,8 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Dick Van Dyke","salary":8.0,"power":1.14,"tier":"B"},
       {"name":"Dolph Lundgren","salary":12.0,"power":1.18,"tier":"B"},
       {"name":"Gene Jones","salary":4.0,"power":1.06,"tier":"C"},
-      {"name":"George Takei","salary":8.0,"power":1.16,"tier":"B"},
-      {"name":"Gregg Henry","salary":8.0,"power":1.14,"tier":"B"},
+      {"name":"George Takei","salary":3.0,"power":1.05,"tier":"C"},
+      {"name":"Gregg Henry","salary":3.0,"power":1.05,"tier":"C"},
       {"name":"Henry Lloyd-Hughes","salary":3.05,"power":1.05,"tier":"C"},
       {"name":"Hiroyuki Sanada","salary":8.0,"power":1.16,"tier":"B"},
       {"name":"Ian McKellen","salary":10.45,"power":1.18,"tier":"B"},
@@ -2420,13 +2420,13 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Kyle Chandler","salary":8.0,"power":1.16,"tier":"B"},
       {"name":"Lance Henriksen","salary":8.05,"power":1.18,"tier":"B"},
       {"name":"Lazar Ristovski","salary":10.0,"power":1.18,"tier":"B"},
-      {"name":"Lloyd Kaufman","salary":11.4,"power":1.18,"tier":"B"},
+      {"name":"Lloyd Kaufman","salary":3.0,"power":1.05,"tier":"C"},
       {"name":"Mark Hamill","salary":8.0,"power":1.16,"tier":"B"},
       {"name":"Martin Donovan","salary":8.0,"power":1.18,"tier":"B"},
       {"name":"Matthew Modine","salary":8.0,"power":1.18,"tier":"B"},
       {"name":"Matthias Schoenaerts","salary":11.1,"power":1.18,"tier":"B"},
       {"name":"Morgan Freeman","salary":12.0,"power":1.18,"tier":"B"},
-      {"name":"Nicholas Woodeson","salary":8.0,"power":1.14,"tier":"B"},
+      {"name":"Nicholas Woodeson","salary":3.0,"power":1.05,"tier":"C"},
       {"name":"Olivier Rabourdin","salary":12.0,"power":1.18,"tier":"B"},
       {"name":"Ralph Brown","salary":8.0,"power":1.15,"tier":"B"},
       {"name":"Ray Winstone","salary":10.5,"power":1.18,"tier":"B"},
@@ -2437,7 +2437,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Sebastian Koch","salary":10.2,"power":1.18,"tier":"B"},
       {"name":"Stephen Fry","salary":8.0,"power":1.17,"tier":"B"},
       {"name":"Tchéky Karyo","salary":11.2,"power":1.18,"tier":"B"},
-      {"name":"Terry Gilliam","salary":8.0,"power":1.14,"tier":"B"},
+      {"name":"Terry Gilliam","salary":3.0,"power":1.05,"tier":"C"},
       {"name":"Terry Notary","salary":4.0,"power":1.07,"tier":"C"},
       {"name":"Victor McGuire","salary":8.0,"power":1.14,"tier":"B"},
       {"name":"Vince Vaughn","salary":8.0,"power":1.15,"tier":"B"},
@@ -2459,7 +2459,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Geraldine James","salary":8.1,"power":1.15,"tier":"B"},
       {"name":"Jacki Weaver","salary":8.9,"power":1.19,"tier":"B"},
       {"name":"Julia Jones","salary":3.0,"power":1.06,"tier":"C"},
-      {"name":"Julie Christie","salary":8.15,"power":1.15,"tier":"B"},
+      {"name":"Julie Christie","salary":2.0,"power":1.04,"tier":"C"},
       {"name":"Kim Sae-ron","salary":2.65,"power":1.05,"tier":"C"},
       {"name":"Kristina Klebe","salary":2.35,"power":1.05,"tier":"C"},
       {"name":"Lola Kirke","salary":3.0,"power":1.06,"tier":"C"},
@@ -2520,11 +2520,11 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Aki Kaurismäki","salary":1.45,"power":1.15,"tier":"B"},
       {"name":"Andrei Konchalovsky","salary":1.35,"power":1.13,"tier":"B"},
       {"name":"Claude Lelouch","salary":1.5,"power":1.16,"tier":"B"},
-      {"name":"Dario Argento","salary":1.2,"power":1.1,"tier":"B"},
-      {"name":"Francis Ford Coppola","salary":1.4,"power":1.14,"tier":"B"},
+      {"name":"Dario Argento","salary":0.6,"power":1.03,"tier":"C"},
+      {"name":"Francis Ford Coppola","salary":0.6,"power":1.03,"tier":"C"},
       {"name":"Jane Goldman","salary":0.7,"power":1.06,"tier":"C"},
       {"name":"Jeremy Brock","salary":1.5,"power":1.16,"tier":"B"},
-      {"name":"John Boorman","salary":1.2,"power":1.1,"tier":"B"},
+      {"name":"John Boorman","salary":0.6,"power":1.03,"tier":"C"},
       {"name":"Jon Kasdan","salary":0.7,"power":1.06,"tier":"C"},
       {"name":"Kim Fupz Aakeson","salary":1.5,"power":1.16,"tier":"B"},
       {"name":"Kristin Gore","salary":0.6,"power":1.05,"tier":"C"},
@@ -2533,7 +2533,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Mark Fergus","salary":0.65,"power":1.06,"tier":"C"},
       {"name":"Matthew Michael Carnahan","salary":0.65,"power":1.06,"tier":"C"},
       {"name":"Philippe Blasband","salary":1.5,"power":1.16,"tier":"B"},
-      {"name":"Pupi Avati","salary":1.2,"power":1.1,"tier":"B"},
+      {"name":"Pupi Avati","salary":0.6,"power":1.03,"tier":"C"},
       {"name":"Randall Miller","salary":0.6,"power":1.03,"tier":"C"},
       {"name":"Terry Gilliam","salary":1.25,"power":1.11,"tier":"B"},
       {"name":"Volker Schlöndorff","salary":1.45,"power":1.15,"tier":"B"},
@@ -2550,10 +2550,10 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Brendan Fletcher","salary":8.9,"power":1.16,"tier":"B"},
       {"name":"Callum Keith Rennie","salary":9.25,"power":1.16,"tier":"B"},
       {"name":"Chris Hemsworth","salary":8.8,"power":1.15,"tier":"B"},
-      {"name":"Christopher Fairbank","salary":7.0,"power":1.1,"tier":"B"},
+      {"name":"Christopher Fairbank","salary":3.0,"power":1.04,"tier":"C"},
       {"name":"Colm Feore","salary":7.9,"power":1.13,"tier":"B"},
       {"name":"Craig T. Nelson","salary":7.0,"power":1.1,"tier":"B"},
-      {"name":"Daniel Day-Lewis","salary":7.0,"power":1.1,"tier":"B"},
+      {"name":"Daniel Day-Lewis","salary":3.0,"power":1.04,"tier":"C"},
       {"name":"Danny Webb","salary":7.0,"power":1.1,"tier":"B"},
       {"name":"DeObia Oparei","salary":7.0,"power":1.1,"tier":"B"},
       {"name":"Donnie Yen","salary":10.0,"power":1.18,"tier":"B"},
@@ -2586,7 +2586,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Peter Guinness","salary":7.0,"power":1.1,"tier":"B"},
       {"name":"Pierce Brosnan","salary":10.0,"power":1.18,"tier":"B"},
       {"name":"Steve Park","salary":7.0,"power":1.1,"tier":"B"},
-      {"name":"Terence Hill","salary":9.0,"power":1.16,"tier":"B"},
+      {"name":"Terence Hill","salary":3.0,"power":1.04,"tier":"C"},
       {"name":"Tim Roth","salary":9.1,"power":1.16,"tier":"B"},
       {"name":"Tony Goldwyn","salary":9.25,"power":1.17,"tier":"B"},
       {"name":"Tony Leung","salary":9.45,"power":1.17,"tier":"B"},
@@ -2628,7 +2628,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Nicole Garcia","salary":7.5,"power":1.15,"tier":"B"},
       {"name":"Nina Arianda","salary":4.3,"power":1.06,"tier":"C"},
       {"name":"Odeya Rush","salary":5.0,"power":1.06,"tier":"C"},
-      {"name":"Ottavia Piccolo","salary":7.0,"power":1.14,"tier":"B"},
+      {"name":"Ottavia Piccolo","salary":3.0,"power":1.04,"tier":"C"},
       {"name":"Paz Vega","salary":8.0,"power":1.16,"tier":"B"},
       {"name":"Penelope Mitchell","salary":4.45,"power":1.06,"tier":"C"},
       {"name":"Priyanka Chopra","salary":8.0,"power":1.16,"tier":"B"},
@@ -2652,7 +2652,7 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Christopher Landon","salary":3.0,"power":1.06,"tier":"C"},
       {"name":"Claire Denis","salary":6.0,"power":1.17,"tier":"B"},
       {"name":"Clark Johnson","salary":5.0,"power":1.12,"tier":"B"},
-      {"name":"Costa-Gavras","salary":5.0,"power":1.12,"tier":"B"},
+      {"name":"Costa-Gavras","salary":2.5,"power":1.02,"tier":"C"},
       {"name":"Dani Levy","salary":6.0,"power":1.15,"tier":"B"},
       {"name":"Drake Doremus","salary":2.5,"power":1.03,"tier":"C"},
       {"name":"Emilio Estevez","salary":5.0,"power":1.12,"tier":"B"},
@@ -2668,8 +2668,8 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Oren Moverman","salary":2.5,"power":1.02,"tier":"C"},
       {"name":"Peter Hedges","salary":5.0,"power":1.12,"tier":"B"},
       {"name":"Philippe Garrel","salary":5.8,"power":1.14,"tier":"B"},
-      {"name":"Radu Mihăileanu","salary":5.0,"power":1.12,"tier":"B"},
-      {"name":"Raymond Depardon","salary":6.0,"power":1.15,"tier":"B"},
+      {"name":"Radu Mihăileanu","salary":2.5,"power":1.02,"tier":"C"},
+      {"name":"Raymond Depardon","salary":2.5,"power":1.02,"tier":"C"},
       {"name":"Richard Stanley","salary":5.0,"power":1.12,"tier":"B"},
       {"name":"Robert Rodriguez","salary":6.0,"power":1.18,"tier":"B"},
       {"name":"Scott Waugh","salary":2.75,"power":1.06,"tier":"C"},
@@ -2682,7 +2682,7 @@ const TALENT_EXPANSION=Object.freeze({
     ]),
     writer:Object.freeze([
       {"name":"André Téchiné","salary":2.0,"power":1.16,"tier":"B"},
-      {"name":"Bertrand Blier","salary":1.2,"power":1.11,"tier":"B"},
+      {"name":"Bertrand Blier","salary":0.7,"power":1.06,"tier":"C"},
       {"name":"Catherine Breillat","salary":1.25,"power":1.12,"tier":"B"},
       {"name":"Christian Clavier","salary":1.65,"power":1.14,"tier":"B"},
       {"name":"Danièle Thompson","salary":1.2,"power":1.11,"tier":"B"},
@@ -2691,18 +2691,18 @@ const TALENT_EXPANSION=Object.freeze({
       {"name":"Ehren Kruger","salary":2.0,"power":1.16,"tier":"B"},
       {"name":"Fernando Eimbcke","salary":1.2,"power":1.1,"tier":"B"},
       {"name":"Gianni Amelio","salary":2.0,"power":1.16,"tier":"B"},
-      {"name":"James Ivory","salary":1.2,"power":1.1,"tier":"B"},
+      {"name":"James Ivory","salary":0.7,"power":1.06,"tier":"C"},
       {"name":"Jerzy Skolimowski","salary":1.8,"power":1.15,"tier":"B"},
       {"name":"Kiyoshi Kurosawa","salary":2.0,"power":1.16,"tier":"B"},
       {"name":"Liliana Cavani","salary":1.2,"power":1.1,"tier":"B"},
       {"name":"Mani Ratnam","salary":2.0,"power":1.16,"tier":"B"},
-      {"name":"Mike Leigh","salary":1.2,"power":1.1,"tier":"B"},
+      {"name":"Mike Leigh","salary":0.7,"power":1.06,"tier":"C"},
       {"name":"Olivier Nakache","salary":2.0,"power":1.16,"tier":"B"},
-      {"name":"Pavel Chukhray","salary":1.2,"power":1.1,"tier":"B"},
-      {"name":"Peter Greenaway","salary":1.2,"power":1.11,"tier":"B"},
+      {"name":"Pavel Chukhray","salary":0.7,"power":1.06,"tier":"C"},
+      {"name":"Peter Greenaway","salary":0.7,"power":1.06,"tier":"C"},
       {"name":"Philippe Falardeau","salary":1.2,"power":1.1,"tier":"B"},
       {"name":"Philippe Garrel","salary":2.0,"power":1.16,"tier":"B"},
-      {"name":"Roy Andersson","salary":1.2,"power":1.1,"tier":"B"},
+      {"name":"Roy Andersson","salary":0.7,"power":1.06,"tier":"C"},
       {"name":"Sally Potter","salary":1.25,"power":1.12,"tier":"B"},
       {"name":"Thomas Bezucha","salary":1.5,"power":1.13,"tier":"B"},
       {"name":"Wash Westmoreland","salary":1.2,"power":1.1,"tier":"B"},
@@ -2725,6 +2725,7 @@ const TALENT_CORE_REPAIR_ROWS=Object.freeze([
   Object.freeze({"year":"1985","role":"director","name":"John Carpenter","originalSalary":0.9,"originalPower":1.05,"originalTier":"C","salary":1.8,"power":1.15,"tier":"B"}),
   Object.freeze({"year":"1985","role":"director","name":"Jonathan Demme","originalSalary":0.4,"originalPower":0.98,"originalTier":"Indie","salary":1.6,"power":1.11,"tier":"B"}),
   Object.freeze({"year":"1985","role":"director","name":"Oliver Stone","originalSalary":0.4,"originalPower":0.98,"originalTier":"Indie","salary":1.5,"power":1.1,"tier":"B"}),
+  Object.freeze({"year":"1985","role":"writer","name":"William Goldman","originalSalary":1.2,"originalPower":1.25,"originalTier":"A","salary":0.6,"power":1.1,"tier":"B"}),
   Object.freeze({"year":"1985","role":"writer","name":"Woody Allen","originalSalary":0.4,"originalPower":1.05,"originalTier":"C","salary":0.8,"power":1.12,"tier":"B"}),
   Object.freeze({"year":"1992","role":"actor","name":"Samuel L. Jackson","originalSalary":0.8,"originalPower":0.98,"originalTier":"Indie","salary":4.0,"power":1.14,"tier":"B"}),
   Object.freeze({"year":"1997","role":"actor","name":"Gary Oldman","originalSalary":4,"originalPower":1.06,"originalTier":"C","salary":9.25,"power":1.16,"tier":"B"}),
@@ -2754,18 +2755,72 @@ const TALENT_CORE_REPAIR_ROWS=Object.freeze([
   Object.freeze({"year":"2012","role":"director","name":"Ang Lee","originalSalary":2.5,"originalPower":1.08,"originalTier":"C","salary":5.35,"power":1.17,"tier":"B"}),
   Object.freeze({"year":"2012","role":"director","name":"Paul Thomas Anderson","originalSalary":2,"originalPower":1.02,"originalTier":"C","salary":4.5,"power":1.12,"tier":"B"}),
   Object.freeze({"year":"2012","role":"director","name":"Steven Soderbergh","originalSalary":2.5,"originalPower":1.08,"originalTier":"C","salary":6.0,"power":1.18,"tier":"B"}),
+  Object.freeze({"year":"2018","role":"writer","name":"Christopher Markus & Stephen McFeely","originalSalary":3,"originalPower":1.22,"originalTier":"A","salary":1.2,"power":1.1,"tier":"B"}),
   Object.freeze({"year":"2023","role":"actress","name":"Brie Larson","originalSalary":5,"originalPower":1.06,"originalTier":"C","salary":8.0,"power":1.16,"tier":"B"}),
   Object.freeze({"year":"2023","role":"actress","name":"Carey Mulligan","originalSalary":4,"originalPower":1.05,"originalTier":"C","salary":6.95,"power":1.14,"tier":"B"}),
   Object.freeze({"year":"2023","role":"actress","name":"Jessica Chastain","originalSalary":5,"originalPower":1.06,"originalTier":"C","salary":8.0,"power":1.16,"tier":"B"}),
   Object.freeze({"year":"2023","role":"writer","name":"Eric Roth","originalSalary":0.8,"originalPower":1.06,"originalTier":"C","salary":2.0,"power":1.16,"tier":"B"}),
+]);
+const TALENT_RELEVANCE_LEGACY_ROWS=Object.freeze([
+  Object.freeze({"year":"1975","role":"actor","currentName":"Richard Bakalyan","legacy":{"name":"Martin Scorsese","salary":0.2,"power":1.02,"tier":"C"}}),
+  Object.freeze({"year":"1980","role":"actor","currentName":"Percy Herbert","legacy":{"name":"Percy Herbert","salary":0.95,"power":1.16,"tier":"B"}}),
+  Object.freeze({"year":"1980","role":"actor","currentName":"Peter Brocco","legacy":{"name":"Peter Brocco","salary":0.85,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"1980","role":"actress","currentName":"Sally Kirkland","legacy":{"name":"Catherine Scorsese","salary":0.25,"power":1.04,"tier":"C"}}),
+  Object.freeze({"year":"1985","role":"actor","currentName":"Christian Marquand","legacy":{"name":"Christian Marquand","salary":2.8,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"1985","role":"writer","currentName":"William Goldman","legacy":{"name":"William Goldman","salary":1.2,"power":1.25,"tier":"A"}}),
+  Object.freeze({"year":"1992","role":"actor","currentName":"Burt Lancaster","legacy":{"name":"Burt Lancaster","salary":4.8,"power":1.16,"tier":"B"}}),
+  Object.freeze({"year":"1992","role":"actor","currentName":"Iain Cuthbertson","legacy":{"name":"Iain Cuthbertson","salary":4.0,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"1992","role":"actor","currentName":"Marc Lawrence","legacy":{"name":"Marc Lawrence","salary":4.2,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"1992","role":"actor","currentName":"Vincent Schiavelli","legacy":{"name":"Vincent Schiavelli","salary":5.8,"power":1.18,"tier":"B"}}),
+  Object.freeze({"year":"1997","role":"actor","currentName":"Richard Widmark","legacy":{"name":"Richard Widmark","salary":7.45,"power":1.12,"tier":"B"}}),
+  Object.freeze({"year":"1997","role":"actor","currentName":"Xander Berkeley","legacy":{"name":"Robert W. Castle","salary":7.0,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"1997","role":"director","currentName":"Akira Kurosawa","legacy":{"name":"Akira Kurosawa","salary":4.15,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"1997","role":"writer","currentName":"Adriano Bolzoni","legacy":{"name":"Adriano Bolzoni","salary":1.2,"power":1.11,"tier":"B"}}),
+  Object.freeze({"year":"2000","role":"actor","currentName":"G. D. Spradlin","legacy":{"name":"G. D. Spradlin","salary":7.45,"power":1.15,"tier":"B"}}),
+  Object.freeze({"year":"2000","role":"director","currentName":"Dino Risi","legacy":{"name":"Dino Risi","salary":4.75,"power":1.19,"tier":"B"}}),
+  Object.freeze({"year":"2000","role":"writer","currentName":"Ugo Pirro","legacy":{"name":"Ugo Pirro","salary":1.25,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"2005","role":"actor","currentName":"Ed Lauter","legacy":{"name":"Ed Lauter","salary":11.45,"power":1.16,"tier":"B"}}),
+  Object.freeze({"year":"2005","role":"actor","currentName":"Jack Warden","legacy":{"name":"Jack Warden","salary":11.6,"power":1.16,"tier":"B"}}),
+  Object.freeze({"year":"2005","role":"director","currentName":"Sidney Lumet","legacy":{"name":"Sidney Lumet","salary":5.4,"power":1.18,"tier":"B"}}),
+  Object.freeze({"year":"2009","role":"writer","currentName":"Mario Monicelli","legacy":{"name":"Mario Monicelli","salary":1.5,"power":1.15,"tier":"B"}}),
+  Object.freeze({"year":"2012","role":"actor","currentName":"Tom Skerritt","legacy":{"name":"Tom Skerritt","salary":9.75,"power":1.19,"tier":"B"}}),
+  Object.freeze({"year":"2012","role":"actor","currentName":"Umberto Orsini","legacy":{"name":"Umberto Orsini","salary":8.45,"power":1.13,"tier":"B"}}),
+  Object.freeze({"year":"2012","role":"director","currentName":"Jacques Rivette","legacy":{"name":"Jacques Rivette","salary":5.2,"power":1.16,"tier":"B"}}),
+  Object.freeze({"year":"2012","role":"director","currentName":"James Ivory","legacy":{"name":"James Ivory","salary":4.75,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"2012","role":"writer","currentName":"Sergio Donati","legacy":{"name":"Sergio Donati","salary":1.25,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actor","currentName":"Al Sapienza","legacy":{"name":"Al Sapienza","salary":8.85,"power":1.18,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actor","currentName":"George Takei","legacy":{"name":"George Takei","salary":8.0,"power":1.16,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actor","currentName":"Gregg Henry","legacy":{"name":"Gregg Henry","salary":8.0,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actor","currentName":"Lloyd Kaufman","legacy":{"name":"Lloyd Kaufman","salary":11.4,"power":1.18,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actor","currentName":"Nicholas Woodeson","legacy":{"name":"Nicholas Woodeson","salary":8.0,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actor","currentName":"Terry Gilliam","legacy":{"name":"Terry Gilliam","salary":8.0,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"actress","currentName":"Julie Christie","legacy":{"name":"Julie Christie","salary":8.15,"power":1.15,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"writer","currentName":"Christopher Markus & Stephen McFeely","legacy":{"name":"Christopher Markus & Stephen McFeely","salary":3.0,"power":1.22,"tier":"A"}}),
+  Object.freeze({"year":"2018","role":"writer","currentName":"Dario Argento","legacy":{"name":"Dario Argento","salary":1.2,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"writer","currentName":"Francis Ford Coppola","legacy":{"name":"Francis Ford Coppola","salary":1.4,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"writer","currentName":"John Boorman","legacy":{"name":"John Boorman","salary":1.2,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2018","role":"writer","currentName":"Pupi Avati","legacy":{"name":"Pupi Avati","salary":1.2,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"actor","currentName":"Christopher Fairbank","legacy":{"name":"Christopher Fairbank","salary":7.0,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"actor","currentName":"Daniel Day-Lewis","legacy":{"name":"Daniel Day-Lewis","salary":7.0,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"actor","currentName":"Terence Hill","legacy":{"name":"Terence Hill","salary":9.0,"power":1.16,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"actress","currentName":"Ottavia Piccolo","legacy":{"name":"Ottavia Piccolo","salary":7.0,"power":1.14,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"director","currentName":"Costa-Gavras","legacy":{"name":"Costa-Gavras","salary":5.0,"power":1.12,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"director","currentName":"Radu Mihăileanu","legacy":{"name":"Radu Mihăileanu","salary":5.0,"power":1.12,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"director","currentName":"Raymond Depardon","legacy":{"name":"Raymond Depardon","salary":6.0,"power":1.15,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"writer","currentName":"Bertrand Blier","legacy":{"name":"Bertrand Blier","salary":1.2,"power":1.11,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"writer","currentName":"James Ivory","legacy":{"name":"James Ivory","salary":1.2,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"writer","currentName":"Mike Leigh","legacy":{"name":"Mike Leigh","salary":1.2,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"writer","currentName":"Pavel Chukhray","legacy":{"name":"Pavel Chukhray","salary":1.2,"power":1.1,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"writer","currentName":"Peter Greenaway","legacy":{"name":"Peter Greenaway","salary":1.2,"power":1.11,"tier":"B"}}),
+  Object.freeze({"year":"2023","role":"writer","currentName":"Roy Andersson","legacy":{"name":"Roy Andersson","salary":1.2,"power":1.1,"tier":"B"}}),
 ]);
 const TALENT_EXPANSION_FIT_ROWS=Object.freeze([
   Object.freeze({"year":"1975","role":"writer","name":"Ernest Lehman","strong":["Musical"],"wildcard":[]}),
   Object.freeze({"year":"1980","role":"writer","name":"Stirling Silliphant","strong":["Action"],"wildcard":[]}),
 ]);
 
-// Actor/Actress eligibility requires year-correct Hollywood-facing lead, co-lead,
-// major-featured, or credible emerging principal-casting plausibility.
+// Actor/Actress eligibility requires year-correct narrative principal evidence or
+// sustained current core-feature work supporting restrained lower-tier casting plausibility.
 // Director and Writer eligibility analogously requires verified feature-direction or screen-credit evidence.
 // Systematic Talent-quality work is frozen; future changes require a reported record, data bug, or planned design change.
 
@@ -3559,6 +3614,34 @@ function residualReleaseMultiplier({normal,tailTriggered=false,tailScalar=0,
 // here. Change the SHAPE of the model here, then run `npm run balance`.
 // ---------------------------------------------------------------------------
 const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+function talentHasMeaningfulGenreEvidence({year,role,person,genre}){
+  if(!genre||!person)return false;
+  const fit=talentGenreFit(year,role,person,genre);
+  return creativeRoleSignal({role,name:person.name,genre,fit}).suitability>0;
+}
+function applyGenreAwareTalentSlot({year,role,genres:offerGenres,pool,hand,candidateOrder}){
+  const targetGenres=(offerGenres||[]).filter(Boolean);
+  if(!targetGenres.length)return hand;
+  const relevant=person=>targetGenres.some(genre=>
+    talentHasMeaningfulGenreEvidence({year,role,person,genre}));
+  if(hand.some(relevant))return hand;
+
+  const cheapTwo=[...pool].sort((a,b)=>a.salary-b.salary).slice(0,2);
+  const cheapCount=()=>hand.filter(person=>cheapTwo.includes(person)).length;
+  for(const incoming of candidateOrder){
+    if(hand.includes(incoming)||!relevant(incoming))continue;
+    const incomingPremium=incoming.tier==='A';
+    const outgoing=[...hand].reverse().find(person=>{
+      if((person.tier==='A')!==incomingPremium)return false;
+      if(!cheapTwo.includes(person))return true;
+      return cheapTwo.includes(incoming)||cheapCount()>1;
+    });
+    if(!outgoing)continue;
+    hand[hand.indexOf(outgoing)]=incoming;
+    break;
+  }
+  return hand;
+}
 function studioGenreHistory({genre,repetition=0,previousFilm=null,isSequel=false}){
   const repeat=Math.max(0,Math.min(BAL.repCap,Number(repetition)||0));
   if(isSequel||repeat===0||previousFilm?.genre!==genre)return Object.freeze({
@@ -4404,16 +4487,18 @@ function drawRole(role,exclude){
   const premium=pool.filter(p=>p.tier==="A"),nonPremium=pool.filter(p=>p.tier!=="A");
   const premiumAccess=rnd()<PREMIUM_ACCESS_CHANCE;
   const premiumTarget=premiumAccess?(rnd()<SECOND_PREMIUM_CHANCE?2:1):0;
-  let hand=[];
-  hand=hand.concat(roleCandidateOrder(premium,exclude,hand).slice(0,premiumTarget));
-  hand=hand.concat(roleCandidateOrder(nonPremium,exclude,hand).slice(0,DRAW-hand.length));
-  if(hand.length<DRAW)hand=hand.concat(roleCandidateOrder(premium,exclude,hand).slice(0,DRAW-hand.length));
+  const premiumOrder=roleCandidateOrder(premium,exclude,[]),candidateOrder=[...premiumOrder];
+  let hand=premiumOrder.slice(0,premiumTarget);
+  const nonPremiumOrder=roleCandidateOrder(nonPremium,exclude,hand);candidateOrder.push(...nonPremiumOrder);
+  hand=hand.concat(nonPremiumOrder.slice(0,DRAW-hand.length));
+  if(hand.length<DRAW){const fallbackOrder=roleCandidateOrder(premium,exclude,hand);candidateOrder.push(...fallbackOrder);hand=hand.concat(fallbackOrder.slice(0,DRAW-hand.length))}
   hand=hand.slice(0,DRAW);
   const bySal=[...pool].sort((a,b)=>a.salary-b.salary),cheapTwo=bySal.slice(0,2);
   if(!hand.some(p=>cheapTwo.includes(p))){
     let swap=hand.filter(p=>p.tier==="Indie"||p.tier==="C").sort((a,b)=>a.salary-b.salary)[0]||hand[hand.length-1];
     hand[hand.indexOf(swap)]=cheapTwo[Math.floor(rnd()*cheapTwo.length)];
   }
+  applyGenreAwareTalentSlot({year:year(),role,genres:state.genreOffer,pool,hand,candidateOrder});
   hand.sort((a,b)=>a.name.localeCompare(b.name));
   const selected=state.selected[role];
   state.draws[role]=hand;
