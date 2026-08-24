@@ -3199,12 +3199,18 @@ const genres=["Action","Animation","Comedy","Drama","Horror","Musical","Romance"
 const roles=[["actor","Lead actor"],["actress","Lead actress"],["director","Director"],["writer","Writer"]];
 const PAGE=10;
 const TYPES={
-  "Original":{cost:0,awareness:.94,quality:1.06,fatigue:1},
-  "Adaptation":{cost:5,awareness:1.05,quality:1.03,fatigue:1},
-  "Existing IP":{cost:10,awareness:1.13,quality:.99,fatigue:.98},
-  "Remake":{cost:6,awareness:1.04,quality:.98,fatigue:.96},
-  "Reboot":{cost:8,awareness:1.07,quality:.97,fatigue:.95},
-  "Sequel":{cost:5,awareness:1.14,quality:1.00,fatigue:.96}
+  "Original":{cost:0,awareness:.94,quality:1.06,fatigue:1,
+    blurb:"Fresh concept · no rights fee"},
+  "Adaptation":{cost:5,awareness:1.05,quality:1.03,fatigue:1,
+    blurb:"Known source · built-in audience"},
+  "Existing IP":{cost:10,awareness:1.17,quality:.99,fatigue:.98,
+    blurb:"Licensed brand · strong recognition"},
+  "Remake":{cost:9,awareness:1.14,quality:1.01,fatigue:.98,
+    blurb:"Familiar story · efficient nostalgia"},
+  "Reboot":{cost:30,awareness:1.28,quality:.98,fatigue:.95,
+    blurb:"Property relaunch · higher stakes"},
+  "Sequel":{cost:5,awareness:1.14,quality:1.00,fatigue:.96,
+    blurb:"Continue an active franchise"}
 };
 const BASE_TIERS={"1985":{"Action":[18,35,60],"Animation":[12,25,45],"Comedy":[8,18,35],"Drama":[7,16,32],"Horror":[2,6,14],"Musical":[10,22,40],"Romance":[7,15,28],"Sci-Fi":[20,40,70],"Superhero":[18,38,65],"Thriller":[10,22,40]},"1997":{"Action":[30,65,120],"Animation":[25,55,95],"Comedy":[12,30,55],"Drama":[10,28,60],"Horror":[4,12,25],"Musical":[15,35,70],"Romance":[10,26,50],"Sci-Fi":[40,85,150],"Superhero":[45,95,165],"Thriller":[18,45,85]},"2012":{"Action":[45,95,180],"Animation":[50,100,180],"Comedy":[18,40,75],"Drama":[12,30,70],"Horror":[5,15,35],"Musical":[20,50,100],"Romance":[12,30,60],"Sci-Fi":[60,130,230],"Superhero":[90,170,260],"Thriller":[25,60,110]},"2023":{"Action":[50,110,220],"Animation":[55,115,220],"Comedy":[15,35,70],"Drama":[10,28,65],"Horror":[5,18,40],"Musical":[20,55,120],"Romance":[10,25,55],"Sci-Fi":[65,140,260],"Superhero":[100,190,300],"Thriller":[25,65,125]},"1975":{"Action":[10,20,35],"Animation":[8,16,30],"Comedy":[5,10,20],"Drama":[4,9,18],"Horror":[1,4,9],"Musical":[6,13,25],"Romance":[4,9,16],"Sci-Fi":[11,22,40],"Superhero":[10,21,38],"Thriller":[6,12,24]},"1992":{"Action":[25,50,90],"Animation":[18,40,70],"Comedy":[10,24,45],"Drama":[8,22,45],"Horror":[3,9,20],"Musical":[12,28,55],"Romance":[8,20,40],"Sci-Fi":[30,62,110],"Superhero":[35,70,120],"Thriller":[14,33,62]},"2005":{"Action":[38,80,150],"Animation":[38,78,140],"Comedy":[15,35,65],"Drama":[11,29,65],"Horror":[4,13,30],"Musical":[18,42,85],"Romance":[11,28,55],"Sci-Fi":[50,105,190],"Superhero":[65,130,210],"Thriller":[21,52,95]},"2018":{"Action":[48,105,210],"Animation":[52,110,200],"Comedy":[16,38,72],"Drama":[10,28,66],"Horror":[5,16,38],"Musical":[20,52,110],"Romance":[10,26,58],"Sci-Fi":[62,135,250],"Superhero":[95,180,290],"Thriller":[25,62,120]},"1980":{"Action":[14,28,50],"Animation":[10,20,38],"Comedy":[7,14,28],"Drama":[6,12,25],"Horror":[1.5,5,12],"Musical":[8,17,33],"Romance":[6,12,22],"Sci-Fi":[16,32,58],"Superhero":[15,30,55],"Thriller":[8,16,32]},"1988":{"Action":[22,44,80],"Animation":[15,32,58],"Comedy":[9,20,38],"Drama":[7,18,38],"Horror":[2.5,7,16],"Musical":[10,24,46],"Romance":[7,17,34],"Sci-Fi":[26,52,95],"Superhero":[30,60,105],"Thriller":[12,28,54]},"2000":{"Action":[32,66,125],"Animation":[30,62,115],"Comedy":[13,30,56],"Drama":[10,26,56],"Horror":[3.5,11,26],"Musical":[15,36,72],"Romance":[10,25,48],"Sci-Fi":[42,88,160],"Superhero":[55,105,180],"Thriller":[18,44,82]},"2009":{"Action":[42,90,175],"Animation":[45,92,165],"Comedy":[15,36,68],"Drama":[10,28,64],"Horror":[4,14,33],"Musical":[19,46,95],"Romance":[10,27,55],"Sci-Fi":[55,118,215],"Superhero":[78,150,240],"Thriller":[23,56,105]}};
 
@@ -3431,8 +3437,9 @@ function mergedBank(genre,key){return[...(TITLE_GEN[genre]?.[key]||[]),...(TITLE
 function tokenValue(bank,key,random){const values=bank[key];return values&&values.length?values[Math.floor(random()*values.length)]:""}
 function renderPattern(pattern,bank,random){const seen={};return pattern.replace(/\{(one|a|n|p|t|c|v|o|m|s|rd)\}/g,(_,key)=>{let value=tokenValue(bank,key,random),guard=0;while(seen[key]?.has(value)&&(bank[key]?.length||0)>1&&guard++<8)value=tokenValue(bank,key,random);(seen[key]||(seen[key]=new Set())).add(value);return value}).replace(/\s+/g," ").replace(/\s+([,:!?])/g,"$1").replace(/\bA ([AEIOU])/g,"An $1").trim()}
 function titleBank(genre,secondaryGenre){const keys=["one","adj","noun","place","time","city","verb","obj","name","suf","ord"],bank={};for(const key of keys){const token={adj:"a",noun:"n",place:"p",time:"t",city:"c",verb:"v",obj:"o",name:"m",suf:"s",ord:"rd"}[key]||key;bank[token]=[...mergedBank(genre,key),...(secondaryGenre?mergedBank(secondaryGenre,key):[])]}return bank}
-function normalizeTitleGrammar(title){return String(title).replace(/^(The New)\s+(?:The|A|An)\s+/i,"$1 ").replace(/^(The|A|An)\s+\1\b/i,"$1").replace(/^(Return to)\s+\1\b/i,"$1").replace(/\s+/g," ").trim()}
-function decorateTitle(title,type,franchise,index,batch){let decorated=title;if(type==="Sequel"&&franchise){if(index===0&&batch===0)decorated=franchise.title+(ROMAN[franchise.count+1]||` ${franchise.count+1}`);else if(index===0)decorated=`${franchise.title}: ${title}`;else if(index===1)decorated=`${title}: A ${franchise.title} Story`;else decorated=`Return to ${franchise.title}: ${title}`}else if(type==="Reboot")decorated=`${title}: Reborn`;else if(type==="Remake")decorated=`The New ${title}`;return normalizeTitleGrammar(decorated)}
+function normalizeTitleGrammar(title){return String(title).replace(/^(The|A|An)\s+\1\b/i,"$1").replace(/^(Return to|Rise of)\s+(?:The|A|An)\s+/i,"$1 ").replace(/\s+/g," ").trim()}
+function withoutArticle(title){return String(title).replace(/^(?:The|A|An)\s+/i,"")}
+function decorateTitle(title,type,franchise,index,batch){let decorated=title;if(type==="Sequel"&&franchise){if(index===0&&batch===0)decorated=franchise.title+(ROMAN[franchise.count+1]||` ${franchise.count+1}`);else if(index===0)decorated=`${franchise.title}: ${title}`;else if(index===1)decorated=`${title}: A ${franchise.title} Story`;else decorated=`Return to ${franchise.title}: ${title}`}else if(type==="Remake"){const pattern=(index+batch)%4;if(pattern===1)decorated=`${withoutArticle(title)} Returns`;else if(pattern===2)decorated=`Return to ${withoutArticle(title)}`;else if(pattern===3)decorated=`${title}: Reimagined`}else if(type==="Reboot"){const pattern=(index+batch)%4;if(pattern===0)decorated=`${title}: Reloaded`;else if(pattern===1)decorated=`Rise of ${withoutArticle(title)}`;else if(pattern===2)decorated=`${title}: Legacy`}return normalizeTitleGrammar(decorated)}
 function generateTitleOptions({seed,year,index,genre,secondaryGenre=null,type,batch=0,usedTitles=[],excludeTitles=[],franchise=null,count=3}){const secondary=normalizeSecondaryGenre(genre,secondaryGenre),blendName=genreDisplayName(genre,secondary),identity=genreBlendIdentity(genre,secondary),random=cosmeticRandom(`title|${seed}|${year}|${index}|${identity}|${type}|${batch}`),patterns=secondary?BLEND_TITLE_PATTERNS[blendName]:(TITLE_PATTERNS[genre]||TITLE_GEN[genre]?.pats||["{one}"]),bank=titleBank(genre,secondary),blocked=new Set([...usedTitles,...excludeTitles].map(String)),out=[];let guard=0;while(out.length<count&&guard++<500){const pattern=patterns[Math.floor(random()*patterns.length)],raw=renderPattern(pattern,bank,random),title=sanitizeIdentityText(decorateTitle(raw,type,franchise,guard%3,batch),FILM_TITLE_MAX);if(title&&!blocked.has(title)&&!out.includes(title))out.push(title)}return out}
 function titleSpaceSize(genre,secondaryGenre=null){const secondary=normalizeSecondaryGenre(genre,secondaryGenre),bank=titleBank(genre,secondary),patterns=secondary?BLEND_TITLE_PATTERNS[genreDisplayName(genre,secondary)]:(TITLE_PATTERNS[genre]||[]);return patterns.reduce((sum,pattern)=>{let combinations=1;for(const token of pattern.matchAll(/\{(one|a|n|p|t|c|v|o|m|s|rd)\}/g))combinations*=Math.max(1,bank[token[1]]?.length||0);return sum+combinations},0)}
 
@@ -4487,6 +4494,29 @@ function marketingAssessment(snapshot){
   const nextBest=Math.max(-Infinity,...options.filter(option=>option!==chosen).map(option=>option.expectedProfit));
   return chosen.expectedProfit-nextBest>=material?"efficient":"neutral";
 }
+function movieTypeAssessment(snapshot){
+  const s=snapshot,c=s.commercial||{},type=s.identity?.type,t=TYPES[type];
+  if(!t||!(Number(s.expectedGross)>0))return"neutral";
+  const studioShare=Number(s.studioShare)||BAL.studioShare;
+  const material=Math.max(1,Number(s.totalInvested)*.03);
+  const recognitionValue=Number(s.expectedGross)*Math.max(0,
+    (t.awareness-TYPES.Original.awareness)/Math.max(.01,t.awareness))*studioShare;
+  if(type==="Sequel"){
+    const health=Number(c.franchiseBefore?.health);
+    if(health>=80&&recognitionValue>=material*2)return"sequel-strong";
+    if(health<45&&Number.isFinite(health))return"sequel-weak";
+    return"neutral";
+  }
+  if(type==="Original"){
+    const recognitionGap=Number(s.expectedGross)*(1/TYPES.Original.awareness-1)*studioShare;
+    return recognitionGap>=material*2?"original-reach":"neutral";
+  }
+  const familiarityCost=Number(s.rightsCost||0)+
+    Number(s.expectedGross)*Math.max(0,1/t.fatigue-1)*studioShare;
+  if(recognitionValue-familiarityCost>=material*2)return"recognition";
+  if(familiarityCost-recognitionValue>=material)return"familiarity";
+  return"neutral";
+}
 function expectationAssessment(snapshot){
   const expected=snapshot.expectedGross,gross=snapshot.gross;
   if(!(expected>0))return Object.freeze({percent:0,direction:null,label:"Forecast unavailable",luck:"The result could not be compared with the pre-release forecast."});
@@ -4554,7 +4584,7 @@ function buildResultNarrative(snapshot){
   const s=snapshot,c=s.commercial,id=s.identity||{},positive=[],negative=[],external=[],releaseBreak=[];
   const primaryGenre=id.primaryGenre||id.genre,genreName=id.genreName||id.genre;
   const add=(list,key,priority,text)=>list.push({key,priority,text});
-  const marketing=marketingAssessment(s),expectation=expectationAssessment(s);
+  const marketing=marketingAssessment(s),movieType=movieTypeAssessment(s),expectation=expectationAssessment(s);
   if(c.outcome?.enabled){
     const reception=c.outcome.reception,aBand=reception.audienceBand,cBand=reception.criticBand;
     if(reception.synergy>0)add(positive,"reception-both",132,"Strong audience and critical response gave the film a significant commercial lift.");
@@ -4581,6 +4611,16 @@ function buildResultNarrative(snapshot){
     ?"The blockbuster campaign cost more than the available audience could justify."
     :"The campaign cost more than the available audience could justify.");
   else if(marketing==="efficient")add(positive,"marketing",90,"The campaign gave a film of this scale the reach it needed.");
+  if(movieType==="recognition")add(positive,"type-recognition",109,
+    "Built-in recognition gave the release a stronger starting audience.");
+  else if(movieType==="original-reach")add(negative,"type-original",109,
+    "With no built-in property awareness, the film had to build its audience from scratch.");
+  else if(movieType==="familiarity")add(negative,"type-familiarity",109,
+    "Familiarity helped awareness, but the property offered less room for sustained growth.");
+  else if(movieType==="sequel-strong")add(positive,"type-sequel",109,
+    "A healthy franchise gave the sequel a strong base of audience recognition.");
+  else if(movieType==="sequel-weak")add(negative,"type-sequel",109,
+    "The fading franchise gave the sequel less audience momentum than its name suggested.");
   const genreHistory=c.genreHistory;
   if(genreHistory?.effect>0)add(positive,"genre-momentum",114,
     `The studio's recent ${primaryGenre} success helped keep audience interest high.`);
@@ -4788,7 +4828,7 @@ function restoreChoiceFocus(hostId,value,enabled){if(!enabled)return;const host=
 function renderChoices(hostId,items,key,formatter,animate){const host=$(hostId);if(!host)return;host.innerHTML="";items.forEach((item,i)=>{const val=typeof item==="string"?item:item.name,selected=state.selected[key]===val||state.selected[key]?.name===val;const b=document.createElement("button");b.type="button";b.dataset.choiceValue=val;b.className="choice"+(selected?" selected":"")+(animate?" dealt":"");b.setAttribute("aria-pressed",selected?"true":"false");if(animate)b.style.animationDelay=(i*35)+"ms";if(formatter)b.innerHTML=formatter(item);else b.textContent=val;b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected[key]=item;if(key==="title")state.titleMode="generated";if(key==="genre"){state.selected.secondaryGenre=null;if(state.selected.type==="Sequel"&&!franchiseActive(state.franchises[item]))state.selected.type=null;resetGeneratedTitleContext();if(titleContextReady())generateTitles()}refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus(hostId,val,restore)};host.appendChild(b)})}
 function renderGenres(animate){renderChoices("genreGrid",state.genreOffer,"genre",gn=>{const fr=state.franchises[gn];if(!fr)return gn;const dots=fr.health>=60?3:fr.health>=30?2:1,dotcol=dots===3?"var(--cyan)":dots===2?"var(--yellow)":"var(--red)",safeTitle=escapeHtml(fr.title);return gn+`<small>${safeTitle} · Hype <span class="frdots" style="color:${dotcol}">${"●".repeat(dots)}${"○".repeat(3-dots)}</span></small>`},animate);updateGenreRerollBtn()}
 function renderGenreBlend(){const control=$("genreBlendControl"),host=$("genreBlendGrid"),primary=state.selected.genre;if(!control||!host)return;host.replaceChildren();control.hidden=!primary;if(!primary)return;const secondary=normalizeSecondaryGenre(primary,state.selected.secondaryGenre);state.selected.secondaryGenre=secondary;for(const item of genreBlendOptions(primary)){const selected=item.secondaryGenre===secondary,b=document.createElement("button"),value=item.secondaryGenre||"";b.type="button";b.className="choice genre-blend-choice"+(selected?" selected":"");b.dataset.choiceValue=value;b.textContent=item.label;b.setAttribute("aria-label",item.label);b.setAttribute("aria-pressed",selected?"true":"false");b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.secondaryGenre=normalizeSecondaryGenre(primary,item.secondaryGenre);resetGeneratedTitleContext();if(titleContextReady())generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus("genreBlendGrid",value,restore)};host.appendChild(b)}}
-function renderTypes(){const host=$("typeGrid"),fr=state.selected.genre?state.franchises[state.selected.genre]:null,active=franchiseActive(fr);host.innerHTML="";Object.keys(TYPES).forEach(tp=>{const locked=tp==="Sequel"&&!active;const b=document.createElement("button");b.type="button";b.disabled=locked;b.dataset.choiceValue=tp;b.className="choice"+(state.selected.type===tp?" selected":"");b.setAttribute("aria-pressed",state.selected.type===tp?"true":"false");b.textContent=tp;if(tp==="Sequel"){const note=document.createElement("small");note.textContent=locked?(fr?`franchise shelved at ${Math.round(fr.health)} health`:"needs a hit in this genre"):`${fr.title} · ${Math.round(fr.health)} health`;b.appendChild(note)}b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.type=tp;resetGeneratedTitleContext();generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus("typeGrid",tp,restore)};host.appendChild(b)});if(state.selected.type==="Sequel"&&!active){const before=eventDependencySignature(state.event?.id);state.selected.type=null;resetGeneratedTitleContext();refreshEventAfterPackageChange(before)}}
+function renderTypes(){const host=$("typeGrid"),fr=state.selected.genre?state.franchises[state.selected.genre]:null,active=franchiseActive(fr);host.innerHTML="";Object.keys(TYPES).forEach(tp=>{const locked=tp==="Sequel"&&!active,b=document.createElement("button"),note=document.createElement("small");b.type="button";b.disabled=locked;b.dataset.choiceValue=tp;b.className="choice"+(state.selected.type===tp?" selected":"");b.setAttribute("aria-pressed",state.selected.type===tp?"true":"false");b.textContent=tp;note.textContent=tp==="Sequel"?(locked?(fr?`Shelved at ${Math.round(fr.health)} health`:TYPES[tp].blurb):`${fr.title} · ${Math.round(fr.health)} health`):TYPES[tp].blurb;b.appendChild(note);b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.type=tp;resetGeneratedTitleContext();generateTitles();refreshEventAfterPackageChange(before);renderAll();updateCosts();restoreChoiceFocus("typeGrid",tp,restore)};host.appendChild(b)});if(state.selected.type==="Sequel"&&!active){const before=eventDependencySignature(state.event?.id);state.selected.type=null;resetGeneratedTitleContext();refreshEventAfterPackageChange(before)}}
 function renderWindows(){const descriptions={Winter:"Quieter early-year corridor",Summer:"Tentpole season",Fall:"Prestige and awards season",Holiday:"Family and event season"};renderChoices("windowGrid",Object.keys(WINDOWS),"window",w=>w+`<small>${descriptions[w]}</small>`)}
 function renderMarketing(){const host=$("marketingGrid");host.innerHTML="";MKT_TIERS.forEach(t=>{const selected=state.selected.marketing===t.key,b=document.createElement("button");b.type="button";b.dataset.choiceValue=t.key;b.className="choice"+(selected?" selected":"");b.setAttribute("aria-pressed",selected?"true":"false");b.innerHTML=t.key+"<small>"+t.blurb+"</small>";b.onclick=()=>{const restore=document.activeElement===b,before=eventDependencySignature(state.event?.id);state.selected.marketing=t.key;refreshEventAfterPackageChange(before);renderMarketing();renderEvent();updateCosts();restoreChoiceFocus("marketingGrid",t.key,restore)};host.appendChild(b)});const tally=state.rolled?livePackageTally():null,t=MKT_TIERS.find(x=>x.key===state.selected.marketing);$("marketingLabel").textContent=tally&&t?money(tally.marketing):"Choose one";$("marketingDesc").textContent=t?Math.round(t.pct*100)+"% of known production":"Select a marketing push"}
 function packageCostsNow(){return simPackageCosts({year:year(),genre:state.selected.genre,tier:state.selected.tier,type:state.selected.type,talent:state.selected,marketingTier:state.selected.marketing,rolled:state.rolled})}
